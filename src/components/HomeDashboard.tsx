@@ -1,17 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { CATEGORIES, categoryBySlug } from "@/data/categories";
-import { streak, useProgress, statusOf } from "@/lib/progress";
+import { BookOpen, Flame, Layers, Puzzle, Star, ChevronRight } from "lucide-react";
+import { CATEGORIES, categoryBySlug, categoryVars } from "@/data/categories";
+import { DAILY_GOAL, streak, todayCount, useProgress, statusOf } from "@/lib/progress";
 import { WORDS, wordsForCategory } from "@/lib/words";
-import CategoryGrid from "./CategoryGrid";
+import CategoryGrid, { CategoryArt } from "./CategoryGrid";
+import Wobble from "./Wobble";
 import WordArt from "./WordArt";
-import { ProgressBar } from "./ui";
+import { Bubble, ProgressBar, Ring } from "./ui";
 
 export default function HomeDashboard() {
   const [p, hydrated] = useProgress();
   const learned = WORDS.filter((w) => statusOf(p, w.id) === "learned").length;
   const days = streak(p);
+  const today = todayCount(p);
+  const goalDone = today >= DAILY_GOAL;
 
   // Next category to continue: last opened (if unfinished) or first unfinished
   const unfinished = (slug: string) => wordsForCategory(slug).some((w) => statusOf(p, w.id) !== "learned");
@@ -22,68 +26,122 @@ export default function HomeDashboard() {
   const nextWords = wordsForCategory(next.slug);
   const nextLearned = nextWords.filter((w) => statusOf(p, w.id) === "learned").length;
   const nextWord = nextWords.find((w) => statusOf(p, w.id) !== "learned") ?? nextWords[0];
+  const nextIndex = Math.max(0, nextWords.indexOf(nextWord));
+
+  const message = !hydrated || (learned === 0 && today === 0)
+    ? "გამარჯობა! მე ვობლი ვარ. ერთად ვისწავლოთ ინგლისური!"
+    : goalDone
+      ? "დღის მიზანი შესრულდა! შენ ნამდვილი ვარსკვლავი ხარ!"
+      : today > 0
+        ? `კარგად მიდიხარ! დღეს კიდევ ${DAILY_GOAL - today} სიტყვა დაგვრჩა.`
+        : "დაბრუნდი! გავაგრძელოთ იქიდან, სადაც გავჩერდით?";
 
   return (
-    <main className="px-4 pt-5">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="animate-floaty text-4xl">🦉</span>
-          <div>
-            <p className="text-2xl font-black leading-none text-brand">
-              Wordly <span className="text-amber-400">Kids</span>
-            </p>
-            <p className="font-ka text-xs font-semibold text-slate-500">ინგლისური სიტყვები სახალისოდ</p>
-          </div>
-        </div>
-        <div className="btn-3d flex items-center gap-1 rounded-2xl bg-white px-3 py-2 text-lg font-black ring-1 ring-amber-200">
-          ⭐ <span suppressHydrationWarning>{hydrated ? p.stars : 0}</span>
+    <main className="px-4 pt-[max(env(safe-area-inset-top),1rem)]">
+      {/* Top bar: brand + compact stats */}
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-display text-2xl font-semibold tracking-tight text-ink">
+          Wordly<span className="text-lavender"> Kids</span>
+        </p>
+        <div className="flex items-center gap-2" suppressHydrationWarning>
+          <Chip icon={<Star size={18} className="fill-sun text-[#E5B400]" />} value={hydrated ? p.stars : 0} label="ვარსკვლავი" />
+          <Chip icon={<Flame size={18} className="fill-coral text-coral-deep" />} value={hydrated ? days : 0} label="დღე ზედიზედ" />
         </div>
       </div>
 
-      {/* Greeting */}
-      <section className="mt-5 overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand to-fuchsia-500 p-5 text-white shadow-lg shadow-violet-200">
-        <p className="font-ka text-2xl font-extrabold">გამარჯობა! 👋</p>
-        <p className="font-ka mt-1 text-sm opacity-90">დღეს ახალ ინგლისურ სიტყვებს ვისწავლით. მზად ხარ?</p>
-        <div className="mt-4 grid grid-cols-3 gap-2 text-center">
-          <Stat icon="📗" value={`${learned}/${WORDS.length}`} label="ნასწავლი" />
-          <Stat icon="🔥" value={String(days)} label="დღე ზედიზედ" />
-          <Stat icon="🧩" value={String(Object.values(p.quizzes).reduce((a, q) => a + q.plays, 0))} label="ქვიზი" />
-        </div>
-        <ProgressBar value={learned} max={WORDS.length} color="bg-sun" className="mt-4 bg-white/30" />
-      </section>
+      {/* Hero */}
+      <section className="relative mt-4 overflow-hidden rounded-[2rem] bg-lavender-soft p-5 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:p-8">
+        <svg className="pointer-events-none absolute -right-10 -top-12 h-48 w-48 text-lavender/15" viewBox="0 0 100 100" aria-hidden>
+          <circle cx="50" cy="50" r="50" fill="currentColor" />
+        </svg>
+        <svg className="pointer-events-none absolute -bottom-16 left-24 h-40 w-40 text-mint/25" viewBox="0 0 100 100" aria-hidden>
+          <circle cx="50" cy="50" r="50" fill="currentColor" />
+        </svg>
 
-      {/* Continue */}
-      <section className="mt-5">
-        <h2 className="font-ka mb-2 text-lg font-extrabold">გააგრძელე სწავლა</h2>
-        <div className={`rounded-[2rem] bg-gradient-to-br ${next.bg} p-4 ring-2 ${next.ring}`}>
-          <div className="flex items-center gap-3">
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-white/80">
-              {nextWord ? <WordArt word={nextWord} size="sm" /> : null}
-            </div>
+        <div className="relative flex items-end gap-2">
+          <Wobble mood={goalDone ? "excited" : "happy"} size={118} className="-mb-1 shrink-0" />
+          <Bubble className="mb-8 flex-1">
+            <p className="font-ka text-[0.95rem] font-bold leading-snug text-ink" suppressHydrationWarning>
+              {message}
+            </p>
+          </Bubble>
+        </div>
+
+        <div className="relative mt-4 lg:mt-0 lg:w-80">
+          <Link
+            href={`/category/${next.slug}/learn${nextIndex ? `?i=${nextIndex}` : ""}`}
+            className="press focus-ring flex min-h-16 w-full items-center justify-between gap-3 rounded-[1.4rem] bg-lavender px-5 py-3 text-white [--edge:#6a4fd0]"
+          >
+            <span>
+              <span className="font-ka block text-lg font-extrabold leading-tight">გავაგრძელოთ სწავლა</span>
+              <span className="font-ka block text-xs font-semibold text-white/85" suppressHydrationWarning>
+                {next.ka} · {nextWord?.en}
+              </span>
+            </span>
+            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white/20">
+              <ChevronRight size={26} strokeWidth={3} />
+            </span>
+          </Link>
+
+          {/* Daily goal */}
+          <div className="mt-3 flex items-center gap-3 rounded-[1.4rem] bg-white p-3" suppressHydrationWarning>
+            <Ring value={hydrated ? today : 0} max={DAILY_GOAL} size={58} stroke={8} color={goalDone ? "var(--color-mint)" : "var(--color-sun)"}>
+              <span className="font-display text-base font-semibold">
+                {hydrated ? Math.min(today, DAILY_GOAL) : 0}/{DAILY_GOAL}
+              </span>
+            </Ring>
             <div className="min-w-0 flex-1">
-              <p className="font-ka truncate text-lg font-extrabold">
-                {next.emoji} {next.ka}
+              <p className="font-ka text-sm font-extrabold">დღის მიზანი</p>
+              <p className="font-ka text-xs text-ink-soft">
+                {goalDone ? "შესრულებულია — ყოჩაღ!" : `ივარჯიშე ${DAILY_GOAL} სიტყვაზე დღეს`}
               </p>
-              <p className="text-sm font-bold text-slate-600">
-                {nextLearned}/{nextWords.length} · {nextWord?.en}
-              </p>
-              <ProgressBar value={nextLearned} max={nextWords.length} color={next.bar} className="mt-2" />
             </div>
-          </div>
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            <ModeButton href={`/category/${next.slug}/learn`} icon="📖" label="სწავლა" className="bg-brand text-white" />
-            <ModeButton href={`/category/${next.slug}/flashcards`} icon="🃏" label="ბარათები" className="bg-white text-ink" />
-            <ModeButton href={`/category/${next.slug}/quiz`} icon="🧩" label="ქვიზი" className="bg-white text-ink" />
+            <div className="text-right">
+              <p className="font-display text-lg font-semibold leading-none" suppressHydrationWarning>
+                {hydrated ? learned : 0}
+                <span className="text-sm text-ink-soft">/{WORDS.length}</span>
+              </p>
+              <p className="font-ka text-[0.7rem] text-ink-soft">ნასწავლი</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="mt-6">
-        <div className="mb-2 flex items-end justify-between">
-          <h2 className="font-ka text-lg font-extrabold">12 თემა · 120 სიტყვა</h2>
-          <Link href="/quiz" className="font-ka text-sm font-bold text-brand">
+      {/* Current world + modes */}
+      <section className="mt-6" style={categoryVars(next)}>
+        <h2 className="font-ka mb-3 text-lg font-extrabold">ახლანდელი თემა</h2>
+        <div className="card overflow-hidden">
+          <div className="flex items-center gap-3 bg-[var(--soft)] p-4">
+            <CategoryArt c={next} />
+            <div className="min-w-0 flex-1" suppressHydrationWarning>
+              <p className="font-ka truncate text-lg font-extrabold">{next.ka}</p>
+              <p className="font-display text-sm text-[var(--deep)]">{next.name}</p>
+              <div className="mt-2 flex items-center gap-2">
+                <ProgressBar value={nextLearned} max={nextWords.length} color="var(--accent)" track="rgb(255 255 255 / 0.9)" height={10} />
+                <span className="shrink-0 text-xs font-extrabold text-[var(--deep)]">
+                  {nextLearned}/{nextWords.length}
+                </span>
+              </div>
+            </div>
+            {nextWord ? (
+              <div className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white sm:flex">
+                <WordArt word={nextWord} size="sm" />
+              </div>
+            ) : null}
+          </div>
+          <div className="grid grid-cols-3 gap-2 p-3">
+            <ModeTile href={`/category/${next.slug}/learn`} Icon={BookOpen} label="სწავლა" tone="lavender" />
+            <ModeTile href={`/category/${next.slug}/flashcards`} Icon={Layers} label="ბარათები" tone="mint" />
+            <ModeTile href={`/category/${next.slug}/quiz`} Icon={Puzzle} label="ქვიზი" tone="coral" />
+          </div>
+        </div>
+      </section>
+
+      {/* All worlds */}
+      <section className="mt-7">
+        <div className="mb-3 flex items-end justify-between">
+          <h2 className="font-ka text-lg font-extrabold">სასწავლო სამყაროები</h2>
+          <Link href="/quiz" className="font-ka focus-ring rounded-lg text-sm font-bold text-lavender-deep">
             შერეული ქვიზი →
           </Link>
         </div>
@@ -93,23 +151,36 @@ export default function HomeDashboard() {
   );
 }
 
-function Stat({ icon, value, label }: { icon: string; value: string; label: string }) {
+function Chip({ icon, value, label }: { icon: React.ReactNode; value: number; label: string }) {
   return (
-    <div className="rounded-2xl bg-white/15 px-2 py-2 backdrop-blur">
-      <div className="text-xl">{icon}</div>
-      <div className="text-lg font-black" suppressHydrationWarning>
-        {value}
-      </div>
-      <div className="font-ka text-[0.7rem] font-semibold opacity-90">{label}</div>
+    <div className="flex h-10 items-center gap-1.5 rounded-full bg-white px-3 shadow-[var(--shadow-soft)]" aria-label={`${label}: ${value}`}>
+      {icon}
+      <span className="font-display text-base font-semibold">{value}</span>
     </div>
   );
 }
 
-function ModeButton({ href, icon, label, className }: { href: string; icon: string; label: string; className: string }) {
+const TONES = {
+  lavender: "bg-lavender-soft text-lavender-deep [--edge:#d9cffa]",
+  mint: "bg-mint-soft text-mint-deep [--edge:#bfeedd]",
+  coral: "bg-coral-soft text-coral-deep [--edge:#ffd3cf]",
+};
+
+export function ModeTile({
+  href,
+  Icon,
+  label,
+  tone,
+}: {
+  href: string;
+  Icon: typeof BookOpen;
+  label: string;
+  tone: keyof typeof TONES;
+}) {
   return (
-    <Link href={href} className={`btn-3d flex flex-col items-center rounded-2xl py-2.5 font-bold ${className}`}>
-      <span className="text-2xl">{icon}</span>
-      <span className="font-ka text-sm">{label}</span>
+    <Link href={href} className={`press focus-ring flex min-h-20 flex-col items-center justify-center gap-1 rounded-2xl ${TONES[tone]}`}>
+      <Icon size={26} strokeWidth={2.4} aria-hidden />
+      <span className="font-ka text-sm font-extrabold">{label}</span>
     </Link>
   );
 }

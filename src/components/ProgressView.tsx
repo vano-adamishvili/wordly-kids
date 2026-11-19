@@ -2,83 +2,207 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { CATEGORIES } from "@/data/categories";
-import { progressActions, statusOf, streak, useProgress } from "@/lib/progress";
+import { Flame, Star, BookCheck, Trash2 } from "lucide-react";
+import { CATEGORIES, categoryVars } from "@/data/categories";
+import { DAILY_GOAL, lastDays, longestStreak, progressActions, statusOf, streak, useProgress } from "@/lib/progress";
 import { WORDS, wordsForCategory } from "@/lib/words";
-import { ProgressBar, TopBar } from "./ui";
+import { CategoryArt } from "./CategoryGrid";
+import Wobble from "./Wobble";
+import WordArt from "./WordArt";
+import { Art, Bubble, ProgressBar, TopBar } from "./ui";
 
-const BADGES = [
-  { need: 1, icon: "🌱", ka: "პირველი სიტყვა" },
-  { need: 10, icon: "🐣", ka: "10 სიტყვა" },
-  { need: 30, icon: "🚀", ka: "30 სიტყვა" },
-  { need: 60, icon: "🦸", ka: "60 სიტყვა" },
-  { need: 120, icon: "👑", ka: "ყველა 120!" },
-];
+const WEEKDAYS = ["კვ", "ორ", "სა", "ოთ", "ხუ", "პა", "შა"];
 
 export default function ProgressView() {
-  const [p] = useProgress();
+  const [p, hydrated] = useProgress();
   const [confirm, setConfirm] = useState(false);
+
   const counts = { new: 0, learning: 0, learned: 0 };
   WORDS.forEach((w) => counts[statusOf(p, w.id)]++);
+  const review = WORDS.filter((w) => statusOf(p, w.id) === "learning").sort(
+    (a, b) => (p.words[b.id]?.wrong ?? 0) - (p.words[a.id]?.wrong ?? 0),
+  );
+  const quizzes = Object.values(p.quizzes);
+  const catDone = CATEGORIES.filter((c) => wordsForCategory(c.slug).every((w) => statusOf(p, w.id) === "learned")).length;
+  const days = streak(p);
+  const best = longestStreak(p);
+  const week = hydrated ? lastDays(p, 7) : [];
+  const weekMax = Math.max(DAILY_GOAL, ...week.map((d) => d.count));
+
+  // Badges – every condition is computed from stored progress
+  const badges = [
+    { art: "seedling", ka: "პირველი სიტყვა", got: counts.learned >= 1, hint: "ისწავლე 1 სიტყვა" },
+    { art: "hatching-chick", ka: "10 სიტყვა", got: counts.learned >= 10, hint: `${Math.min(counts.learned, 10)}/10` },
+    { art: "bullseye", ka: "პირველი ქვიზი", got: quizzes.some((q) => q.plays > 0), hint: "გაიარე ქვიზი" },
+    { art: "1st-place-medal", ka: "უნაკლო ქვიზი", got: quizzes.some((q) => q.best === q.total && q.total > 0), hint: "ყველა სწორი პასუხი" },
+    { art: "fire", ka: "3 დღე ზედიზედ", got: best >= 3, hint: `${Math.min(best, 3)}/3 დღე` },
+    { art: "trophy", ka: "პირველი სამყარო", got: catDone >= 1, hint: "დაასრულე 1 თემა" },
+    { art: "rocket", ka: "30 სიტყვა", got: counts.learned >= 30, hint: `${Math.min(counts.learned, 30)}/30` },
+    { art: "glowing-star", ka: "60 სიტყვა", got: counts.learned >= 60, hint: `${Math.min(counts.learned, 60)}/60` },
+    { art: "crown", ka: "ყველა 120", got: counts.learned >= 120, hint: `${counts.learned}/120` },
+  ];
+  const earned = badges.filter((b) => b.got).length;
+
+  const message =
+    counts.learned === 0
+      ? "დავიწყოთ! პირველივე სიტყვა პირველ ჯილდოს მოგიტანს."
+      : counts.learned >= 120
+        ? "ყველა 120 სიტყვა ისწავლე! წარმოუდგენელია!"
+        : review.length > 0
+          ? `უკვე ${counts.learned} სიტყვა იცი! ${review.length} სიტყვა გასამეორებელია.`
+          : `უკვე ${counts.learned} სიტყვა იცი! ასე განაგრძე!`;
+
+  if (!hydrated) {
+    return (
+      <main>
+        <TopBar back="/" title="ჩემი პროგრესი" />
+      </main>
+    );
+  }
 
   return (
     <main>
-      <TopBar back="/" title="⭐ ჩემი პროგრესი" />
-      <div className="space-y-5 px-4">
-        <section className="grid grid-cols-3 gap-2 text-center">
-          <Box icon="⭐" value={p.stars} label="ვარსკვლავი" />
-          <Box icon="📗" value={counts.learned} label="ნასწავლი" />
-          <Box icon="🔥" value={streak(p)} label="დღე ზედიზედ" />
-        </section>
-
-        <section className="rounded-[2rem] bg-white p-4 ring-1 ring-violet-100">
-          <p className="font-ka mb-2 font-extrabold">120 სიტყვიდან</p>
-          <div className="flex h-5 overflow-hidden rounded-full bg-slate-100">
-            <div className="bg-emerald-500" style={{ width: `${(counts.learned / 120) * 100}%` }} />
-            <div className="bg-amber-400" style={{ width: `${(counts.learning / 120) * 100}%` }} />
+      <TopBar back="/" title="ჩემი პროგრესი" />
+      <div className="space-y-5 px-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
+        {/* Wobble + message */}
+        <section className="relative overflow-hidden rounded-[2rem] bg-lavender-soft p-5 lg:col-span-2">
+          <div className="flex items-end gap-2">
+            <Wobble mood={counts.learned > 0 ? "excited" : "encouraging"} size={104} className="-mb-1 shrink-0" />
+            <Bubble className="mb-6 flex-1">
+              <p className="font-ka text-[0.95rem] font-bold leading-snug">{message}</p>
+            </Bubble>
           </div>
-          <div className="font-ka mt-2 flex flex-wrap gap-3 text-xs font-bold text-slate-600">
-            <span>🟢 ნასწავლი: {counts.learned}</span>
-            <span>🟡 ვსწავლობ: {counts.learning}</span>
-            <span>⚪ ახალი: {counts.new}</span>
+          <div className="mt-4 grid grid-cols-3 gap-2">
+            <Stat icon={<Star size={22} className="fill-sun text-[#E5B400]" />} value={p.stars} label="ვარსკვლავი" />
+            <Stat icon={<BookCheck size={22} className="text-mint-deep" />} value={counts.learned} label="ნასწავლი სიტყვა" />
+            <Stat icon={<Flame size={22} className="fill-coral text-coral-deep" />} value={days} label="დღე ზედიზედ" />
           </div>
         </section>
 
-        <section>
-          <p className="font-ka mb-2 font-extrabold">🏅 ჯილდოები</p>
-          <div className="grid grid-cols-5 gap-2">
-            {BADGES.map((b) => {
-              const got = counts.learned >= b.need;
+        {/* 120 words overview */}
+        <section className="card p-5">
+          <p className="font-ka mb-3 font-extrabold">120 სიტყვიდან</p>
+          <div className="flex h-5 overflow-hidden rounded-full bg-ink/6">
+            <div className="bg-mint transition-all" style={{ width: `${(counts.learned / 120) * 100}%` }} />
+            <div className="bg-sun transition-all" style={{ width: `${(counts.learning / 120) * 100}%` }} />
+          </div>
+          <div className="font-ka mt-3 grid grid-cols-3 gap-2 text-center text-xs font-bold text-ink-soft">
+            <Legend color="bg-mint" label="ნასწავლი" value={counts.learned} />
+            <Legend color="bg-sun" label="გასამეორებელი" value={counts.learning} />
+            <Legend color="bg-ink/10" label="ახალი" value={counts.new} />
+          </div>
+        </section>
+
+        {/* Week */}
+        <section className="card p-5">
+          <div className="mb-3 flex items-baseline justify-between">
+            <p className="font-ka font-extrabold">ეს კვირა</p>
+            <p className="font-ka text-xs font-bold text-ink-soft">რეკორდი: {best} დღე ზედიზედ</p>
+          </div>
+          <div className="flex h-36 justify-between gap-2">
+            {week.map((d, i) => {
+              const h = d.count ? Math.max(14, (d.count / weekMax) * 100) : 6;
+              const isToday = i === week.length - 1;
+              const goal = d.count >= DAILY_GOAL;
               return (
-                <div key={b.need} className={`rounded-2xl p-2 text-center ${got ? "bg-amber-100 ring-2 ring-amber-300" : "bg-white opacity-50 ring-1 ring-slate-200"}`}>
-                  <div className={`text-3xl ${got ? "" : "grayscale"}`}>{b.icon}</div>
-                  <div className="font-ka text-[0.65rem] font-bold leading-tight">{b.ka}</div>
+                <div key={d.key} className="flex h-full flex-1 flex-col items-center gap-1.5">
+                  <span className="font-display h-4 text-xs font-semibold text-ink-soft">{d.count || ""}</span>
+                  <div className="flex w-full flex-1 items-end justify-center">
+                    <div
+                      className={`w-full max-w-9 rounded-xl ${goal ? "bg-mint" : d.count ? "bg-sun" : "bg-ink/8"}`}
+                      style={{ height: `${h}%` }}
+                      title={`${d.count} სიტყვა`}
+                    />
+                  </div>
+                  <span className={`font-ka text-[0.7rem] font-bold ${isToday ? "text-lavender-deep" : "text-ink-soft"}`}>
+                    {isToday ? "დღეს" : WEEKDAYS[d.date.getDay()]}
+                  </span>
                 </div>
               );
             })}
           </div>
+          <p className="font-ka mt-2 text-xs text-ink-soft">მწვანე სვეტი = დღის მიზანი ({DAILY_GOAL} სიტყვა) შესრულებულია</p>
         </section>
 
-        <section>
-          <p className="font-ka mb-2 font-extrabold">თემების მიხედვით</p>
+        {/* Badges */}
+        <section className="card p-5 lg:col-span-2">
+          <div className="mb-3 flex items-baseline justify-between">
+            <p className="font-ka font-extrabold">ჯილდოები</p>
+            <p className="font-display text-sm font-semibold text-ink-soft">
+              {earned}/{badges.length}
+            </p>
+          </div>
+          <ul className="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-9">
+            {badges.map((b) => (
+              <li key={b.art} className="flex flex-col items-center text-center">
+                <div
+                  className={`relative flex h-18 w-18 items-center justify-center rounded-full ${
+                    b.got ? "bg-sun-soft ring-4 ring-sun" : "bg-ink/5 ring-2 ring-dashed ring-ink/10"
+                  }`}
+                >
+                  <Art name={b.art} className={`h-11 w-11 ${b.got ? "" : "opacity-30 grayscale"}`} />
+                </div>
+                <p className={`font-ka mt-2 text-xs font-extrabold leading-tight ${b.got ? "text-ink" : "text-ink-soft"}`}>{b.ka}</p>
+                {!b.got ? <p className="font-ka text-[0.65rem] text-ink-soft">{b.hint}</p> : null}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Words to review */}
+        <section className="card p-5">
+          <p className="font-ka mb-3 font-extrabold">გასამეორებელი სიტყვები</p>
+          {review.length === 0 ? (
+            <p className="font-ka text-sm text-ink-soft">
+              {counts.learned ? "ყველა ნანახი სიტყვა უკვე ნასწავლია!" : "ჯერ სიტყვები არ გინახავს — დაიწყე სწავლა."}
+            </p>
+          ) : (
+            <ul className="flex flex-wrap gap-2">
+              {review.slice(0, 12).map((w) => {
+                const c = CATEGORIES.find((x) => x.name === w.category)!;
+                const idx = wordsForCategory(c.slug).findIndex((x) => x.id === w.id);
+                return (
+                  <li key={w.id}>
+                    <Link
+                      href={`/category/${c.slug}/learn?i=${idx}`}
+                      style={categoryVars(c)}
+                      className="press focus-ring flex items-center gap-2 rounded-2xl bg-[var(--soft)] py-1.5 pl-1.5 pr-3 [--edge:color-mix(in_srgb,var(--accent)_40%,transparent)]"
+                    >
+                      <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-white">
+                        <WordArt word={w} size="sm" className="!h-7 !w-7" />
+                      </span>
+                      <span className="font-display text-base font-semibold">{w.en}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+
+        {/* Worlds */}
+        <section className="card p-5">
+          <p className="font-ka mb-3 font-extrabold">სამყაროები · {catDone}/12 დასრულებული</p>
           <ul className="space-y-2">
             {CATEGORIES.map((c) => {
               const ws = wordsForCategory(c.slug);
               const l = ws.filter((w) => statusOf(p, w.id) === "learned").length;
               const q = p.quizzes[c.slug];
               return (
-                <li key={c.slug}>
-                  <Link href={`/category/${c.slug}`} className="flex items-center gap-3 rounded-2xl bg-white p-3 ring-1 ring-violet-100">
-                    <span className="text-3xl">{c.emoji}</span>
+                <li key={c.slug} style={categoryVars(c)}>
+                  <Link href={`/category/${c.slug}`} className="focus-ring flex items-center gap-3 rounded-2xl p-1.5 hover:bg-[var(--soft)]">
+                    <div className="origin-left scale-[0.62]" style={{ width: 60, height: 50 }}>
+                      <CategoryArt c={c} />
+                    </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex justify-between gap-2">
                         <span className="font-ka truncate text-sm font-extrabold">{c.ka}</span>
-                        <span className="shrink-0 text-xs font-bold text-slate-500">
+                        <span className="font-display shrink-0 text-xs font-semibold text-ink-soft">
                           {l}/{ws.length}
-                          {q ? ` · 🧩 ${q.best}/${q.total}` : ""}
+                          {q ? ` · ქვიზი ${q.best}/${q.total}` : ""}
                         </span>
                       </div>
-                      <ProgressBar value={l} max={ws.length} color={c.bar} className="mt-1.5" />
+                      <ProgressBar value={l} max={ws.length} color="var(--accent)" height={9} className="mt-1.5" />
                     </div>
                   </Link>
                 </li>
@@ -87,8 +211,9 @@ export default function ProgressView() {
           </ul>
         </section>
 
-        <section className="rounded-2xl bg-white p-4 text-center ring-1 ring-rose-100">
-          <p className="font-ka text-xs text-slate-500">პროგრესი ინახება ამ მოწყობილობის ბრაუზერში (LocalStorage).</p>
+        {/* Reset */}
+        <section className="rounded-[1.75rem] border-2 border-dashed border-ink/10 p-4 text-center lg:col-span-2">
+          <p className="font-ka text-xs text-ink-soft">პროგრესი ინახება ამ მოწყობილობის ბრაუზერში.</p>
           {confirm ? (
             <div className="mt-3 flex justify-center gap-2">
               <button
@@ -96,17 +221,20 @@ export default function ProgressView() {
                   progressActions.reset();
                   setConfirm(false);
                 }}
-                className="font-ka rounded-xl bg-rose-500 px-4 py-2 text-sm font-bold text-white"
+                className="press focus-ring font-ka min-h-11 rounded-xl bg-coral px-4 text-sm font-extrabold text-white [--edge:#d9554c]"
               >
                 დიახ, წაშალე
               </button>
-              <button onClick={() => setConfirm(false)} className="font-ka rounded-xl bg-slate-100 px-4 py-2 text-sm font-bold">
+              <button onClick={() => setConfirm(false)} className="press focus-ring font-ka min-h-11 rounded-xl bg-white px-4 text-sm font-extrabold">
                 გაუქმება
               </button>
             </div>
           ) : (
-            <button onClick={() => setConfirm(true)} className="font-ka mt-3 rounded-xl bg-rose-50 px-4 py-2 text-sm font-bold text-rose-600">
-              🗑️ პროგრესის განულება
+            <button
+              onClick={() => setConfirm(true)}
+              className="focus-ring font-ka mt-2 inline-flex min-h-11 items-center gap-1.5 rounded-xl px-3 text-sm font-bold text-coral-deep"
+            >
+              <Trash2 size={16} /> პროგრესის განულება
             </button>
           )}
         </section>
@@ -115,12 +243,24 @@ export default function ProgressView() {
   );
 }
 
-function Box({ icon, value, label }: { icon: string; value: number; label: string }) {
+function Stat({ icon, value, label }: { icon: React.ReactNode; value: number; label: string }) {
   return (
-    <div className="rounded-2xl bg-white p-3 ring-1 ring-violet-100">
-      <div className="text-2xl">{icon}</div>
-      <div className="text-2xl font-black">{value}</div>
-      <div className="font-ka text-[0.7rem] font-bold text-slate-500">{label}</div>
+    <div className="rounded-2xl bg-white p-3 text-center">
+      <div className="flex justify-center">{icon}</div>
+      <div className="font-display mt-1 text-2xl font-semibold leading-none">{value}</div>
+      <div className="font-ka mt-1 text-[0.7rem] font-bold leading-tight text-ink-soft">{label}</div>
+    </div>
+  );
+}
+
+function Legend({ color, label, value }: { color: string; label: string; value: number }) {
+  return (
+    <div>
+      <div className="flex items-center justify-center gap-1.5">
+        <span className={`h-2.5 w-2.5 rounded-full ${color}`} />
+        <span className="font-display text-base font-semibold text-ink">{value}</span>
+      </div>
+      <span>{label}</span>
     </div>
   );
 }

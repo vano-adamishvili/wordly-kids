@@ -22,10 +22,16 @@ npm run dev        # http://localhost:3000
 npm run build && npm start
 ```
 
+## ბრენდი და დიზაინ-სისტემა
+
+- **Wobble** — აპის მასკოტი (`src/components/Wobble.tsx`), ორიგინალური SVG პერსონაჟი 4 ემოციით: `happy`, `excited`, `thinking`, `encouraging`. ანიმაცია ითვალისწინებს `prefers-reduced-motion`-ს.
+- **ფერები და შრიფტები:** `src/app/globals.css` (`@theme` ტოკენები: lavender, sun, mint, coral, sky, cream, ink). შრიფტები: Fredoka (ინგლისური სათაურები), Nunito, Noto Sans Georgian.
+- **თემების ფერები და ილუსტრაციები:** `src/data/categories.ts`.
+
 ## მონაცემები და მედია
 
 - **სიტყვები:** შეცვალე `data/english_120_cards.csv` და გაუშვი `npm run data` → განახლდება `src/data/words.json`.
-- **სურათები:** ჩააგდე `public/images/001.webp … 120.webp`. სანამ ფაილი არ არსებობს, ჩანს emoji (ფერებისთვის — ფერადი ლაქა).
+- **სურათები:** ჩააგდე `public/images/001.webp … 120.webp` — ისინი ავტომატურად ჩაანაცვლებს დროებით ილუსტრაციებს. დროებითი ილუსტრაციები (`public/art/`) არის Fluent Emoji Flat (MIT, Microsoft) + 4 ხელით დახატული SVG; ხელახლა გენერაცია: `npm run art`. ფერების სიტყვებს აქვს ფერადი საღებავის ლაქა.
 - **ინგლისური აუდიო:** `public/audio/en/001.mp3 …`. სანამ ფაილი არ არის, გამოიყენება ბრაუზერის ჩაშენებული ინგლისური ხმა (Web Speech API).
 - **მშობლის ჩანაწერები:** `public/audio/parents/001.mp3 …`.
 

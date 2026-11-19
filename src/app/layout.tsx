@@ -11,14 +11,15 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#6d4aff",
+  themeColor: "#FAF8F3",
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ka" className="h-full antialiased">
       <body className="min-h-full">
-        <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col pb-24 sm:max-w-2xl">
+        <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col pb-32 sm:max-w-2xl lg:max-w-5xl">
           {children}
         </div>
         <BottomNav />

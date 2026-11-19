@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { categoryBySlug } from "@/data/categories";
+import { ArrowLeft, ArrowRight, Check, Layers, Puzzle, RotateCcw } from "lucide-react";
+import { categoryBySlug, categoryVars } from "@/data/categories";
 import { progressActions, statusOf, useProgress } from "@/lib/progress";
 import { playEnglish } from "@/lib/audio";
 import { wordsForCategory } from "@/lib/words";
 import VocabCard from "./VocabCard";
-import { Confetti, ProgressBar, TopBar } from "./ui";
+import Wobble from "./Wobble";
+import { Bubble, Confetti, ProgressBar, TopBar } from "./ui";
 
 export default function LearnMode({ slug }: { slug: string }) {
   const cat = categoryBySlug(slug)!;
@@ -55,30 +57,30 @@ export default function LearnMode({ slug }: { slug: string }) {
 
   if (finished) {
     return (
-      <main>
+      <main style={categoryVars(cat)}>
         <Confetti />
-        <TopBar back={`/category/${slug}`} title={`${cat.emoji} ${cat.ka}`} />
-        <div className="animate-pop mx-4 mt-6 rounded-[2rem] bg-white p-6 text-center ring-2 ring-violet-100">
-          <div className="text-7xl">🎉</div>
-          <p className="font-ka mt-3 text-2xl font-extrabold">ყოჩაღ! ყველა სიტყვა ნახე!</p>
-          <p className="font-ka mt-1 text-slate-500">
-            ნასწავლი: {learnedCount}/{words.length}. ახლა ბარათებით ან ქვიზით შეამოწმე თავი.
+        <TopBar back={`/category/${slug}`} title={cat.ka} sub="სწავლა" />
+        <div className="animate-pop card mx-4 mt-4 flex flex-col items-center p-6 text-center">
+          <Wobble mood="excited" size={150} />
+          <p className="font-ka mt-2 text-2xl font-extrabold">ყოჩაღ! ყველა სიტყვა ნახე!</p>
+          <p className="font-ka mt-1 text-ink-soft">
+            ნასწავლი: <b className="text-ink">{learnedCount}/{words.length}</b>. ახლა ბარათებით ან ქვიზით შეამოწმე თავი.
           </p>
-          <div className="mt-6 grid gap-3">
-            <Link href={`/category/${slug}/flashcards`} className="btn-3d font-ka rounded-2xl bg-brand py-3 text-lg font-bold text-white">
-              🃏 ბარათები
+          <div className="mt-6 grid w-full gap-3">
+            <Link href={`/category/${slug}/flashcards`} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender text-lg font-extrabold text-white [--edge:#6a4fd0]">
+              <Layers size={22} /> ბარათები
             </Link>
-            <Link href={`/category/${slug}/quiz`} className="btn-3d font-ka rounded-2xl bg-sun py-3 text-lg font-bold text-ink">
-              🧩 ქვიზი
+            <Link href={`/category/${slug}/quiz`} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-sun text-lg font-extrabold text-ink [--edge:#e8bf2c]">
+              <Puzzle size={22} /> ქვიზი
             </Link>
             <button
               onClick={() => {
                 setI(0);
                 setFinished(false);
               }}
-              className="btn-3d font-ka rounded-2xl bg-white py-3 font-bold text-brand ring-1 ring-violet-200"
+              className="press focus-ring font-ka flex min-h-13 items-center justify-center gap-2 rounded-2xl bg-lavender-soft font-extrabold text-lavender-deep [--edge:#d9cffa]"
             >
-              🔁 თავიდან
+              <RotateCcw size={20} /> თავიდან
             </button>
           </div>
         </div>
@@ -89,41 +91,48 @@ export default function LearnMode({ slug }: { slug: string }) {
   const isLearned = statusOf(p, word.id) === "learned";
 
   return (
-    <main>
-      <TopBar back={`/category/${slug}`} title={`📖 ${cat.ka}`} />
+    <main style={categoryVars(cat)} className="lg:mx-auto lg:w-full lg:max-w-xl">
+      <TopBar back={`/category/${slug}`} title={cat.ka} sub="სწავლა" />
       <div className="px-4">
-        <ProgressBar value={i + 1} max={words.length} className="mb-4" />
+        <ProgressBar value={i + 1} max={words.length} color="var(--accent)" className="mb-4" />
         <VocabCard key={word.id} word={word} category={cat} index={i} total={words.length} />
 
-        <div className="mt-6 flex items-center gap-3">
+        <div className="mt-5 flex items-center gap-3">
           <button
             onClick={() => go(-1)}
             disabled={i === 0}
-            aria-label="წინა"
-            className="btn-3d h-14 w-14 shrink-0 rounded-2xl bg-white text-2xl text-brand ring-1 ring-violet-200 disabled:opacity-40"
+            aria-label="წინა სიტყვა"
+            className="press focus-ring flex h-15 w-15 shrink-0 items-center justify-center rounded-2xl bg-white text-ink disabled:opacity-35"
           >
-            ←
+            <ArrowLeft size={26} strokeWidth={2.6} />
           </button>
           <button
             onClick={() => {
               if (!isLearned) progressActions.setStatus(word.id, "learned");
               go(1);
             }}
-            className={`btn-3d font-ka h-14 flex-1 rounded-2xl text-lg font-extrabold ${
-              isLearned ? "bg-emerald-100 text-emerald-700" : "bg-emerald-500 text-white"
+            className={`press focus-ring font-ka flex h-15 flex-1 items-center justify-center gap-2 rounded-2xl text-lg font-extrabold ${
+              isLearned ? "bg-mint-soft text-mint-deep [--edge:#bfeedd]" : "bg-mint text-ink [--edge:#3fb98c]"
             }`}
           >
-            {isLearned ? "⭐ ნასწავლია · შემდეგი" : "✓ ვისწავლე!"}
+            <Check size={24} strokeWidth={3} />
+            {isLearned ? "შემდეგი" : "ვისწავლე!"}
           </button>
           <button
             onClick={() => go(1)}
-            aria-label="შემდეგი"
-            className="btn-3d h-14 w-14 shrink-0 rounded-2xl bg-white text-2xl text-brand ring-1 ring-violet-200"
+            aria-label="შემდეგი სიტყვა"
+            className="press focus-ring flex h-15 w-15 shrink-0 items-center justify-center rounded-2xl bg-white text-ink"
           >
-            →
+            <ArrowRight size={26} strokeWidth={2.6} />
           </button>
         </div>
-        <p className="font-ka mt-3 text-center text-xs text-slate-400">მოუსმინე, გაიმეორე ხმამაღლა და დააჭირე „ვისწავლე“ ⭐</p>
+
+        <div className="mt-5 flex items-center gap-2">
+          <Wobble mood="encouraging" size={64} className="shrink-0" />
+          <Bubble className="flex-1 !py-2.5">
+            <p className="font-ka text-sm font-semibold text-ink-soft">მოუსმინე, ხმამაღლა გაიმეორე და დააჭირე „ვისწავლე“.</p>
+          </Bubble>
+        </div>
       </div>
     </main>
   );

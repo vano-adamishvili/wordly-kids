@@ -20,7 +20,12 @@ export type Progress = {
   quizzes: Record<string, QuizRecord>;
   days: string[]; // active days (YYYY-MM-DD), for the streak
   lastCategory?: string;
+  /** ids of words practised per day (YYYY-MM-DD) – added in v1.1, optional */
+  daily?: Record<string, number[]>;
 };
+
+/** Words to practise per day for the daily goal ring */
+export const DAILY_GOAL = 5;
 
 const KEY = "wordly-kids-progress-v1";
 const EMPTY: Progress = { version: 1, words: {}, stars: 0, quizzes: {}, days: [] };
@@ -54,12 +59,26 @@ function today() {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-function update(fn: (p: Progress) => Progress) {
+function update(fn: (p: Progress) => Progress, touchedId?: number) {
   const cur = read();
   const next = fn(cur);
   const t = today();
   if (!next.days.includes(t)) next.days = [...next.days, t].slice(-60);
+  if (touchedId !== undefined) {
+    const daily = { ...(next.daily ?? {}) };
+    const ids = daily[t] ?? [];
+    if (!ids.includes(touchedId)) daily[t] = [...ids, touchedId];
+    // keep the last 30 days only
+    const keys = Object.keys(daily).sort();
+    for (const k of keys.slice(0, Math.max(0, keys.length - 30))) delete daily[k];
+    next.daily = daily;
+  }
   write(next);
+}
+
+/** Number of distinct words practised today (from stored data). */
+export function todayCount(p: Progress): number {
+  return p.daily?.[today()]?.length ?? 0;
 }
 
 function wp(p: Progress, id: number): WordProgress {
@@ -82,7 +101,7 @@ export const progressActions = {
         lastCategory: category ?? p.lastCategory,
         words: { ...p.words, [id]: { ...w, seen: w.seen + 1, status: maxStatus(w.status, "learning") } },
       };
-    });
+    }, id);
   },
   setStatus(id: number, status: WordStatus) {
     update((p) => {
@@ -93,7 +112,7 @@ export const progressActions = {
         stars: p.stars + (gainedStar ? 1 : 0),
         words: { ...p.words, [id]: { ...w, status } },
       };
-    });
+    }, id);
   },
   answer(id: number, ok: boolean) {
     update((p) => {
@@ -107,7 +126,7 @@ export const progressActions = {
         stars: p.stars + (gainedStar ? 1 : 0),
         words: { ...p.words, [id]: { ...w, correct, wrong: w.wrong + (ok ? 0 : 1), status } },
       };
-    });
+    }, id);
   },
   finishQuiz(key: string, score: number, total: number) {
     update((p) => {
@@ -165,4 +184,33 @@ export function streak(p: Progress): number {
     d.setDate(d.getDate() - 1);
   }
   return n;
+}
+
+/** Longest run of consecutive active days ever recorded. */
+export function longestStreak(p: Progress): number {
+  const ds = [...new Set(p.days)].sort();
+  let best = 0;
+  let run = 0;
+  let prev: number | null = null;
+  for (const d of ds) {
+    const [y, m, dd] = d.split("-").map(Number);
+    const t = Date.UTC(y, m - 1, dd) / 86400000;
+    run = prev !== null && t - prev === 1 ? run + 1 : 1;
+    best = Math.max(best, run);
+    prev = t;
+  }
+  return best;
+}
+
+/** Practised-word counts for the last `n` days (oldest first). */
+export function lastDays(p: Progress, n = 7): { key: string; date: Date; count: number }[] {
+  const out: { key: string; date: Date; count: number }[] = [];
+  const d = new Date();
+  d.setDate(d.getDate() - (n - 1));
+  for (let i = 0; i < n; i++) {
+    const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    out.push({ key, date: new Date(d), count: p.daily?.[key]?.length ?? 0 });
+    d.setDate(d.getDate() + 1);
+  }
+  return out;
 }

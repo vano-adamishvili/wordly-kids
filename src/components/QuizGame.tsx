@@ -7,7 +7,10 @@ import { playEnglish } from "@/lib/audio";
 import { progressActions, statusOf, useProgress } from "@/lib/progress";
 import { shuffle, WORDS, wordsForCategory, type Word } from "@/lib/words";
 import WordArt from "./WordArt";
-import { Confetti, ProgressBar, SpeakButton, TopBar } from "./ui";
+import { categoryBySlug, categoryVars } from "@/data/categories";
+import { ArrowRight, Check, RotateCcw, Star, Volume2, X } from "lucide-react";
+import Wobble from "./Wobble";
+import { Bubble, Confetti, ProgressBar, SpeakButton, TopBar } from "./ui";
 
 type QType = "pic-en" | "en-ka" | "ka-en" | "listen-pic";
 type Question = { type: QType; word: Word; options: Word[] };
@@ -19,7 +22,8 @@ const PROMPTS: Record<QType, string> = {
   "listen-pic": "მოუსმინე და აირჩიე სწორი სურათი",
 };
 
-const PRAISE = ["ყოჩაღ! 🎉", "სუპერ! ⭐", "მშვენიერია! 🌟", "ზუსტად! 👏", "შესანიშნავია! 🚀"];
+const PRAISE = ["ყოჩაღ!", "სუპერ!", "მშვენიერია!", "ზუსტად!", "შესანიშნავია!"];
+const SUPPORT = ["არა უშავს!", "კარგი ცდა იყო!", "შემდეგზე გამოვა!"];
 
 function buildQuiz(pool: Word[], count: number, distractorPool: Word[]): Question[] {
   const types: QType[] = ["pic-en", "en-ka", "ka-en", "listen-pic"];
@@ -66,6 +70,8 @@ export default function QuizGame({
   const [score, setScore] = useState(0);
   const [mistakes, setMistakes] = useState<Word[]>([]);
   const [praise, setPraise] = useState(PRAISE[0]);
+  const cat = slug ? categoryBySlug(slug) : undefined;
+  const vars = cat ? categoryVars(cat) : ({ "--accent": "#8B6CE8", "--soft": "#EFEAFD", "--deep": "#6A4FD0" } as React.CSSProperties);
 
   function start() {
     let targets = pool;
@@ -101,9 +107,12 @@ export default function QuizGame({
 
   if (!questions) {
     return (
-      <main>
-        <TopBar back={back} title={title} />
-        <div className="font-ka mt-20 text-center text-slate-400">იტვირთება… 🧩</div>
+      <main style={vars}>
+        <TopBar back={back} title={title} sub="ქვიზი" />
+        <div className="mt-16 flex flex-col items-center gap-3">
+          <Wobble mood="thinking" size={110} />
+          <p className="font-ka text-ink-soft">ვამზადებ კითხვებს…</p>
+        </div>
       </main>
     );
   }
@@ -113,51 +122,62 @@ export default function QuizGame({
   if (qi >= total) {
     const pct = score / total;
     const stars = score === total ? 3 : pct >= 0.7 ? 2 : score > 0 ? 1 : 0;
+    const headline = pct === 1 ? "უნაკლოდ!" : pct >= 0.7 ? "ძალიან კარგია!" : pct >= 0.4 ? "კარგი ცდაა!" : "ვივარჯიშოთ კიდევ!";
+    const note =
+      pct === 1
+        ? "ყველა პასუხი სწორია. შენ ნამდვილი ჩემპიონი ხარ!"
+        : pct >= 0.7
+          ? "თითქმის ყველაფერი იცი. ცოტაც და სრულყოფილი იქნება!"
+          : "ყოველი ცდა გაძლიერებს. გავიმეოროთ ეს სიტყვები ერთად.";
     return (
-      <main>
+      <main style={vars} className="lg:mx-auto lg:w-full lg:max-w-xl">
         {pct >= 0.7 ? <Confetti /> : null}
-        <TopBar back={back} title={title} />
-        <div className="animate-pop mx-4 mt-4 rounded-[2rem] bg-white p-6 text-center ring-2 ring-violet-100">
-          <div className="text-6xl">{pct === 1 ? "🏆" : pct >= 0.7 ? "🥳" : pct >= 0.4 ? "💪" : "🌱"}</div>
-          <p className="font-ka mt-2 text-2xl font-extrabold">
-            {pct === 1 ? "უნაკლოდ!" : pct >= 0.7 ? "ძალიან კარგია!" : pct >= 0.4 ? "კარგი ცდაა!" : "ვივარჯიშოთ კიდევ!"}
+        <TopBar back={back} title={title} sub="შედეგი" />
+        <div className="animate-pop card mx-4 mt-2 flex flex-col items-center p-6 text-center">
+          <Wobble mood={pct >= 0.7 ? "excited" : "encouraging"} size={140} />
+          <p className="font-ka mt-1 text-2xl font-extrabold">{headline}</p>
+          <p className="font-display mt-1 text-5xl font-semibold text-[var(--deep)]">
+            {score}
+            <span className="text-2xl text-ink-soft">/{total}</span>
           </p>
-          <p className="mt-2 text-5xl font-black text-brand">
-            {score}/{total}
-          </p>
-          <div className="mt-2 text-4xl tracking-widest">
+          <div className="mt-3 flex gap-2" aria-label={`${stars} ვარსკვლავი 3-დან`}>
             {[0, 1, 2].map((s) => (
-              <span key={s} className={s < stars ? "" : "opacity-20 grayscale"}>
-                ⭐
-              </span>
+              <Star
+                key={s}
+                size={44}
+                strokeWidth={2}
+                className={`${s < stars ? "animate-pop fill-sun text-[#E5B400]" : "fill-ink/5 text-ink/15"}`}
+                style={{ animationDelay: `${0.2 + s * 0.18}s` }}
+              />
             ))}
           </div>
-          <p className="font-ka text-sm text-slate-500">+{stars} ვარსკვლავი</p>
+          <p className="font-ka mt-1 text-sm font-bold text-ink-soft">+{stars} ვარსკვლავი</p>
+          <p className="font-ka mt-3 text-sm text-ink-soft">{note}</p>
 
           {mistakes.length ? (
-            <div className="mt-5 text-left">
-              <p className="font-ka mb-2 text-sm font-extrabold text-slate-600">გავიმეოროთ ეს სიტყვები:</p>
+            <div className="mt-5 w-full text-left">
+              <p className="font-ka mb-2 text-sm font-extrabold">გავიმეოროთ:</p>
               <ul className="space-y-2">
                 {mistakes.map((w) => (
-                  <li key={w.id} className="flex items-center gap-3 rounded-2xl bg-amber-50 p-2">
+                  <li key={w.id} className="flex items-center gap-3 rounded-2xl bg-sun-soft p-2.5">
                     <WordArt word={w} size="sm" />
-                    <div className="flex-1">
-                      <p className="font-extrabold">{w.en}</p>
-                      <p className="font-ka text-sm text-slate-500">{w.ka}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-display text-lg font-semibold leading-tight">{w.en}</p>
+                      <p className="font-ka text-sm text-ink-soft">{w.ka}</p>
                     </div>
-                    <SpeakButton src={w.audioEn} text={w.en} size="sm" variant="soft" />
+                    <SpeakButton src={w.audioEn} text={w.en} size="sm" variant="white" />
                   </li>
                 ))}
               </ul>
             </div>
           ) : null}
 
-          <div className="mt-6 grid gap-3">
-            <button onClick={start} className="btn-3d font-ka rounded-2xl bg-brand py-3 text-lg font-bold text-white">
-              🔁 კიდევ ერთხელ
+          <div className="mt-6 grid w-full gap-3">
+            <button onClick={start} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender text-lg font-extrabold text-white [--edge:#6a4fd0]">
+              <RotateCcw size={22} /> კიდევ ერთხელ
             </button>
-            <Link href={back} className="btn-3d font-ka rounded-2xl bg-white py-3 font-bold text-brand ring-1 ring-violet-200">
-              ← დაბრუნება
+            <Link href={back} className="press focus-ring font-ka flex min-h-13 items-center justify-center rounded-2xl bg-lavender-soft font-extrabold text-lavender-deep [--edge:#d9cffa]">
+              დაბრუნება
             </Link>
           </div>
         </div>
@@ -178,6 +198,7 @@ export default function QuizGame({
       setPraise(PRAISE[(qi * 3 + score) % PRAISE.length]);
       if (q.type !== "listen-pic") playEnglish(q.word.audioEn, q.word.en);
     } else {
+      setPraise(SUPPORT[qi % SUPPORT.length]);
       setMistakes((m) => (m.some((x) => x.id === q.word.id) ? m : [...m, q.word]));
     }
   }
@@ -197,80 +218,117 @@ export default function QuizGame({
   };
   const optCls = (s: string) =>
     s === "right"
-      ? "bg-emerald-500 text-white ring-emerald-600"
+      ? "bg-mint text-ink border-[#3fb98c] [--edge:#3fb98c] animate-pop"
       : s === "wrong"
-        ? "animate-wiggle bg-rose-500 text-white ring-rose-600"
+        ? "bg-coral-soft text-coral-deep border-coral [--edge:#ffc2bd] animate-wiggle"
         : s === "dim"
-          ? "bg-white opacity-50 ring-violet-100"
-          : "bg-white ring-violet-200 hover:bg-violet-50";
+          ? "bg-white text-ink border-transparent opacity-45"
+          : "bg-white text-ink border-transparent hover:border-[var(--accent)]";
+  const LETTERS = ["A", "B", "C", "D"];
+  const isPics = q!.type === "listen-pic";
 
   return (
-    <main>
-      <TopBar back={back} title={title} right={<span className="text-lg font-black">⭐ {score}</span>} />
-      <div className="px-4">
-        <div className="mb-4 flex items-center gap-3">
-          <ProgressBar value={qi} max={total} color="bg-amber-400" />
-          <span className="shrink-0 text-sm font-extrabold text-slate-500">
-            {qi + 1}/{total}
+    <main style={vars} className="lg:mx-auto lg:w-full lg:max-w-xl">
+      <TopBar
+        back={back}
+        title={title}
+        sub={`კითხვა ${qi + 1} / ${total}`}
+        right={
+          <span className="flex h-11 items-center gap-1.5 rounded-full bg-white px-3 shadow-[var(--shadow-soft)]" aria-label={`ქულა: ${score}`}>
+            <Star size={18} className="fill-sun text-[#E5B400]" />
+            <span className="font-display text-base font-semibold">{score}</span>
           </span>
-        </div>
+        }
+      />
+      <div className="px-4">
+        <ProgressBar value={qi + (answered ? 1 : 0)} max={total} color="var(--accent)" className="mb-4" />
 
-        <section key={qi} className="animate-pop rounded-[2rem] border-[3px] border-brand bg-white p-5 text-center shadow-[0_10px_0_0_#e4dcff]">
-          <p className="font-ka text-sm font-bold text-slate-500">{PROMPTS[q!.type]}</p>
+        {/* Question card */}
+        <section key={qi} className="animate-rise card relative overflow-hidden px-5 pb-6 pt-4 text-center">
+          <div className="absolute inset-x-0 top-0 h-2 bg-[var(--accent)]" aria-hidden />
+          <div className="flex items-center gap-2 text-left">
+            <Wobble mood={!answered ? "thinking" : correct ? "excited" : "encouraging"} size={56} className="shrink-0" />
+            <p className="font-ka flex-1 text-[0.95rem] font-bold text-ink-soft">{PROMPTS[q!.type]}</p>
+          </div>
           <div className="mt-3 flex min-h-40 flex-col items-center justify-center gap-3">
-            {q!.type === "pic-en" ? <WordArt word={q!.word} size="lg" /> : null}
+            {q!.type === "pic-en" ? (
+              <div className="flex h-44 w-44 items-center justify-center rounded-full bg-[var(--soft)]">
+                <WordArt word={q!.word} size="lg" />
+              </div>
+            ) : null}
             {q!.type === "en-ka" ? (
               <>
-                <p className="text-5xl font-black">{q!.word.en}</p>
-                <SpeakButton src={q!.word.audioEn} text={q!.word.en} />
+                <p className="font-display text-5xl font-semibold">{q!.word.en}</p>
+                <SpeakButton src={q!.word.audioEn} text={q!.word.en} variant="soft" />
               </>
             ) : null}
-            {q!.type === "ka-en" ? <p className="font-ka rounded-2xl bg-sun px-5 py-2 text-4xl font-extrabold">{q!.word.ka}</p> : null}
-            {q!.type === "listen-pic" ? (
+            {q!.type === "ka-en" ? <p className="font-ka rounded-2xl bg-sun px-6 py-2.5 text-4xl font-extrabold">{q!.word.ka}</p> : null}
+            {isPics ? (
               <button
                 onClick={() => playEnglish(q!.word.audioEn, q!.word.en)}
-                className="btn-3d flex h-28 w-28 items-center justify-center rounded-full bg-brand text-6xl text-white"
-                aria-label="მოუსმინე"
+                className="press focus-ring flex h-28 w-28 items-center justify-center rounded-full bg-lavender text-white [--edge:#6a4fd0]"
+                aria-label="მოუსმინე სიტყვას"
               >
-                🔊
+                <Volume2 size={52} strokeWidth={2.2} />
               </button>
             ) : null}
           </div>
         </section>
 
-        <div className={`mt-5 grid gap-3 ${q!.type === "listen-pic" ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2"}`}>
-          {q!.options.map((w) => (
-            <button
-              key={w.id}
-              onClick={() => choose(w)}
-              disabled={answered}
-              className={`btn-3d rounded-2xl px-4 py-4 text-xl font-extrabold ring-2 transition ${optCls(optState(w))}`}
-            >
-              {q!.type === "listen-pic" ? (
-                <span className="flex justify-center">
-                  <WordArt word={w} size="md" />
-                </span>
-              ) : q!.type === "en-ka" ? (
-                <span className="font-ka">{w.ka}</span>
-              ) : (
-                w.en
-              )}
-            </button>
-          ))}
+        {/* Answers */}
+        <div className={`mt-4 grid gap-3 ${isPics ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2"}`}>
+          {q!.options.map((w, idx) => {
+            const st = optState(w);
+            return (
+              <button
+                key={w.id}
+                onClick={() => choose(w)}
+                disabled={answered}
+                className={`press focus-ring relative flex items-center gap-3 rounded-2xl border-[3px] text-left font-extrabold transition ${
+                  isPics ? "min-h-32 justify-center p-3" : "min-h-16 px-3 py-2.5"
+                } ${optCls(st)}`}
+              >
+                {!isPics ? (
+                  <span
+                    className={`font-display flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-base ${
+                      st === "right" ? "bg-white/70" : st === "wrong" ? "bg-white" : "bg-[var(--soft)] text-[var(--deep)]"
+                    }`}
+                  >
+                    {st === "right" ? <Check size={20} strokeWidth={3.2} /> : st === "wrong" ? <X size={20} strokeWidth={3.2} /> : LETTERS[idx]}
+                  </span>
+                ) : null}
+                {isPics ? (
+                  <>
+                    <WordArt word={w} size="md" />
+                    {st === "right" || st === "wrong" ? (
+                      <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white">
+                        {st === "right" ? <Check size={18} strokeWidth={3.2} className="text-mint-deep" /> : <X size={18} strokeWidth={3.2} />}
+                      </span>
+                    ) : null}
+                  </>
+                ) : q!.type === "en-ka" ? (
+                  <span className="font-ka text-lg">{w.ka}</span>
+                ) : (
+                  <span className="font-display text-2xl font-semibold">{w.en}</span>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {answered ? (
-          <div
-            className={`animate-pop mt-5 flex items-center gap-3 rounded-2xl p-4 ${correct ? "bg-emerald-50 ring-2 ring-emerald-200" : "bg-rose-50 ring-2 ring-rose-200"}`}
-          >
-            <div className="flex-1">
-              <p className="font-ka text-lg font-extrabold">{correct ? praise : "არა უშავს! 🙂"}</p>
-              <p className="font-ka text-sm text-slate-600">
-                <b className="font-sans">{q!.word.en}</b> = {q!.word.ka}
+          <div className="animate-rise mt-4 flex items-center gap-3">
+            <Bubble className={`flex-1 !py-3 ${correct ? "" : ""}`} tail="bottom">
+              <p className={`font-ka text-lg font-extrabold ${correct ? "text-mint-deep" : "text-coral-deep"}`}>{praise}</p>
+              <p className="text-sm text-ink-soft">
+                <b className="font-display text-base text-ink">{q!.word.en}</b> = <span className="font-ka">{q!.word.ka}</span>
               </p>
-            </div>
-            <button onClick={next} className="btn-3d font-ka rounded-2xl bg-brand px-5 py-3 font-extrabold text-white">
-              {qi + 1 >= total ? "შედეგი" : "შემდეგი →"}
+            </Bubble>
+            <button
+              onClick={next}
+              className="press focus-ring font-ka flex min-h-15 shrink-0 items-center gap-1.5 rounded-2xl bg-lavender px-5 text-base font-extrabold text-white [--edge:#6a4fd0]"
+            >
+              {qi + 1 >= total ? "შედეგი" : "შემდეგი"} <ArrowRight size={20} strokeWidth={3} />
             </button>
           </div>
         ) : null}

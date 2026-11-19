@@ -1,35 +1,93 @@
 @import "tailwindcss";
 @import "@fontsource-variable/nunito";
+@import "@fontsource-variable/fredoka";
 @import "@fontsource-variable/noto-sans-georgian";
 
+/* ── Wordly Kids design tokens ─────────────────────────────── */
 @theme {
   --font-sans: "Nunito Variable", "Noto Sans Georgian Variable", ui-rounded, system-ui, sans-serif;
+  --font-display: "Fredoka Variable", "Noto Sans Georgian Variable", ui-rounded, system-ui, sans-serif;
   --font-ka: "Noto Sans Georgian Variable", "Nunito Variable", system-ui, sans-serif;
-  --color-ink: #1e1b4b;
-  --color-brand: #6d4aff;
-  --color-brand-dark: #5332e6;
-  --color-sun: #ffe066;
-  --color-sky-soft: #dff3fb;
-  --color-cream: #fffaf0;
+
+  --color-ink: #252442;
+  --color-ink-soft: #5d5b7a;
+  --color-cream: #faf8f3;
+  --color-paper: #ffffff;
+  --color-lavender: #8b6ce8;
+  --color-lavender-deep: #6a4fd0;
+  --color-lavender-soft: #efeafd;
+  --color-sun: #ffd85a;
+  --color-sun-soft: #fff5d1;
+  --color-mint: #72d9b3;
+  --color-mint-deep: #2f9e78;
+  --color-mint-soft: #e2f7ef;
+  --color-coral: #ff8d85;
+  --color-coral-deep: #d9554c;
+  --color-coral-soft: #ffeceb;
+  --color-sky: #80c7f4;
+  --color-sky-soft: #e5f4fd;
+
+  /* kept for backwards compatibility with older class names */
+  --color-brand: #8b6ce8;
+  --color-brand-dark: #6a4fd0;
+
+  --radius-card: 1.75rem;
+  --shadow-soft: 0 1px 2px rgb(37 36 66 / 0.04), 0 8px 24px -8px rgb(37 36 66 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(37 36 66 / 0.05), 0 18px 40px -14px rgb(37 36 66 / 0.25);
 }
 
 html {
   -webkit-tap-highlight-color: transparent;
+  overflow-x: hidden;
 }
 
 body {
-  background: radial-gradient(circle at 10% 0%, #efe9ff 0, transparent 40%),
-    radial-gradient(circle at 100% 30%, #fff3c9 0, transparent 35%), #fbf9ff;
+  background-color: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  overflow-x: hidden;
 }
 
-/* 3D flip card */
-.flip-scene { perspective: 1200px; }
+/* ── Surfaces & buttons ───────────────────────────────────── */
+.card {
+  background: var(--color-paper);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+/* tactile "press" button: colored base edge under the face */
+.press {
+  --edge: rgb(37 36 66 / 0.14);
+  box-shadow: 0 4px 0 0 var(--edge);
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.2s;
+  touch-action: manipulation;
+}
+.press:active:not(:disabled) {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 var(--edge);
+}
+.press:focus-visible,
+.focus-ring:focus-visible {
+  outline: 3px solid var(--color-lavender);
+  outline-offset: 3px;
+}
+
+/* legacy class used by a few elements */
+.btn-3d {
+  box-shadow: 0 4px 0 0 rgb(37 36 66 / 0.14);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-3d:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 rgb(37 36 66 / 0.14);
+}
+
+/* ── 3D flip card ─────────────────────────────────────────── */
+.flip-scene { perspective: 1400px; }
 .flip-inner {
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
+  transition: transform 0.7s cubic-bezier(0.25, 1.3, 0.45, 1);
 }
 .flip-inner.is-flipped { transform: rotateY(180deg); }
 .flip-face {
@@ -40,53 +98,74 @@ body {
 }
 .flip-back { transform: rotateY(180deg); }
 
+/* ── Motion ───────────────────────────────────────────────── */
 @keyframes pop {
-  0% { transform: scale(0.6); opacity: 0; }
-  60% { transform: scale(1.08); opacity: 1; }
-  100% { transform: scale(1); }
+  0% { transform: scale(0.85); opacity: 0; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
-.animate-pop { animation: pop 0.45s ease-out both; }
+.animate-pop { animation: pop 0.4s ease-out both; }
 
-@keyframes wiggle {
+@keyframes rise {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-rise { animation: rise 0.45s cubic-bezier(0.2, 0.9, 0.3, 1) both; }
+
+@keyframes shake-soft {
   0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-8px); }
-  40% { transform: translateX(8px); }
-  60% { transform: translateX(-5px); }
-  80% { transform: translateX(5px); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
 }
-.animate-wiggle { animation: wiggle 0.45s ease-in-out; }
+.animate-wiggle { animation: shake-soft 0.4s ease-in-out; }
 
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+/* Wobble – idle squash & stretch, anchored at the feet */
+@keyframes wobble-idle {
+  0%, 100% { transform: scale(1, 1); }
+  30% { transform: scale(1.035, 0.965); }
+  60% { transform: scale(0.98, 1.025); }
 }
-.animate-floaty { animation: floaty 3s ease-in-out infinite; }
+.wobble-idle {
+  transform-origin: 50% 92%;
+  animation: wobble-idle 2.8s ease-in-out infinite;
+}
+@keyframes wobble-bounce {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  15% { transform: translateY(0) scale(1.08, 0.9); }
+  40% { transform: translateY(-14%) scale(0.95, 1.06); }
+  65% { transform: translateY(0) scale(1.05, 0.94); }
+  80% { transform: translateY(0) scale(1, 1); }
+}
+.wobble-bounce {
+  transform-origin: 50% 92%;
+  animation: wobble-bounce 1.1s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+.animate-float { animation: float 3.4s ease-in-out infinite; }
 
 @keyframes confetti-fall {
-  0% { transform: translateY(-20vh) rotate(0deg); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(105vh) rotate(540deg); opacity: 0.9; }
 }
 .confetti-piece {
   position: fixed;
   top: 0;
-  width: 10px;
-  height: 14px;
+  width: 9px;
+  height: 13px;
   border-radius: 3px;
   animation: confetti-fall linear forwards;
   pointer-events: none;
   z-index: 60;
 }
 
-.btn-3d {
-  box-shadow: 0 5px 0 0 rgb(0 0 0 / 0.15);
-  transition: transform 0.08s, box-shadow 0.08s;
-}
-.btn-3d:active {
-  transform: translateY(4px);
-  box-shadow: 0 1px 0 0 rgb(0 0 0 / 0.15);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .flip-inner { transition: none; }
-  .animate-floaty, .animate-pop, .animate-wiggle { animation: none; }
+  .flip-inner { transition: transform 0.01s; }
+  .animate-pop, .animate-rise, .animate-wiggle, .animate-float,
+  .wobble-idle, .wobble-bounce { animation: none !important; }
+  .confetti-piece { display: none; }
 }

@@ -10,5 +10,5 @@ export default async function CategoryQuizPage({ params }: PageProps<"/category/
   const { slug } = await params;
   const c = categoryBySlug(slug);
   if (!c) notFound();
-  return <QuizGame quizKey={slug} slug={slug} title={`${c.emoji} ${c.ka} · ქვიზი`} back={`/category/${slug}`} />;
+  return <QuizGame quizKey={slug} slug={slug} title={c.ka} back={`/category/${slug}`} />;
 }
