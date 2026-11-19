@@ -2,10 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { EMOJI } from "@/data/emoji";
 import { playEnglish } from "@/lib/audio";
 import { progressActions, statusOf, useProgress } from "@/lib/progress";
-import { shuffle, WORDS, wordsForCategory, type Word } from "@/lib/words";
+import { artKey, shuffle, WORDS, wordsForCategory, type Word } from "@/lib/words";
 import WordArt from "./WordArt";
 import { categoryBySlug, categoryVars } from "@/data/categories";
 import { ArrowRight, Check, RotateCcw, Star, Volume2, X } from "lucide-react";
@@ -37,12 +36,13 @@ function buildQuiz(pool: Word[], count: number, distractorPool: Word[]): Questio
         w.id !== word.id &&
         w.ka !== word.ka &&
         w.en !== word.en &&
-        (type !== "listen-pic" || EMOJI[w.id] !== EMOJI[word.id]),
+        (type !== "listen-pic" || artKey(w) !== artKey(word)),
     );
     const picked: Word[] = [];
     for (const c of candidates) {
       if (picked.length === 3) break;
-      if (type === "listen-pic" && picked.some((p) => EMOJI[p.id] === EMOJI[c.id])) continue;
+      if (type === "listen-pic" && picked.some((p) => artKey(p) === artKey(c))) continue;
+      if (picked.some((p) => p.ka === c.ka || p.en === c.en)) continue;
       picked.push(c);
     }
     return { type, word, options: shuffle([word, ...picked]) };

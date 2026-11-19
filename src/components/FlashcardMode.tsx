@@ -6,16 +6,28 @@ import { ArrowLeftRight, Check, Hand, Layers, Puzzle, RotateCcw, Repeat } from "
 import { categoryBySlug, categoryVars, type Category } from "@/data/categories";
 import { playEnglish } from "@/lib/audio";
 import { progressActions } from "@/lib/progress";
-import { shuffle, wordsForCategory, type Word } from "@/lib/words";
+import { categoryOf, shuffle, type Word } from "@/lib/words";
 import WordArt from "./WordArt";
 import Wobble from "./Wobble";
 import { Confetti, ProgressBar, SpeakButton, TopBar } from "./ui";
 
 type Direction = "en-ka" | "ka-en";
 
-export default function FlashcardMode({ slug }: { slug: string }) {
-  const cat = categoryBySlug(slug)!;
-  const all = wordsForCategory(slug);
+type Props = {
+  /** the words of this session */
+  words: Word[];
+  title: string;
+  sub?: string;
+  back: string;
+  /** set for a single-category deck */
+  slug?: string;
+  /** keep the given order instead of shuffling (e.g. review priority) */
+  keepOrder?: boolean;
+  quizHref?: string;
+};
+
+export default function FlashcardMode({ words: all, title, sub = "ბარათები", back, slug, keepOrder = false, quizHref }: Props) {
+  const cat = slug ? categoryBySlug(slug)! : undefined;
   const [dir, setDir] = useState<Direction>("en-ka");
   const [deck, setDeck] = useState<Word[]>(all);
   const [pos, setPos] = useState(0);
@@ -26,11 +38,11 @@ export default function FlashcardMode({ slug }: { slug: string }) {
 
   // Shuffle on the client only (avoids hydration mismatch)
   useEffect(() => {
-    const id = requestAnimationFrame(() => setDeck(shuffle(all)));
-    progressActions.visitCategory(slug);
+    const id = requestAnimationFrame(() => setDeck(keepOrder ? all : shuffle(all)));
+    if (slug) progressActions.visitCategory(slug);
     return () => cancelAnimationFrame(id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [slug]);
+  }, [slug, all.map((w) => w.id).join(",")]);
 
   const card = deck[pos];
   const done = pos >= deck.length;
@@ -48,6 +60,7 @@ export default function FlashcardMode({ slug }: { slug: string }) {
   function answer(ok: boolean) {
     if (!card) return;
     progressActions.markSeen(card.id, slug);
+    progressActions.flashcard(card.id, dir, ok);
     if (ok) {
       setKnown((k) => (k.includes(card.id) ? k : [...k, card.id]));
       if (!again.includes(card.id)) progressActions.setStatus(card.id, "learned");
@@ -62,7 +75,7 @@ export default function FlashcardMode({ slug }: { slug: string }) {
 
   function restart(onlyAgain = false) {
     const base = onlyAgain ? all.filter((w) => again.includes(w.id)) : all;
-    setDeck(shuffle(base.length ? base : all));
+    setDeck(keepOrder && !onlyAgain ? all : shuffle(base.length ? base : all));
     setPos(0);
     setKnown([]);
     setAgain([]);
@@ -84,13 +97,25 @@ export default function FlashcardMode({ slug }: { slug: string }) {
     </button>
   );
 
+  if (all.length === 0) {
+    return (
+      <main>
+        <TopBar back={back} title={title} sub={sub} />
+        <div className="card mx-4 mt-4 flex flex-col items-center p-6 text-center">
+          <Wobble mood="thinking" size={110} />
+          <p className="font-ka mt-2 font-bold text-ink-soft">აქ ჯერ სიტყვები არ არის.</p>
+        </div>
+      </main>
+    );
+  }
+
   if (done) {
     const firstTry = known.filter((id) => !again.includes(id)).length;
     const perfect = firstTry === all.length;
     return (
-      <main style={categoryVars(cat)}>
+      <main style={categoryVars(cat ?? categoryOf(all[0]))}>
         {firstTry >= all.length * 0.6 ? <Confetti /> : null}
-        <TopBar back={`/category/${slug}`} title={cat.ka} sub="ბარათები" />
+        <TopBar back={back} title={title} sub={sub} />
         <div className="animate-pop card mx-4 mt-4 flex flex-col items-center p-6 text-center">
           <Wobble mood={perfect ? "excited" : "encouraging"} size={140} />
           <p className="font-ka mt-2 text-2xl font-extrabold">{perfect ? "ყველა იცოდი!" : "ბარათები დასრულდა!"}</p>
@@ -117,7 +142,7 @@ export default function FlashcardMode({ slug }: { slug: string }) {
             <button onClick={() => restart()} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender text-lg font-extrabold text-white [--edge:#6a4fd0]">
               <RotateCcw size={22} /> ყველა თავიდან
             </button>
-            <Link href={`/category/${slug}/quiz`} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender-soft text-lg font-extrabold text-lavender-deep [--edge:#d9cffa]">
+            <Link href={quizHref ?? (slug ? `/category/${slug}/quiz` : "/quiz")} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender-soft text-lg font-extrabold text-lavender-deep [--edge:#d9cffa]">
               <Puzzle size={22} /> ქვიზზე გადასვლა
             </Link>
           </div>
@@ -129,12 +154,13 @@ export default function FlashcardMode({ slug }: { slug: string }) {
   // Face content per direction (see project spec):
   //  EN→KA  front: English word, NO illustration · back: Georgian + illustration
   //  KA→EN  front: Georgian + illustration        · back: English + pronunciation
-  const front = dir === "en-ka" ? <EnglishFace word={card} cat={cat} /> : <GeorgianFace word={card} cat={cat} prompt />;
-  const back = dir === "en-ka" ? <GeorgianFace word={card} cat={cat} /> : <EnglishFace word={card} cat={cat} answer />;
+  const cardCat = categoryOf(card);
+  const front = dir === "en-ka" ? <EnglishFace word={card} cat={cardCat} /> : <GeorgianFace word={card} cat={cardCat} prompt />;
+  const backFace = dir === "en-ka" ? <GeorgianFace word={card} cat={cardCat} /> : <EnglishFace word={card} cat={cardCat} answer />;
 
   return (
-    <main style={categoryVars(cat)} className="lg:mx-auto lg:w-full lg:max-w-xl">
-      <TopBar back={`/category/${slug}`} title={cat.ka} sub="ბარათები" right={dirToggle} />
+    <main style={categoryVars(cardCat)} className="lg:mx-auto lg:w-full lg:max-w-xl">
+      <TopBar back={back} title={title} sub={slug ? sub : `${sub} · ${cardCat.ka}`} right={dirToggle} />
       <div className="px-4">
         <div className="mb-4 flex items-center gap-3">
           <ProgressBar value={pos} max={deck.length} color="var(--accent)" />
@@ -178,7 +204,7 @@ export default function FlashcardMode({ slug }: { slug: string }) {
                 aria-hidden={!flipped}
                 inert={!flipped}
               >
-                {back}
+                {backFace}
               </div>
             </div>
           </div>

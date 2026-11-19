@@ -1,6 +1,7 @@
 [
   {
     "id": 1,
+    "level": 1,
     "category": "Colors",
     "en": "Yellow",
     "ka": "ყვითელი",
@@ -12,6 +13,7 @@
   },
   {
     "id": 2,
+    "level": 1,
     "category": "Colors",
     "en": "Red",
     "ka": "წითელი",
@@ -23,6 +25,7 @@
   },
   {
     "id": 3,
+    "level": 1,
     "category": "Colors",
     "en": "Blue",
     "ka": "ლურჯი",
@@ -34,6 +37,7 @@
   },
   {
     "id": 4,
+    "level": 1,
     "category": "Colors",
     "en": "Green",
     "ka": "მწვანე",
@@ -45,6 +49,7 @@
   },
   {
     "id": 5,
+    "level": 1,
     "category": "Colors",
     "en": "Pink",
     "ka": "ვარდისფერი",
@@ -56,6 +61,7 @@
   },
   {
     "id": 6,
+    "level": 1,
     "category": "Colors",
     "en": "Orange",
     "ka": "ნარინჯისფერი",
@@ -67,6 +73,7 @@
   },
   {
     "id": 7,
+    "level": 1,
     "category": "Colors",
     "en": "Purple",
     "ka": "იისფერი",
@@ -78,6 +85,7 @@
   },
   {
     "id": 8,
+    "level": 1,
     "category": "Colors",
     "en": "Brown",
     "ka": "ყავისფერი",
@@ -89,6 +97,7 @@
   },
   {
     "id": 9,
+    "level": 1,
     "category": "Colors",
     "en": "Black",
     "ka": "შავი",
@@ -100,6 +109,7 @@
   },
   {
     "id": 10,
+    "level": 1,
     "category": "Colors",
     "en": "White",
     "ka": "თეთრი",
@@ -111,6 +121,7 @@
   },
   {
     "id": 11,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Apple",
     "ka": "ვაშლი",
@@ -122,6 +133,7 @@
   },
   {
     "id": 12,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Banana",
     "ka": "ბანანი",
@@ -133,6 +145,7 @@
   },
   {
     "id": 13,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Bread",
     "ka": "პური",
@@ -144,6 +157,7 @@
   },
   {
     "id": 14,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Milk",
     "ka": "რძე",
@@ -155,6 +169,7 @@
   },
   {
     "id": 15,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Cheese",
     "ka": "ყველი",
@@ -166,6 +181,7 @@
   },
   {
     "id": 16,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Egg",
     "ka": "კვერცხი",
@@ -177,6 +193,7 @@
   },
   {
     "id": 17,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Water",
     "ka": "წყალი",
@@ -188,6 +205,7 @@
   },
   {
     "id": 18,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Carrot",
     "ka": "სტაფილო",
@@ -199,6 +217,7 @@
   },
   {
     "id": 19,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Rice",
     "ka": "ბრინჯი",
@@ -210,6 +229,7 @@
   },
   {
     "id": 20,
+    "level": 1,
     "category": "Food & Drinks",
     "en": "Juice",
     "ka": "წვენი",
@@ -221,6 +241,7 @@
   },
   {
     "id": 21,
+    "level": 1,
     "category": "Animals",
     "en": "Dog",
     "ka": "ძაღლი",
@@ -232,6 +253,7 @@
   },
   {
     "id": 22,
+    "level": 1,
     "category": "Animals",
     "en": "Cat",
     "ka": "კატა",
@@ -243,6 +265,7 @@
   },
   {
     "id": 23,
+    "level": 1,
     "category": "Animals",
     "en": "Bird",
     "ka": "ჩიტი",
@@ -254,6 +277,7 @@
   },
   {
     "id": 24,
+    "level": 1,
     "category": "Animals",
     "en": "Fish",
     "ka": "თევზი",
@@ -265,6 +289,7 @@
   },
   {
     "id": 25,
+    "level": 1,
     "category": "Animals",
     "en": "Rabbit",
     "ka": "კურდღელი",
@@ -276,6 +301,7 @@
   },
   {
     "id": 26,
+    "level": 1,
     "category": "Animals",
     "en": "Horse",
     "ka": "ცხენი",
@@ -287,6 +313,7 @@
   },
   {
     "id": 27,
+    "level": 1,
     "category": "Animals",
     "en": "Lion",
     "ka": "ლომი",
@@ -298,6 +325,7 @@
   },
   {
     "id": 28,
+    "level": 1,
     "category": "Animals",
     "en": "Elephant",
     "ka": "სპილო",
@@ -309,6 +337,7 @@
   },
   {
     "id": 29,
+    "level": 1,
     "category": "Animals",
     "en": "Monkey",
     "ka": "მაიმუნი",
@@ -320,6 +349,7 @@
   },
   {
     "id": 30,
+    "level": 1,
     "category": "Animals",
     "en": "Turtle",
     "ka": "კუ",
@@ -331,6 +361,7 @@
   },
   {
     "id": 31,
+    "level": 1,
     "category": "School",
     "en": "Book",
     "ka": "წიგნი",
@@ -342,6 +373,7 @@
   },
   {
     "id": 32,
+    "level": 1,
     "category": "School",
     "en": "Pencil",
     "ka": "ფანქარი",
@@ -353,6 +385,7 @@
   },
   {
     "id": 33,
+    "level": 1,
     "category": "School",
     "en": "Pen",
     "ka": "კალამი",
@@ -364,6 +397,7 @@
   },
   {
     "id": 34,
+    "level": 1,
     "category": "School",
     "en": "Bag",
     "ka": "ჩანთა",
@@ -375,6 +409,7 @@
   },
   {
     "id": 35,
+    "level": 1,
     "category": "School",
     "en": "Desk",
     "ka": "მერხი",
@@ -386,6 +421,7 @@
   },
   {
     "id": 36,
+    "level": 1,
     "category": "School",
     "en": "Chair",
     "ka": "სკამი",
@@ -397,6 +433,7 @@
   },
   {
     "id": 37,
+    "level": 1,
     "category": "School",
     "en": "Ruler",
     "ka": "სახაზავი",
@@ -408,6 +445,7 @@
   },
   {
     "id": 38,
+    "level": 1,
     "category": "School",
     "en": "Eraser",
     "ka": "საშლელი",
@@ -419,6 +457,7 @@
   },
   {
     "id": 39,
+    "level": 1,
     "category": "School",
     "en": "Teacher",
     "ka": "მასწავლებელი",
@@ -430,6 +469,7 @@
   },
   {
     "id": 40,
+    "level": 1,
     "category": "School",
     "en": "Classroom",
     "ka": "საკლასო ოთახი",
@@ -441,6 +481,7 @@
   },
   {
     "id": 41,
+    "level": 1,
     "category": "Family",
     "en": "Mother",
     "ka": "დედა",
@@ -452,6 +493,7 @@
   },
   {
     "id": 42,
+    "level": 1,
     "category": "Family",
     "en": "Father",
     "ka": "მამა",
@@ -463,6 +505,7 @@
   },
   {
     "id": 43,
+    "level": 1,
     "category": "Family",
     "en": "Sister",
     "ka": "და",
@@ -474,6 +517,7 @@
   },
   {
     "id": 44,
+    "level": 1,
     "category": "Family",
     "en": "Brother",
     "ka": "ძმა",
@@ -485,6 +529,7 @@
   },
   {
     "id": 45,
+    "level": 1,
     "category": "Family",
     "en": "Grandmother",
     "ka": "ბებია",
@@ -496,6 +541,7 @@
   },
   {
     "id": 46,
+    "level": 1,
     "category": "Family",
     "en": "Grandfather",
     "ka": "ბაბუა",
@@ -507,6 +553,7 @@
   },
   {
     "id": 47,
+    "level": 1,
     "category": "Family",
     "en": "Baby",
     "ka": "ჩვილი",
@@ -518,6 +565,7 @@
   },
   {
     "id": 48,
+    "level": 1,
     "category": "Family",
     "en": "Family",
     "ka": "ოჯახი",
@@ -529,6 +577,7 @@
   },
   {
     "id": 49,
+    "level": 1,
     "category": "Family",
     "en": "Friend",
     "ka": "მეგობარი",
@@ -540,6 +589,7 @@
   },
   {
     "id": 50,
+    "level": 1,
     "category": "Family",
     "en": "Cousin",
     "ka": "ბიძაშვილი / დეიდაშვილი / მამიდაშვილი",
@@ -551,6 +601,7 @@
   },
   {
     "id": 51,
+    "level": 1,
     "category": "Body",
     "en": "Head",
     "ka": "თავი",
@@ -562,6 +613,7 @@
   },
   {
     "id": 52,
+    "level": 1,
     "category": "Body",
     "en": "Hair",
     "ka": "თმა",
@@ -573,6 +625,7 @@
   },
   {
     "id": 53,
+    "level": 1,
     "category": "Body",
     "en": "Eye",
     "ka": "თვალი",
@@ -584,6 +637,7 @@
   },
   {
     "id": 54,
+    "level": 1,
     "category": "Body",
     "en": "Ear",
     "ka": "ყური",
@@ -595,6 +649,7 @@
   },
   {
     "id": 55,
+    "level": 1,
     "category": "Body",
     "en": "Nose",
     "ka": "ცხვირი",
@@ -606,6 +661,7 @@
   },
   {
     "id": 56,
+    "level": 1,
     "category": "Body",
     "en": "Mouth",
     "ka": "პირი",
@@ -617,6 +673,7 @@
   },
   {
     "id": 57,
+    "level": 1,
     "category": "Body",
     "en": "Hand",
     "ka": "ხელი (მტევანი)",
@@ -628,6 +685,7 @@
   },
   {
     "id": 58,
+    "level": 1,
     "category": "Body",
     "en": "Arm",
     "ka": "მკლავი",
@@ -639,6 +697,7 @@
   },
   {
     "id": 59,
+    "level": 1,
     "category": "Body",
     "en": "Leg",
     "ka": "ფეხი",
@@ -650,6 +709,7 @@
   },
   {
     "id": 60,
+    "level": 1,
     "category": "Body",
     "en": "Foot",
     "ka": "ტერფი",
@@ -661,6 +721,7 @@
   },
   {
     "id": 61,
+    "level": 1,
     "category": "Clothes",
     "en": "Shirt",
     "ka": "პერანგი",
@@ -672,6 +733,7 @@
   },
   {
     "id": 62,
+    "level": 1,
     "category": "Clothes",
     "en": "T-shirt",
     "ka": "მაისური",
@@ -683,6 +745,7 @@
   },
   {
     "id": 63,
+    "level": 1,
     "category": "Clothes",
     "en": "Dress",
     "ka": "კაბა",
@@ -694,6 +757,7 @@
   },
   {
     "id": 64,
+    "level": 1,
     "category": "Clothes",
     "en": "Skirt",
     "ka": "ქვედაბოლო",
@@ -705,6 +769,7 @@
   },
   {
     "id": 65,
+    "level": 1,
     "category": "Clothes",
     "en": "Trousers",
     "ka": "შარვალი",
@@ -716,6 +781,7 @@
   },
   {
     "id": 66,
+    "level": 1,
     "category": "Clothes",
     "en": "Shoes",
     "ka": "ფეხსაცმელი",
@@ -727,6 +793,7 @@
   },
   {
     "id": 67,
+    "level": 1,
     "category": "Clothes",
     "en": "Socks",
     "ka": "წინდები",
@@ -738,6 +805,7 @@
   },
   {
     "id": 68,
+    "level": 1,
     "category": "Clothes",
     "en": "Hat",
     "ka": "ქუდი",
@@ -749,6 +817,7 @@
   },
   {
     "id": 69,
+    "level": 1,
     "category": "Clothes",
     "en": "Jacket",
     "ka": "ქურთუკი",
@@ -760,6 +829,7 @@
   },
   {
     "id": 70,
+    "level": 1,
     "category": "Clothes",
     "en": "Boots",
     "ka": "ჩექმები",
@@ -771,6 +841,7 @@
   },
   {
     "id": 71,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Sun",
     "ka": "მზე",
@@ -782,6 +853,7 @@
   },
   {
     "id": 72,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Rain",
     "ka": "წვიმა",
@@ -793,6 +865,7 @@
   },
   {
     "id": 73,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Snow",
     "ka": "თოვლი",
@@ -804,6 +877,7 @@
   },
   {
     "id": 74,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Cloud",
     "ka": "ღრუბელი",
@@ -815,6 +889,7 @@
   },
   {
     "id": 75,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Wind",
     "ka": "ქარი",
@@ -826,6 +901,7 @@
   },
   {
     "id": 76,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Tree",
     "ka": "ხე",
@@ -837,6 +913,7 @@
   },
   {
     "id": 77,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Flower",
     "ka": "ყვავილი",
@@ -848,6 +925,7 @@
   },
   {
     "id": 78,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Moon",
     "ka": "მთვარე",
@@ -859,6 +937,7 @@
   },
   {
     "id": 79,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Star",
     "ka": "ვარსკვლავი",
@@ -870,6 +949,7 @@
   },
   {
     "id": 80,
+    "level": 1,
     "category": "Weather & Nature",
     "en": "Rainbow",
     "ka": "ცისარტყელა",
@@ -881,6 +961,7 @@
   },
   {
     "id": 81,
+    "level": 1,
     "category": "Actions",
     "en": "Run",
     "ka": "სირბილი",
@@ -892,6 +973,7 @@
   },
   {
     "id": 82,
+    "level": 1,
     "category": "Actions",
     "en": "Jump",
     "ka": "ხტომა",
@@ -903,6 +985,7 @@
   },
   {
     "id": 83,
+    "level": 1,
     "category": "Actions",
     "en": "Walk",
     "ka": "სიარული",
@@ -914,6 +997,7 @@
   },
   {
     "id": 84,
+    "level": 1,
     "category": "Actions",
     "en": "Swim",
     "ka": "ცურვა",
@@ -925,6 +1009,7 @@
   },
   {
     "id": 85,
+    "level": 1,
     "category": "Actions",
     "en": "Read",
     "ka": "კითხვა",
@@ -936,6 +1021,7 @@
   },
   {
     "id": 86,
+    "level": 1,
     "category": "Actions",
     "en": "Write",
     "ka": "წერა",
@@ -947,6 +1033,7 @@
   },
   {
     "id": 87,
+    "level": 1,
     "category": "Actions",
     "en": "Draw",
     "ka": "ხატვა",
@@ -958,6 +1045,7 @@
   },
   {
     "id": 88,
+    "level": 1,
     "category": "Actions",
     "en": "Sing",
     "ka": "სიმღერა",
@@ -969,6 +1057,7 @@
   },
   {
     "id": 89,
+    "level": 1,
     "category": "Actions",
     "en": "Dance",
     "ka": "ცეკვა",
@@ -980,6 +1069,7 @@
   },
   {
     "id": 90,
+    "level": 1,
     "category": "Actions",
     "en": "Sleep",
     "ka": "ძილი",
@@ -991,6 +1081,7 @@
   },
   {
     "id": 91,
+    "level": 1,
     "category": "Home",
     "en": "House",
     "ka": "სახლი",
@@ -1002,6 +1093,7 @@
   },
   {
     "id": 92,
+    "level": 1,
     "category": "Home",
     "en": "Room",
     "ka": "ოთახი",
@@ -1013,6 +1105,7 @@
   },
   {
     "id": 93,
+    "level": 1,
     "category": "Home",
     "en": "Kitchen",
     "ka": "სამზარეულო",
@@ -1024,6 +1117,7 @@
   },
   {
     "id": 94,
+    "level": 1,
     "category": "Home",
     "en": "Bedroom",
     "ka": "საძინებელი",
@@ -1035,6 +1129,7 @@
   },
   {
     "id": 95,
+    "level": 1,
     "category": "Home",
     "en": "Bathroom",
     "ka": "სააბაზანო",
@@ -1046,6 +1141,7 @@
   },
   {
     "id": 96,
+    "level": 1,
     "category": "Home",
     "en": "Door",
     "ka": "კარი",
@@ -1057,6 +1153,7 @@
   },
   {
     "id": 97,
+    "level": 1,
     "category": "Home",
     "en": "Window",
     "ka": "ფანჯარა",
@@ -1068,6 +1165,7 @@
   },
   {
     "id": 98,
+    "level": 1,
     "category": "Home",
     "en": "Bed",
     "ka": "საწოლი",
@@ -1079,6 +1177,7 @@
   },
   {
     "id": 99,
+    "level": 1,
     "category": "Home",
     "en": "Table",
     "ka": "მაგიდა",
@@ -1090,6 +1189,7 @@
   },
   {
     "id": 100,
+    "level": 1,
     "category": "Home",
     "en": "Sofa",
     "ka": "დივანი",
@@ -1101,6 +1201,7 @@
   },
   {
     "id": 101,
+    "level": 1,
     "category": "Feelings",
     "en": "Happy",
     "ka": "ბედნიერი",
@@ -1112,6 +1213,7 @@
   },
   {
     "id": 102,
+    "level": 1,
     "category": "Feelings",
     "en": "Sad",
     "ka": "მოწყენილი",
@@ -1123,6 +1225,7 @@
   },
   {
     "id": 103,
+    "level": 1,
     "category": "Feelings",
     "en": "Angry",
     "ka": "გაბრაზებული",
@@ -1134,6 +1237,7 @@
   },
   {
     "id": 104,
+    "level": 1,
     "category": "Feelings",
     "en": "Tired",
     "ka": "დაღლილი",
@@ -1145,6 +1249,7 @@
   },
   {
     "id": 105,
+    "level": 1,
     "category": "Feelings",
     "en": "Hungry",
     "ka": "მშიერი",
@@ -1156,6 +1261,7 @@
   },
   {
     "id": 106,
+    "level": 1,
     "category": "Feelings",
     "en": "Thirsty",
     "ka": "მწყურვალი",
@@ -1167,6 +1273,7 @@
   },
   {
     "id": 107,
+    "level": 1,
     "category": "Feelings",
     "en": "Scared",
     "ka": "შეშინებული",
@@ -1178,6 +1285,7 @@
   },
   {
     "id": 108,
+    "level": 1,
     "category": "Feelings",
     "en": "Excited",
     "ka": "აღელვებული / გახარებული",
@@ -1189,6 +1297,7 @@
   },
   {
     "id": 109,
+    "level": 1,
     "category": "Feelings",
     "en": "Sleepy",
     "ka": "ძილიანი",
@@ -1200,6 +1309,7 @@
   },
   {
     "id": 110,
+    "level": 1,
     "category": "Feelings",
     "en": "Surprised",
     "ka": "გაკვირვებული",
@@ -1211,6 +1321,7 @@
   },
   {
     "id": 111,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Ball",
     "ka": "ბურთი",
@@ -1222,6 +1333,7 @@
   },
   {
     "id": 112,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Doll",
     "ka": "თოჯინა",
@@ -1233,6 +1345,7 @@
   },
   {
     "id": 113,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Teddy bear",
     "ka": "პლუშის დათუნია",
@@ -1244,6 +1357,7 @@
   },
   {
     "id": 114,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Kite",
     "ka": "ფრანი",
@@ -1255,6 +1369,7 @@
   },
   {
     "id": 115,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Bike",
     "ka": "ველოსიპედი",
@@ -1266,6 +1381,7 @@
   },
   {
     "id": 116,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Car",
     "ka": "მანქანა",
@@ -1277,6 +1393,7 @@
   },
   {
     "id": 117,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Bus",
     "ka": "ავტობუსი",
@@ -1288,6 +1405,7 @@
   },
   {
     "id": 118,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Train",
     "ka": "მატარებელი",
@@ -1299,6 +1417,7 @@
   },
   {
     "id": 119,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Plane",
     "ka": "თვითმფრინავი",
@@ -1310,6 +1429,7 @@
   },
   {
     "id": 120,
+    "level": 1,
     "category": "Toys & Transport",
     "en": "Boat",
     "ka": "ნავი",
@@ -1318,5 +1438,1445 @@
     "audioEn": "/audio/en/120.mp3",
     "audioParent": "/audio/parents/120.mp3",
     "image": "/images/120.webp"
+  },
+  {
+    "id": 121,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Pear",
+    "ka": "მსხალი",
+    "sentenceEn": "I eat a sweet pear.",
+    "sentenceKa": "მე ტკბილ მსხალს ვჭამ.",
+    "audioEn": "/audio/en/121.mp3",
+    "audioParent": "/audio/parents/121.mp3",
+    "image": "/images/121.webp"
+  },
+  {
+    "id": 122,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Peach",
+    "ka": "ატამი",
+    "sentenceEn": "This peach is soft.",
+    "sentenceKa": "ეს ატამი რბილია.",
+    "audioEn": "/audio/en/122.mp3",
+    "audioParent": "/audio/parents/122.mp3",
+    "image": "/images/122.webp"
+  },
+  {
+    "id": 123,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Grapes",
+    "ka": "ყურძენი",
+    "sentenceEn": "The grapes are purple.",
+    "sentenceKa": "ყურძენი იისფერია.",
+    "audioEn": "/audio/en/123.mp3",
+    "audioParent": "/audio/parents/123.mp3",
+    "image": "/images/123.webp"
+  },
+  {
+    "id": 124,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Lemon",
+    "ka": "ლიმონი",
+    "sentenceEn": "The lemon is sour.",
+    "sentenceKa": "ლიმონი მჟავეა.",
+    "audioEn": "/audio/en/124.mp3",
+    "audioParent": "/audio/parents/124.mp3",
+    "image": "/images/124.webp"
+  },
+  {
+    "id": 125,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Strawberry",
+    "ka": "მარწყვი",
+    "sentenceEn": "I like strawberries.",
+    "sentenceKa": "მე მარწყვი მიყვარს.",
+    "audioEn": "/audio/en/125.mp3",
+    "audioParent": "/audio/parents/125.mp3",
+    "image": "/images/125.webp"
+  },
+  {
+    "id": 126,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Watermelon",
+    "ka": "საზამთრო",
+    "sentenceEn": "We eat watermelon in summer.",
+    "sentenceKa": "ზაფხულში საზამთროს ვჭამთ.",
+    "audioEn": "/audio/en/126.mp3",
+    "audioParent": "/audio/parents/126.mp3",
+    "image": "/images/126.webp"
+  },
+  {
+    "id": 127,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Potato",
+    "ka": "კარტოფილი",
+    "sentenceEn": "I have a potato.",
+    "sentenceKa": "მე კარტოფილი მაქვს.",
+    "audioEn": "/audio/en/127.mp3",
+    "audioParent": "/audio/parents/127.mp3",
+    "image": "/images/127.webp"
+  },
+  {
+    "id": 128,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Tomato",
+    "ka": "პომიდორი",
+    "sentenceEn": "The tomato is red.",
+    "sentenceKa": "პომიდორი წითელია.",
+    "audioEn": "/audio/en/128.mp3",
+    "audioParent": "/audio/parents/128.mp3",
+    "image": "/images/128.webp"
+  },
+  {
+    "id": 129,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Cucumber",
+    "ka": "კიტრი",
+    "sentenceEn": "I eat a cucumber.",
+    "sentenceKa": "მე კიტრს ვჭამ.",
+    "audioEn": "/audio/en/129.mp3",
+    "audioParent": "/audio/parents/129.mp3",
+    "image": "/images/129.webp"
+  },
+  {
+    "id": 130,
+    "level": 2,
+    "category": "Fruits & Vegetables",
+    "en": "Corn",
+    "ka": "სიმინდი",
+    "sentenceEn": "The corn is yellow.",
+    "sentenceKa": "სიმინდი ყვითელია.",
+    "audioEn": "/audio/en/130.mp3",
+    "audioParent": "/audio/parents/130.mp3",
+    "image": "/images/130.webp"
+  },
+  {
+    "id": 131,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Tiger",
+    "ka": "ვეფხვი",
+    "sentenceEn": "The tiger has stripes.",
+    "sentenceKa": "ვეფხვს ზოლები აქვს.",
+    "audioEn": "/audio/en/131.mp3",
+    "audioParent": "/audio/parents/131.mp3",
+    "image": "/images/131.webp"
+  },
+  {
+    "id": 132,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Bear",
+    "ka": "დათვი",
+    "sentenceEn": "The bear is big.",
+    "sentenceKa": "დათვი დიდია.",
+    "audioEn": "/audio/en/132.mp3",
+    "audioParent": "/audio/parents/132.mp3",
+    "image": "/images/132.webp"
+  },
+  {
+    "id": 133,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Giraffe",
+    "ka": "ჟირაფი",
+    "sentenceEn": "The giraffe has a long neck.",
+    "sentenceKa": "ჟირაფს გრძელი კისერი აქვს.",
+    "audioEn": "/audio/en/133.mp3",
+    "audioParent": "/audio/parents/133.mp3",
+    "image": "/images/133.webp"
+  },
+  {
+    "id": 134,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Zebra",
+    "ka": "ზებრა",
+    "sentenceEn": "The zebra is black and white.",
+    "sentenceKa": "ზებრა შავ-თეთრია.",
+    "audioEn": "/audio/en/134.mp3",
+    "audioParent": "/audio/parents/134.mp3",
+    "image": "/images/134.webp"
+  },
+  {
+    "id": 135,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Snake",
+    "ka": "გველი",
+    "sentenceEn": "The snake is long.",
+    "sentenceKa": "გველი გრძელია.",
+    "audioEn": "/audio/en/135.mp3",
+    "audioParent": "/audio/parents/135.mp3",
+    "image": "/images/135.webp"
+  },
+  {
+    "id": 136,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Crocodile",
+    "ka": "ნიანგი",
+    "sentenceEn": "The crocodile can swim.",
+    "sentenceKa": "ნიანგს ცურვა შეუძლია.",
+    "audioEn": "/audio/en/136.mp3",
+    "audioParent": "/audio/parents/136.mp3",
+    "image": "/images/136.webp"
+  },
+  {
+    "id": 137,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Frog",
+    "ka": "ბაყაყი",
+    "sentenceEn": "The frog can jump.",
+    "sentenceKa": "ბაყაყს ხტომა შეუძლია.",
+    "audioEn": "/audio/en/137.mp3",
+    "audioParent": "/audio/parents/137.mp3",
+    "image": "/images/137.webp"
+  },
+  {
+    "id": 138,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Duck",
+    "ka": "იხვი",
+    "sentenceEn": "The duck is in the pond.",
+    "sentenceKa": "იხვი გუბურაშია.",
+    "audioEn": "/audio/en/138.mp3",
+    "audioParent": "/audio/parents/138.mp3",
+    "image": "/images/138.webp"
+  },
+  {
+    "id": 139,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Sheep",
+    "ka": "ცხვარი",
+    "sentenceEn": "The sheep has soft wool.",
+    "sentenceKa": "ცხვარს რბილი მატყლი აქვს.",
+    "audioEn": "/audio/en/139.mp3",
+    "audioParent": "/audio/parents/139.mp3",
+    "image": "/images/139.webp"
+  },
+  {
+    "id": 140,
+    "level": 2,
+    "category": "Wild & Farm Animals",
+    "en": "Cow",
+    "ka": "ძროხა",
+    "sentenceEn": "The cow eats grass.",
+    "sentenceKa": "ძროხა ბალახს ჭამს.",
+    "audioEn": "/audio/en/140.mp3",
+    "audioParent": "/audio/parents/140.mp3",
+    "image": "/images/140.webp"
+  },
+  {
+    "id": 141,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Park",
+    "ka": "პარკი",
+    "sentenceEn": "We play in the park.",
+    "sentenceKa": "ჩვენ პარკში ვთამაშობთ.",
+    "audioEn": "/audio/en/141.mp3",
+    "audioParent": "/audio/parents/141.mp3",
+    "image": "/images/141.webp"
+  },
+  {
+    "id": 142,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Shop",
+    "ka": "მაღაზია",
+    "sentenceEn": "The shop is near my home.",
+    "sentenceKa": "მაღაზია ჩემს სახლთან ახლოსაა.",
+    "audioEn": "/audio/en/142.mp3",
+    "audioParent": "/audio/parents/142.mp3",
+    "image": "/images/142.webp"
+  },
+  {
+    "id": 143,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Hospital",
+    "ka": "საავადმყოფო",
+    "sentenceEn": "The doctor works at a hospital.",
+    "sentenceKa": "ექიმი საავადმყოფოში მუშაობს.",
+    "audioEn": "/audio/en/143.mp3",
+    "audioParent": "/audio/parents/143.mp3",
+    "image": "/images/143.webp"
+  },
+  {
+    "id": 144,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Library",
+    "ka": "ბიბლიოთეკა",
+    "sentenceEn": "I read books in the library.",
+    "sentenceKa": "მე ბიბლიოთეკაში წიგნებს ვკითხულობ.",
+    "audioEn": "/audio/en/144.mp3",
+    "audioParent": "/audio/parents/144.mp3",
+    "image": "/images/144.webp"
+  },
+  {
+    "id": 145,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Museum",
+    "ka": "მუზეუმი",
+    "sentenceEn": "We visit the museum.",
+    "sentenceKa": "ჩვენ მუზეუმს ვსტუმრობთ.",
+    "audioEn": "/audio/en/145.mp3",
+    "audioParent": "/audio/parents/145.mp3",
+    "image": "/images/145.webp"
+  },
+  {
+    "id": 146,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Cinema",
+    "ka": "კინოთეატრი",
+    "sentenceEn": "I watch a film at the cinema.",
+    "sentenceKa": "მე კინოთეატრში ფილმს ვუყურებ.",
+    "audioEn": "/audio/en/146.mp3",
+    "audioParent": "/audio/parents/146.mp3",
+    "image": "/images/146.webp"
+  },
+  {
+    "id": 147,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Playground",
+    "ka": "სათამაშო მოედანი",
+    "sentenceEn": "The playground is fun.",
+    "sentenceKa": "სათამაშო მოედანზე სახალისოა.",
+    "audioEn": "/audio/en/147.mp3",
+    "audioParent": "/audio/parents/147.mp3",
+    "image": "/images/147.webp"
+  },
+  {
+    "id": 148,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Street",
+    "ka": "ქუჩა",
+    "sentenceEn": "My street is quiet.",
+    "sentenceKa": "ჩემი ქუჩა მშვიდია.",
+    "audioEn": "/audio/en/148.mp3",
+    "audioParent": "/audio/parents/148.mp3",
+    "image": "/images/148.webp"
+  },
+  {
+    "id": 149,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Bridge",
+    "ka": "ხიდი",
+    "sentenceEn": "We walk across the bridge.",
+    "sentenceKa": "ჩვენ ხიდზე გადავდივართ.",
+    "audioEn": "/audio/en/149.mp3",
+    "audioParent": "/audio/parents/149.mp3",
+    "image": "/images/149.webp"
+  },
+  {
+    "id": 150,
+    "level": 2,
+    "category": "Places in Town",
+    "en": "Zoo",
+    "ka": "ზოოპარკი",
+    "sentenceEn": "I see animals at the zoo.",
+    "sentenceKa": "მე ზოოპარკში ცხოველებს ვხედავ.",
+    "audioEn": "/audio/en/150.mp3",
+    "audioParent": "/audio/parents/150.mp3",
+    "image": "/images/150.webp"
+  },
+  {
+    "id": 151,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Taxi",
+    "ka": "ტაქსი",
+    "sentenceEn": "We go home by taxi.",
+    "sentenceKa": "სახლში ტაქსით მივდივართ.",
+    "audioEn": "/audio/en/151.mp3",
+    "audioParent": "/audio/parents/151.mp3",
+    "image": "/images/151.webp"
+  },
+  {
+    "id": 152,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Bicycle",
+    "ka": "ველოსიპედი",
+    "sentenceEn": "My bicycle is new.",
+    "sentenceKa": "ჩემი ველოსიპედი ახალია.",
+    "audioEn": "/audio/en/152.mp3",
+    "audioParent": "/audio/parents/152.mp3",
+    "image": "/images/152.webp"
+  },
+  {
+    "id": 153,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Truck",
+    "ka": "სატვირთო მანქანა",
+    "sentenceEn": "The truck is very big.",
+    "sentenceKa": "სატვირთო მანქანა ძალიან დიდია.",
+    "audioEn": "/audio/en/153.mp3",
+    "audioParent": "/audio/parents/153.mp3",
+    "image": "/images/153.webp"
+  },
+  {
+    "id": 154,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Ship",
+    "ka": "გემი",
+    "sentenceEn": "The ship is on the sea.",
+    "sentenceKa": "გემი ზღვაზეა.",
+    "audioEn": "/audio/en/154.mp3",
+    "audioParent": "/audio/parents/154.mp3",
+    "image": "/images/154.webp"
+  },
+  {
+    "id": 155,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Helicopter",
+    "ka": "ვერტმფრენი",
+    "sentenceEn": "The helicopter flies high.",
+    "sentenceKa": "ვერტმფრენი მაღლა დაფრინავს.",
+    "audioEn": "/audio/en/155.mp3",
+    "audioParent": "/audio/parents/155.mp3",
+    "image": "/images/155.webp"
+  },
+  {
+    "id": 156,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Ticket",
+    "ka": "ბილეთი",
+    "sentenceEn": "I have a ticket.",
+    "sentenceKa": "მე ბილეთი მაქვს.",
+    "audioEn": "/audio/en/156.mp3",
+    "audioParent": "/audio/parents/156.mp3",
+    "image": "/images/156.webp"
+  },
+  {
+    "id": 157,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Suitcase",
+    "ka": "ჩემოდანი",
+    "sentenceEn": "My suitcase is blue.",
+    "sentenceKa": "ჩემი ჩემოდანი ლურჯია.",
+    "audioEn": "/audio/en/157.mp3",
+    "audioParent": "/audio/parents/157.mp3",
+    "image": "/images/157.webp"
+  },
+  {
+    "id": 158,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Airport",
+    "ka": "აეროპორტი",
+    "sentenceEn": "We are at the airport.",
+    "sentenceKa": "ჩვენ აეროპორტში ვართ.",
+    "audioEn": "/audio/en/158.mp3",
+    "audioParent": "/audio/parents/158.mp3",
+    "image": "/images/158.webp"
+  },
+  {
+    "id": 159,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Hotel",
+    "ka": "სასტუმრო",
+    "sentenceEn": "We sleep in a hotel.",
+    "sentenceKa": "ჩვენ სასტუმროში გვძინავს.",
+    "audioEn": "/audio/en/159.mp3",
+    "audioParent": "/audio/parents/159.mp3",
+    "image": "/images/159.webp"
+  },
+  {
+    "id": 160,
+    "level": 2,
+    "category": "Transport & Travel",
+    "en": "Map",
+    "ka": "რუკა",
+    "sentenceEn": "I look at the map.",
+    "sentenceKa": "მე რუკას ვუყურებ.",
+    "audioEn": "/audio/en/160.mp3",
+    "audioParent": "/audio/parents/160.mp3",
+    "image": "/images/160.webp"
+  },
+  {
+    "id": 161,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Wake up",
+    "ka": "გაღვიძება",
+    "sentenceEn": "I wake up in the morning.",
+    "sentenceKa": "მე დილით ვიღვიძებ.",
+    "audioEn": "/audio/en/161.mp3",
+    "audioParent": "/audio/parents/161.mp3",
+    "image": "/images/161.webp"
+  },
+  {
+    "id": 162,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Wash",
+    "ka": "დაბანა",
+    "sentenceEn": "I wash my hands.",
+    "sentenceKa": "მე ხელებს ვიბან.",
+    "audioEn": "/audio/en/162.mp3",
+    "audioParent": "/audio/parents/162.mp3",
+    "image": "/images/162.webp"
+  },
+  {
+    "id": 163,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Brush",
+    "ka": "გახეხვა",
+    "sentenceEn": "I brush my teeth.",
+    "sentenceKa": "მე კბილებს ვიხეხავ.",
+    "audioEn": "/audio/en/163.mp3",
+    "audioParent": "/audio/parents/163.mp3",
+    "image": "/images/163.webp"
+  },
+  {
+    "id": 164,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Eat",
+    "ka": "ჭამა",
+    "sentenceEn": "I eat breakfast.",
+    "sentenceKa": "მე საუზმეს ვჭამ.",
+    "audioEn": "/audio/en/164.mp3",
+    "audioParent": "/audio/parents/164.mp3",
+    "image": "/images/164.webp"
+  },
+  {
+    "id": 165,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Drink",
+    "ka": "დალევა",
+    "sentenceEn": "I drink water.",
+    "sentenceKa": "მე წყალს ვსვამ.",
+    "audioEn": "/audio/en/165.mp3",
+    "audioParent": "/audio/parents/165.mp3",
+    "image": "/images/165.webp"
+  },
+  {
+    "id": 166,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Play",
+    "ka": "თამაში",
+    "sentenceEn": "I play with my friends.",
+    "sentenceKa": "მე მეგობრებთან ვთამაშობ.",
+    "audioEn": "/audio/en/166.mp3",
+    "audioParent": "/audio/parents/166.mp3",
+    "image": "/images/166.webp"
+  },
+  {
+    "id": 167,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Open",
+    "ka": "გაღება",
+    "sentenceEn": "I open the door.",
+    "sentenceKa": "მე კარს ვაღებ.",
+    "audioEn": "/audio/en/167.mp3",
+    "audioParent": "/audio/parents/167.mp3",
+    "image": "/images/167.webp"
+  },
+  {
+    "id": 168,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Close",
+    "ka": "დახურვა",
+    "sentenceEn": "I close the window.",
+    "sentenceKa": "მე ფანჯარას ვხურავ.",
+    "audioEn": "/audio/en/168.mp3",
+    "audioParent": "/audio/parents/168.mp3",
+    "image": "/images/168.webp"
+  },
+  {
+    "id": 169,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Listen",
+    "ka": "მოსმენა",
+    "sentenceEn": "I listen to music.",
+    "sentenceKa": "მე მუსიკას ვუსმენ.",
+    "audioEn": "/audio/en/169.mp3",
+    "audioParent": "/audio/parents/169.mp3",
+    "image": "/images/169.webp"
+  },
+  {
+    "id": 170,
+    "level": 2,
+    "category": "Daily Activities",
+    "en": "Help",
+    "ka": "დახმარება",
+    "sentenceEn": "I help my mother.",
+    "sentenceKa": "მე დედას ვეხმარები.",
+    "audioEn": "/audio/en/170.mp3",
+    "audioParent": "/audio/parents/170.mp3",
+    "image": "/images/170.webp"
+  },
+  {
+    "id": 171,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Football",
+    "ka": "ფეხბურთი",
+    "sentenceEn": "I play football after school.",
+    "sentenceKa": "მე სკოლის შემდეგ ფეხბურთს ვთამაშობ.",
+    "audioEn": "/audio/en/171.mp3",
+    "audioParent": "/audio/parents/171.mp3",
+    "image": "/images/171.webp"
+  },
+  {
+    "id": 172,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Basketball",
+    "ka": "კალათბურთი",
+    "sentenceEn": "We play basketball together.",
+    "sentenceKa": "ჩვენ ერთად ვთამაშობთ კალათბურთს.",
+    "audioEn": "/audio/en/172.mp3",
+    "audioParent": "/audio/parents/172.mp3",
+    "image": "/images/172.webp"
+  },
+  {
+    "id": 173,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Tennis",
+    "ka": "ჩოგბურთი",
+    "sentenceEn": "My friend plays tennis.",
+    "sentenceKa": "ჩემი მეგობარი ჩოგბურთს თამაშობს.",
+    "audioEn": "/audio/en/173.mp3",
+    "audioParent": "/audio/parents/173.mp3",
+    "image": "/images/173.webp"
+  },
+  {
+    "id": 174,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Volleyball",
+    "ka": "ფრენბურთი",
+    "sentenceEn": "We play volleyball on the beach.",
+    "sentenceKa": "ჩვენ სანაპიროზე ფრენბურთს ვთამაშობთ.",
+    "audioEn": "/audio/en/174.mp3",
+    "audioParent": "/audio/parents/174.mp3",
+    "image": "/images/174.webp"
+  },
+  {
+    "id": 175,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Skating",
+    "ka": "ციგურაობა",
+    "sentenceEn": "I like skating.",
+    "sentenceKa": "მე ციგურაობა მიყვარს.",
+    "audioEn": "/audio/en/175.mp3",
+    "audioParent": "/audio/parents/175.mp3",
+    "image": "/images/175.webp"
+  },
+  {
+    "id": 176,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Cycling",
+    "ka": "ველოსიპედით სიარული",
+    "sentenceEn": "Cycling is fun.",
+    "sentenceKa": "ველოსიპედით სიარული სახალისოა.",
+    "audioEn": "/audio/en/176.mp3",
+    "audioParent": "/audio/parents/176.mp3",
+    "image": "/images/176.webp"
+  },
+  {
+    "id": 177,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Painting",
+    "ka": "ხატვა საღებავებით",
+    "sentenceEn": "I like painting pictures.",
+    "sentenceKa": "მე საღებავებით სურათების ხატვა მიყვარს.",
+    "audioEn": "/audio/en/177.mp3",
+    "audioParent": "/audio/parents/177.mp3",
+    "image": "/images/177.webp"
+  },
+  {
+    "id": 178,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Music",
+    "ka": "მუსიკა",
+    "sentenceEn": "I love music.",
+    "sentenceKa": "მე მუსიკა მიყვარს.",
+    "audioEn": "/audio/en/178.mp3",
+    "audioParent": "/audio/parents/178.mp3",
+    "image": "/images/178.webp"
+  },
+  {
+    "id": 179,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Puzzle",
+    "ka": "თავსატეხი",
+    "sentenceEn": "I can do this puzzle.",
+    "sentenceKa": "მე ამ თავსატეხის ამოხსნა შემიძლია.",
+    "audioEn": "/audio/en/179.mp3",
+    "audioParent": "/audio/parents/179.mp3",
+    "image": "/images/179.webp"
+  },
+  {
+    "id": 180,
+    "level": 2,
+    "category": "Sports & Hobbies",
+    "en": "Camping",
+    "ka": "კარვით დასვენება",
+    "sentenceEn": "We go camping in summer.",
+    "sentenceKa": "ზაფხულში კარვით დასასვენებლად მივდივართ.",
+    "audioEn": "/audio/en/180.mp3",
+    "audioParent": "/audio/parents/180.mp3",
+    "image": "/images/180.webp"
+  },
+  {
+    "id": 181,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Big",
+    "ka": "დიდი",
+    "sentenceEn": "The box is big.",
+    "sentenceKa": "ყუთი დიდია.",
+    "audioEn": "/audio/en/181.mp3",
+    "audioParent": "/audio/parents/181.mp3",
+    "image": "/images/181.webp"
+  },
+  {
+    "id": 182,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Small",
+    "ka": "პატარა",
+    "sentenceEn": "The mouse is small.",
+    "sentenceKa": "თაგვი პატარაა.",
+    "audioEn": "/audio/en/182.mp3",
+    "audioParent": "/audio/parents/182.mp3",
+    "image": "/images/182.webp"
+  },
+  {
+    "id": 183,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Fast",
+    "ka": "სწრაფი",
+    "sentenceEn": "The horse is fast.",
+    "sentenceKa": "ცხენი სწრაფია.",
+    "audioEn": "/audio/en/183.mp3",
+    "audioParent": "/audio/parents/183.mp3",
+    "image": "/images/183.webp"
+  },
+  {
+    "id": 184,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Slow",
+    "ka": "ნელი",
+    "sentenceEn": "The turtle is slow.",
+    "sentenceKa": "კუ ნელია.",
+    "audioEn": "/audio/en/184.mp3",
+    "audioParent": "/audio/parents/184.mp3",
+    "image": "/images/184.webp"
+  },
+  {
+    "id": 185,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Hot",
+    "ka": "ცხელი",
+    "sentenceEn": "The soup is hot.",
+    "sentenceKa": "წვნიანი ცხელია.",
+    "audioEn": "/audio/en/185.mp3",
+    "audioParent": "/audio/parents/185.mp3",
+    "image": "/images/185.webp"
+  },
+  {
+    "id": 186,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Cold",
+    "ka": "ცივი",
+    "sentenceEn": "The water is cold.",
+    "sentenceKa": "წყალი ცივია.",
+    "audioEn": "/audio/en/186.mp3",
+    "audioParent": "/audio/parents/186.mp3",
+    "image": "/images/186.webp"
+  },
+  {
+    "id": 187,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Long",
+    "ka": "გრძელი",
+    "sentenceEn": "The snake is long.",
+    "sentenceKa": "გველი გრძელია.",
+    "audioEn": "/audio/en/187.mp3",
+    "audioParent": "/audio/parents/187.mp3",
+    "image": "/images/187.webp"
+  },
+  {
+    "id": 188,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Short",
+    "ka": "მოკლე",
+    "sentenceEn": "This pencil is short.",
+    "sentenceKa": "ეს ფანქარი მოკლეა.",
+    "audioEn": "/audio/en/188.mp3",
+    "audioParent": "/audio/parents/188.mp3",
+    "image": "/images/188.webp"
+  },
+  {
+    "id": 189,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Clean",
+    "ka": "სუფთა",
+    "sentenceEn": "My hands are clean.",
+    "sentenceKa": "ჩემი ხელები სუფთაა.",
+    "audioEn": "/audio/en/189.mp3",
+    "audioParent": "/audio/parents/189.mp3",
+    "image": "/images/189.webp"
+  },
+  {
+    "id": 190,
+    "level": 2,
+    "category": "Opposites & Descriptions",
+    "en": "Dirty",
+    "ka": "ჭუჭყიანი",
+    "sentenceEn": "My shoes are dirty.",
+    "sentenceKa": "ჩემი ფეხსაცმელი ჭუჭყიანია.",
+    "audioEn": "/audio/en/190.mp3",
+    "audioParent": "/audio/parents/190.mp3",
+    "image": "/images/190.webp"
+  },
+  {
+    "id": 191,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Sunny",
+    "ka": "მზიანი",
+    "sentenceEn": "Today is sunny.",
+    "sentenceKa": "დღეს მზიანი ამინდია.",
+    "audioEn": "/audio/en/191.mp3",
+    "audioParent": "/audio/parents/191.mp3",
+    "image": "/images/191.webp"
+  },
+  {
+    "id": 192,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Rainy",
+    "ka": "წვიმიანი",
+    "sentenceEn": "It is a rainy day.",
+    "sentenceKa": "დღეს წვიმიანი დღეა.",
+    "audioEn": "/audio/en/192.mp3",
+    "audioParent": "/audio/parents/192.mp3",
+    "image": "/images/192.webp"
+  },
+  {
+    "id": 193,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Cloudy",
+    "ka": "ღრუბლიანი",
+    "sentenceEn": "The sky is cloudy.",
+    "sentenceKa": "ცა ღრუბლიანია.",
+    "audioEn": "/audio/en/193.mp3",
+    "audioParent": "/audio/parents/193.mp3",
+    "image": "/images/193.webp"
+  },
+  {
+    "id": 194,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Windy",
+    "ka": "ქარიანი",
+    "sentenceEn": "It is windy outside.",
+    "sentenceKa": "გარეთ ქარია.",
+    "audioEn": "/audio/en/194.mp3",
+    "audioParent": "/audio/parents/194.mp3",
+    "image": "/images/194.webp"
+  },
+  {
+    "id": 195,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Snowy",
+    "ka": "თოვლიანი",
+    "sentenceEn": "It is a snowy day.",
+    "sentenceKa": "დღეს თოვლიანი დღეა.",
+    "audioEn": "/audio/en/195.mp3",
+    "audioParent": "/audio/parents/195.mp3",
+    "image": "/images/195.webp"
+  },
+  {
+    "id": 196,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Spring",
+    "ka": "გაზაფხული",
+    "sentenceEn": "Flowers grow in spring.",
+    "sentenceKa": "გაზაფხულზე ყვავილები იზრდება.",
+    "audioEn": "/audio/en/196.mp3",
+    "audioParent": "/audio/parents/196.mp3",
+    "image": "/images/196.webp"
+  },
+  {
+    "id": 197,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Summer",
+    "ka": "ზაფხული",
+    "sentenceEn": "Summer is warm.",
+    "sentenceKa": "ზაფხული თბილია.",
+    "audioEn": "/audio/en/197.mp3",
+    "audioParent": "/audio/parents/197.mp3",
+    "image": "/images/197.webp"
+  },
+  {
+    "id": 198,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Autumn",
+    "ka": "შემოდგომა",
+    "sentenceEn": "Leaves fall in autumn.",
+    "sentenceKa": "შემოდგომაზე ფოთლები ცვივა.",
+    "audioEn": "/audio/en/198.mp3",
+    "audioParent": "/audio/parents/198.mp3",
+    "image": "/images/198.webp"
+  },
+  {
+    "id": 199,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Winter",
+    "ka": "ზამთარი",
+    "sentenceEn": "Winter is cold.",
+    "sentenceKa": "ზამთარი ცივია.",
+    "audioEn": "/audio/en/199.mp3",
+    "audioParent": "/audio/parents/199.mp3",
+    "image": "/images/199.webp"
+  },
+  {
+    "id": 200,
+    "level": 2,
+    "category": "Weather & Seasons",
+    "en": "Storm",
+    "ka": "ქარიშხალი",
+    "sentenceEn": "The storm is loud.",
+    "sentenceKa": "ქარიშხალი ხმაურიანია.",
+    "audioEn": "/audio/en/200.mp3",
+    "audioParent": "/audio/parents/200.mp3",
+    "image": "/images/200.webp"
+  },
+  {
+    "id": 201,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Doctor",
+    "ka": "ექიმი",
+    "sentenceEn": "The doctor helps people.",
+    "sentenceKa": "ექიმი ადამიანებს ეხმარება.",
+    "audioEn": "/audio/en/201.mp3",
+    "audioParent": "/audio/parents/201.mp3",
+    "image": "/images/201.webp"
+  },
+  {
+    "id": 202,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Nurse",
+    "ka": "ექთანი",
+    "sentenceEn": "The nurse is kind.",
+    "sentenceKa": "ექთანი კეთილია.",
+    "audioEn": "/audio/en/202.mp3",
+    "audioParent": "/audio/parents/202.mp3",
+    "image": "/images/202.webp"
+  },
+  {
+    "id": 203,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Farmer",
+    "ka": "ფერმერი",
+    "sentenceEn": "The farmer grows food.",
+    "sentenceKa": "ფერმერს საკვები მოჰყავს.",
+    "audioEn": "/audio/en/203.mp3",
+    "audioParent": "/audio/parents/203.mp3",
+    "image": "/images/203.webp"
+  },
+  {
+    "id": 204,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Driver",
+    "ka": "მძღოლი",
+    "sentenceEn": "The driver drives a bus.",
+    "sentenceKa": "მძღოლს ავტობუსი მიჰყავს.",
+    "audioEn": "/audio/en/204.mp3",
+    "audioParent": "/audio/parents/204.mp3",
+    "image": "/images/204.webp"
+  },
+  {
+    "id": 205,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Pilot",
+    "ka": "პილოტი",
+    "sentenceEn": "The pilot flies a plane.",
+    "sentenceKa": "პილოტი თვითმფრინავს მართავს.",
+    "audioEn": "/audio/en/205.mp3",
+    "audioParent": "/audio/parents/205.mp3",
+    "image": "/images/205.webp"
+  },
+  {
+    "id": 206,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Chef",
+    "ka": "შეფმზარეული",
+    "sentenceEn": "The chef cooks food.",
+    "sentenceKa": "შეფმზარეული საჭმელს ამზადებს.",
+    "audioEn": "/audio/en/206.mp3",
+    "audioParent": "/audio/parents/206.mp3",
+    "image": "/images/206.webp"
+  },
+  {
+    "id": 207,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Dentist",
+    "ka": "სტომატოლოგი",
+    "sentenceEn": "The dentist checks my teeth.",
+    "sentenceKa": "სტომატოლოგი ჩემს კბილებს ამოწმებს.",
+    "audioEn": "/audio/en/207.mp3",
+    "audioParent": "/audio/parents/207.mp3",
+    "image": "/images/207.webp"
+  },
+  {
+    "id": 208,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Firefighter",
+    "ka": "მეხანძრე",
+    "sentenceEn": "The firefighter helps people.",
+    "sentenceKa": "მეხანძრე ადამიანებს ეხმარება.",
+    "audioEn": "/audio/en/208.mp3",
+    "audioParent": "/audio/parents/208.mp3",
+    "image": "/images/208.webp"
+  },
+  {
+    "id": 209,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Artist",
+    "ka": "მხატვარი",
+    "sentenceEn": "The artist paints a picture.",
+    "sentenceKa": "მხატვარი სურათს ხატავს.",
+    "audioEn": "/audio/en/209.mp3",
+    "audioParent": "/audio/parents/209.mp3",
+    "image": "/images/209.webp"
+  },
+  {
+    "id": 210,
+    "level": 2,
+    "category": "Jobs & Helpers",
+    "en": "Singer",
+    "ka": "მომღერალი",
+    "sentenceEn": "The singer sings a song.",
+    "sentenceKa": "მომღერალი სიმღერას მღერის.",
+    "audioEn": "/audio/en/210.mp3",
+    "audioParent": "/audio/parents/210.mp3",
+    "image": "/images/210.webp"
+  },
+  {
+    "id": 211,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Lamp",
+    "ka": "ლამპა",
+    "sentenceEn": "The lamp is on the table.",
+    "sentenceKa": "ლამპა მაგიდაზე დგას.",
+    "audioEn": "/audio/en/211.mp3",
+    "audioParent": "/audio/parents/211.mp3",
+    "image": "/images/211.webp"
+  },
+  {
+    "id": 212,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Mirror",
+    "ka": "სარკე",
+    "sentenceEn": "I look in the mirror.",
+    "sentenceKa": "მე სარკეში ვიყურები.",
+    "audioEn": "/audio/en/212.mp3",
+    "audioParent": "/audio/parents/212.mp3",
+    "image": "/images/212.webp"
+  },
+  {
+    "id": 213,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Pillow",
+    "ka": "ბალიში",
+    "sentenceEn": "My pillow is soft.",
+    "sentenceKa": "ჩემი ბალიში რბილია.",
+    "audioEn": "/audio/en/213.mp3",
+    "audioParent": "/audio/parents/213.mp3",
+    "image": "/images/213.webp"
+  },
+  {
+    "id": 214,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Blanket",
+    "ka": "საბანი",
+    "sentenceEn": "My blanket is warm.",
+    "sentenceKa": "ჩემი საბანი თბილია.",
+    "audioEn": "/audio/en/214.mp3",
+    "audioParent": "/audio/parents/214.mp3",
+    "image": "/images/214.webp"
+  },
+  {
+    "id": 215,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Carpet",
+    "ka": "ხალიჩა",
+    "sentenceEn": "The carpet is green.",
+    "sentenceKa": "ხალიჩა მწვანეა.",
+    "audioEn": "/audio/en/215.mp3",
+    "audioParent": "/audio/parents/215.mp3",
+    "image": "/images/215.webp"
+  },
+  {
+    "id": 216,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Curtain",
+    "ka": "ფარდა",
+    "sentenceEn": "I open the curtain.",
+    "sentenceKa": "მე ფარდას ვწევ.",
+    "audioEn": "/audio/en/216.mp3",
+    "audioParent": "/audio/parents/216.mp3",
+    "image": "/images/216.webp"
+  },
+  {
+    "id": 217,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Fridge",
+    "ka": "მაცივარი",
+    "sentenceEn": "The milk is in the fridge.",
+    "sentenceKa": "რძე მაცივარშია.",
+    "audioEn": "/audio/en/217.mp3",
+    "audioParent": "/audio/parents/217.mp3",
+    "image": "/images/217.webp"
+  },
+  {
+    "id": 218,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Oven",
+    "ka": "ღუმელი",
+    "sentenceEn": "The cake is in the oven.",
+    "sentenceKa": "ნამცხვარი ღუმელშია.",
+    "audioEn": "/audio/en/218.mp3",
+    "audioParent": "/audio/parents/218.mp3",
+    "image": "/images/218.webp"
+  },
+  {
+    "id": 219,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Clock",
+    "ka": "საათი",
+    "sentenceEn": "The clock is on the wall.",
+    "sentenceKa": "საათი კედელზეა.",
+    "audioEn": "/audio/en/219.mp3",
+    "audioParent": "/audio/parents/219.mp3",
+    "image": "/images/219.webp"
+  },
+  {
+    "id": 220,
+    "level": 2,
+    "category": "Home Objects",
+    "en": "Shelf",
+    "ka": "თარო",
+    "sentenceEn": "My toys are on the shelf.",
+    "sentenceKa": "ჩემი სათამაშოები თაროზეა.",
+    "audioEn": "/audio/en/220.mp3",
+    "audioParent": "/audio/parents/220.mp3",
+    "image": "/images/220.webp"
+  },
+  {
+    "id": 221,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Kind",
+    "ka": "კეთილი",
+    "sentenceEn": "My friend is kind.",
+    "sentenceKa": "ჩემი მეგობარი კეთილია.",
+    "audioEn": "/audio/en/221.mp3",
+    "audioParent": "/audio/parents/221.mp3",
+    "image": "/images/221.webp"
+  },
+  {
+    "id": 222,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Funny",
+    "ka": "სასაცილო",
+    "sentenceEn": "The clown is funny.",
+    "sentenceKa": "კლოუნი სასაცილოა.",
+    "audioEn": "/audio/en/222.mp3",
+    "audioParent": "/audio/parents/222.mp3",
+    "image": "/images/222.webp"
+  },
+  {
+    "id": 223,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Brave",
+    "ka": "მამაცი",
+    "sentenceEn": "The firefighter is brave.",
+    "sentenceKa": "მეხანძრე მამაცია.",
+    "audioEn": "/audio/en/223.mp3",
+    "audioParent": "/audio/parents/223.mp3",
+    "image": "/images/223.webp"
+  },
+  {
+    "id": 224,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Shy",
+    "ka": "მორცხვი",
+    "sentenceEn": "The little boy is shy.",
+    "sentenceKa": "პატარა ბიჭი მორცხვია.",
+    "audioEn": "/audio/en/224.mp3",
+    "audioParent": "/audio/parents/224.mp3",
+    "image": "/images/224.webp"
+  },
+  {
+    "id": 225,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Calm",
+    "ka": "მშვიდი",
+    "sentenceEn": "I feel calm today.",
+    "sentenceKa": "დღეს თავს მშვიდად ვგრძნობ.",
+    "audioEn": "/audio/en/225.mp3",
+    "audioParent": "/audio/parents/225.mp3",
+    "image": "/images/225.webp"
+  },
+  {
+    "id": 226,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Proud",
+    "ka": "ამაყი",
+    "sentenceEn": "I am proud of my work.",
+    "sentenceKa": "მე ჩემი ნამუშევრით ვამაყობ.",
+    "audioEn": "/audio/en/226.mp3",
+    "audioParent": "/audio/parents/226.mp3",
+    "image": "/images/226.webp"
+  },
+  {
+    "id": 227,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Bored",
+    "ka": "მოწყენილი (უსაქმურობით)",
+    "sentenceEn": "I am bored at home.",
+    "sentenceKa": "სახლში მოწყენილი ვარ.",
+    "audioEn": "/audio/en/227.mp3",
+    "audioParent": "/audio/parents/227.mp3",
+    "image": "/images/227.webp"
+  },
+  {
+    "id": 228,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Worried",
+    "ka": "შეშფოთებული",
+    "sentenceEn": "I am worried about my test.",
+    "sentenceKa": "ტესტზე ვღელავ.",
+    "audioEn": "/audio/en/228.mp3",
+    "audioParent": "/audio/parents/228.mp3",
+    "image": "/images/228.webp"
+  },
+  {
+    "id": 229,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Friendly",
+    "ka": "მეგობრული",
+    "sentenceEn": "Our neighbor is friendly.",
+    "sentenceKa": "ჩვენი მეზობელი მეგობრულია.",
+    "audioEn": "/audio/en/229.mp3",
+    "audioParent": "/audio/parents/229.mp3",
+    "image": "/images/229.webp"
+  },
+  {
+    "id": 230,
+    "level": 2,
+    "category": "Feelings & Personality",
+    "en": "Clever",
+    "ka": "ჭკვიანი",
+    "sentenceEn": "The clever fox finds food.",
+    "sentenceKa": "ჭკვიანი მელია საჭმელს პოულობს.",
+    "audioEn": "/audio/en/230.mp3",
+    "audioParent": "/audio/parents/230.mp3",
+    "image": "/images/230.webp"
+  },
+  {
+    "id": 231,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Mountain",
+    "ka": "მთა",
+    "sentenceEn": "The mountain is tall.",
+    "sentenceKa": "მთა მაღალია.",
+    "audioEn": "/audio/en/231.mp3",
+    "audioParent": "/audio/parents/231.mp3",
+    "image": "/images/231.webp"
+  },
+  {
+    "id": 232,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "River",
+    "ka": "მდინარე",
+    "sentenceEn": "The river is long.",
+    "sentenceKa": "მდინარე გრძელია.",
+    "audioEn": "/audio/en/232.mp3",
+    "audioParent": "/audio/parents/232.mp3",
+    "image": "/images/232.webp"
+  },
+  {
+    "id": 233,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Lake",
+    "ka": "ტბა",
+    "sentenceEn": "The lake is beautiful.",
+    "sentenceKa": "ტბა ლამაზია.",
+    "audioEn": "/audio/en/233.mp3",
+    "audioParent": "/audio/parents/233.mp3",
+    "image": "/images/233.webp"
+  },
+  {
+    "id": 234,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Sea",
+    "ka": "ზღვა",
+    "sentenceEn": "The sea is blue.",
+    "sentenceKa": "ზღვა ლურჯია.",
+    "audioEn": "/audio/en/234.mp3",
+    "audioParent": "/audio/parents/234.mp3",
+    "image": "/images/234.webp"
+  },
+  {
+    "id": 235,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Forest",
+    "ka": "ტყე",
+    "sentenceEn": "Many animals live in the forest.",
+    "sentenceKa": "ტყეში ბევრი ცხოველი ცხოვრობს.",
+    "audioEn": "/audio/en/235.mp3",
+    "audioParent": "/audio/parents/235.mp3",
+    "image": "/images/235.webp"
+  },
+  {
+    "id": 236,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Beach",
+    "ka": "სანაპირო",
+    "sentenceEn": "We play on the beach.",
+    "sentenceKa": "ჩვენ სანაპიროზე ვთამაშობთ.",
+    "audioEn": "/audio/en/236.mp3",
+    "audioParent": "/audio/parents/236.mp3",
+    "image": "/images/236.webp"
+  },
+  {
+    "id": 237,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Island",
+    "ka": "კუნძული",
+    "sentenceEn": "The island is small.",
+    "sentenceKa": "კუნძული პატარაა.",
+    "audioEn": "/audio/en/237.mp3",
+    "audioParent": "/audio/parents/237.mp3",
+    "image": "/images/237.webp"
+  },
+  {
+    "id": 238,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Planet",
+    "ka": "პლანეტა",
+    "sentenceEn": "Earth is a planet.",
+    "sentenceKa": "დედამიწა პლანეტაა.",
+    "audioEn": "/audio/en/238.mp3",
+    "audioParent": "/audio/parents/238.mp3",
+    "image": "/images/238.webp"
+  },
+  {
+    "id": 239,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Rocket",
+    "ka": "რაკეტა",
+    "sentenceEn": "The rocket goes into space.",
+    "sentenceKa": "რაკეტა კოსმოსში მიფრინავს.",
+    "audioEn": "/audio/en/239.mp3",
+    "audioParent": "/audio/parents/239.mp3",
+    "image": "/images/239.webp"
+  },
+  {
+    "id": 240,
+    "level": 2,
+    "category": "Nature & Space",
+    "en": "Astronaut",
+    "ka": "ასტრონავტი",
+    "sentenceEn": "The astronaut travels in space.",
+    "sentenceKa": "ასტრონავტი კოსმოსში მოგზაურობს.",
+    "audioEn": "/audio/en/240.mp3",
+    "audioParent": "/audio/parents/240.mp3",
+    "image": "/images/240.webp"
   }
 ]

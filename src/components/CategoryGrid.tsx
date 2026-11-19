@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { CATEGORIES, categoryVars, type Category } from "@/data/categories";
+import { CATEGORIES, categoryVars, type Category, type Level } from "@/data/categories";
 import { useProgress, statusOf } from "@/lib/progress";
 import { wordsForCategory } from "@/lib/words";
 import { Art, ProgressBar } from "./ui";
@@ -50,11 +50,12 @@ export function CategoryCard({ c, index, learned, total }: { c: Category; index:
   );
 }
 
-export default function CategoryGrid() {
+export default function CategoryGrid({ level }: { level?: Level }) {
   const [p] = useProgress();
+  const list = level ? CATEGORIES.filter((c) => c.level === level) : CATEGORIES;
   return (
     <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-      {CATEGORIES.map((c, i) => {
+      {list.map((c, i) => {
         const words = wordsForCategory(c.slug);
         const learned = words.filter((w) => statusOf(p, w.id) === "learned").length;
         return (

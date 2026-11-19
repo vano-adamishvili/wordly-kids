@@ -1,8 +1,10 @@
 import raw from "@/data/words.json";
-import { CATEGORIES, categoryByName, type Category } from "@/data/categories";
+import artKeys from "@/data/art-keys.json";
+import { CATEGORIES, categoryByName, type Category, type Level } from "@/data/categories";
 
 export type Word = {
   id: number;
+  level: Level;
   category: string;
   en: string;
   ka: string;
@@ -14,6 +16,11 @@ export type Word = {
 };
 
 export const WORDS = raw as Word[];
+
+export const wordsForLevel = (level: Level) => WORDS.filter((w) => w.level === level);
+
+/** Key that identifies the picture of a word (used to avoid two identical pictures in a quiz). */
+export const artKey = (w: Word) => (artKeys as Record<string, string>)[w.id] ?? `swatch-${w.id}`;
 
 export function wordsForCategory(slug: string): Word[] {
   const cat = CATEGORIES.find((c) => c.slug === slug);

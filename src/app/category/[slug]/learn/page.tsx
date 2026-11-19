@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { CATEGORIES, categoryBySlug } from "@/data/categories";
 import LearnMode from "@/components/LearnMode";
+import { wordsForCategory } from "@/lib/words";
 
 export function generateStaticParams() {
   return CATEGORIES.map((c) => ({ slug: c.slug }));
@@ -8,6 +9,7 @@ export function generateStaticParams() {
 
 export default async function LearnPage({ params }: PageProps<"/category/[slug]/learn">) {
   const { slug } = await params;
-  if (!categoryBySlug(slug)) notFound();
-  return <LearnMode slug={slug} />;
+  const c = categoryBySlug(slug);
+  if (!c) notFound();
+  return <LearnMode words={wordsForCategory(slug)} slug={slug} title={c.ka} back={`/category/${slug}`} />;
 }

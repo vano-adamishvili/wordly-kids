@@ -6,14 +6,23 @@ import { ArrowLeft, ArrowRight, Check, Layers, Puzzle, RotateCcw } from "lucide-
 import { categoryBySlug, categoryVars } from "@/data/categories";
 import { progressActions, statusOf, useProgress } from "@/lib/progress";
 import { playEnglish } from "@/lib/audio";
-import { wordsForCategory } from "@/lib/words";
+import { categoryOf, type Word } from "@/lib/words";
 import VocabCard from "./VocabCard";
 import Wobble from "./Wobble";
 import { Bubble, Confetti, ProgressBar, TopBar } from "./ui";
 
-export default function LearnMode({ slug }: { slug: string }) {
-  const cat = categoryBySlug(slug)!;
-  const words = wordsForCategory(slug);
+type Props = {
+  words: Word[];
+  title: string;
+  back: string;
+  /** set for a single-category session */
+  slug?: string;
+  flashcardsHref?: string;
+  quizHref?: string;
+};
+
+export default function LearnMode({ words, title, back, slug, flashcardsHref, quizHref }: Props) {
+  const fixedCat = slug ? categoryBySlug(slug) : undefined;
   const [p] = useProgress();
   const [i, setI] = useState(0);
   const [finished, setFinished] = useState(false);
@@ -22,7 +31,7 @@ export default function LearnMode({ slug }: { slug: string }) {
   // Allow deep link ?i=3 from the word list
   useEffect(() => {
     const q = Number(new URLSearchParams(window.location.search).get("i"));
-    progressActions.visitCategory(slug);
+    if (slug) progressActions.visitCategory(slug);
     if (Number.isInteger(q) && q > 0 && q < words.length) {
       const id = requestAnimationFrame(() => setI(q));
       return () => cancelAnimationFrame(id);
@@ -53,13 +62,16 @@ export default function LearnMode({ slug }: { slug: string }) {
     return () => window.removeEventListener("keydown", onKey);
   });
 
+  const cat = fixedCat ?? categoryOf(word ?? words[0]);
+  const fcHref = flashcardsHref ?? (slug ? `/category/${slug}/flashcards` : "/");
+  const qHref = quizHref ?? (slug ? `/category/${slug}/quiz` : "/quiz");
   const learnedCount = words.filter((w) => statusOf(p, w.id) === "learned").length;
 
   if (finished) {
     return (
       <main style={categoryVars(cat)}>
         <Confetti />
-        <TopBar back={`/category/${slug}`} title={cat.ka} sub="სწავლა" />
+        <TopBar back={back} title={title} sub={slug ? "სწავლა" : `სწავლა · ${cat.ka}`} />
         <div className="animate-pop card mx-4 mt-4 flex flex-col items-center p-6 text-center">
           <Wobble mood="excited" size={150} />
           <p className="font-ka mt-2 text-2xl font-extrabold">ყოჩაღ! ყველა სიტყვა ნახე!</p>
@@ -67,10 +79,10 @@ export default function LearnMode({ slug }: { slug: string }) {
             ნასწავლი: <b className="text-ink">{learnedCount}/{words.length}</b>. ახლა ბარათებით ან ქვიზით შეამოწმე თავი.
           </p>
           <div className="mt-6 grid w-full gap-3">
-            <Link href={`/category/${slug}/flashcards`} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender text-lg font-extrabold text-white [--edge:#6a4fd0]">
+            <Link href={fcHref} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-lavender text-lg font-extrabold text-white [--edge:#6a4fd0]">
               <Layers size={22} /> ბარათები
             </Link>
-            <Link href={`/category/${slug}/quiz`} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-sun text-lg font-extrabold text-ink [--edge:#e8bf2c]">
+            <Link href={qHref} className="press focus-ring font-ka flex min-h-14 items-center justify-center gap-2 rounded-2xl bg-sun text-lg font-extrabold text-ink [--edge:#e8bf2c]">
               <Puzzle size={22} /> ქვიზი
             </Link>
             <button
@@ -92,7 +104,7 @@ export default function LearnMode({ slug }: { slug: string }) {
 
   return (
     <main style={categoryVars(cat)} className="lg:mx-auto lg:w-full lg:max-w-xl">
-      <TopBar back={`/category/${slug}`} title={cat.ka} sub="სწავლა" />
+      <TopBar back={back} title={title} sub={slug ? "სწავლა" : `სწავლა · ${cat.ka}`} />
       <div className="px-4">
         <ProgressBar value={i + 1} max={words.length} color="var(--accent)" className="mb-4" />
         <VocabCard key={word.id} word={word} category={cat} index={i} total={words.length} />

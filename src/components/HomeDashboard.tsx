@@ -6,6 +6,8 @@ import { CATEGORIES, categoryBySlug, categoryVars } from "@/data/categories";
 import { DAILY_GOAL, streak, todayCount, useProgress, statusOf } from "@/lib/progress";
 import { WORDS, wordsForCategory } from "@/lib/words";
 import CategoryGrid, { CategoryArt } from "./CategoryGrid";
+import LevelSwitcher from "./LevelSwitcher";
+import { DailyFiveCard, Level2Intro, PracticeTools } from "./HomeExtras";
 import Wobble from "./Wobble";
 import WordArt from "./WordArt";
 import { Bubble, ProgressBar, Ring } from "./ui";
@@ -18,11 +20,14 @@ export default function HomeDashboard() {
   const goalDone = today >= DAILY_GOAL;
 
   // Next category to continue: last opened (if unfinished) or first unfinished
+  const level = (hydrated ? p.level : undefined) ?? 1;
+  const levelCats = CATEGORIES.filter((c) => c.level === level);
   const unfinished = (slug: string) => wordsForCategory(slug).some((w) => statusOf(p, w.id) !== "learned");
+  const last = p.lastCategory ? categoryBySlug(p.lastCategory) : undefined;
   const next =
-    (p.lastCategory && unfinished(p.lastCategory) ? categoryBySlug(p.lastCategory) : undefined) ??
-    CATEGORIES.find((c) => unfinished(c.slug)) ??
-    CATEGORIES[0];
+    (last && last.level === level && unfinished(last.slug) ? last : undefined) ??
+    levelCats.find((c) => unfinished(c.slug)) ??
+    levelCats[0];
   const nextWords = wordsForCategory(next.slug);
   const nextLearned = nextWords.filter((w) => statusOf(p, w.id) === "learned").length;
   const nextWord = nextWords.find((w) => statusOf(p, w.id) !== "learned") ?? nextWords[0];
@@ -107,9 +112,15 @@ export default function HomeDashboard() {
         </div>
       </section>
 
+      {hydrated && !p.seenLevel2Intro ? <Level2Intro /> : null}
+
+      <DailyFiveCard />
+
+      <PracticeTools />
+
       {/* Current world + modes */}
       <section className="mt-6" style={categoryVars(next)}>
-        <h2 className="font-ka mb-3 text-lg font-extrabold">ახლანდელი თემა</h2>
+        <h2 className="font-ka mb-3 text-lg font-extrabold">ახლანდელი თემა · დონე {level}</h2>
         <div className="card overflow-hidden">
           <div className="flex items-center gap-3 bg-[var(--soft)] p-4">
             <CategoryArt c={next} />
@@ -145,7 +156,10 @@ export default function HomeDashboard() {
             შერეული ქვიზი →
           </Link>
         </div>
-        <CategoryGrid />
+        <div className="mb-4">
+          <LevelSwitcher />
+        </div>
+        <CategoryGrid level={level} />
       </section>
     </main>
   );

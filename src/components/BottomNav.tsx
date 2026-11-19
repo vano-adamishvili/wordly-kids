@@ -14,7 +14,7 @@ const ITEMS = [
 export default function BottomNav() {
   const path = usePathname();
   // Hide during focused activities (learn / flashcards / category quiz)
-  if (/^\/category\/[^/]+\/(learn|flashcards|quiz)$/.test(path)) return null;
+  if (/^\/(category\/[^/]+\/(learn|flashcards|quiz)|daily\/(learn|cards)|review\/[^/]+|opposites)$/.test(path)) return null;
   return (
     <nav className="fixed inset-x-0 bottom-0 z-40 px-3 pb-[max(env(safe-area-inset-bottom),0.6rem)]" aria-label="მთავარი ნავიგაცია">
       <ul className="mx-auto flex max-w-md items-stretch justify-between gap-1 rounded-[1.75rem] border border-ink/5 bg-white/95 p-1.5 shadow-[var(--shadow-lift)] backdrop-blur sm:max-w-lg">

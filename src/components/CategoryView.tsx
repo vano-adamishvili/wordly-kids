@@ -54,7 +54,7 @@ export default function CategoryView({ slug }: { slug: string }) {
         </section>
 
         <h2 className="font-ka mb-3 mt-7 text-lg font-extrabold">სიტყვები</h2>
-        <ul className="grid gap-2.5 sm:grid-cols-2">
+        <ul className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
           {words.map((w, i) => (
             <li key={w.id} className="card flex items-center gap-3 p-2.5 pr-3">
               <Link href={`/category/${slug}/learn?i=${i}`} className="focus-ring flex min-w-0 flex-1 items-center gap-3 rounded-2xl">

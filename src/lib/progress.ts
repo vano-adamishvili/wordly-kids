@@ -4,11 +4,18 @@ import { useSyncExternalStore } from "react";
 
 export type WordStatus = "new" | "learning" | "learned";
 
+export type Direction = "en-ka" | "ka-en";
+export type DirStat = { known: number; again: number };
+
 export type WordProgress = {
   status: WordStatus;
   seen: number;
   correct: number;
   wrong: number;
+  /** v1.2 (optional): needs review – set by "გასამეორებელია"/wrong answer, cleared by "ვიცი"/correct */
+  review?: boolean;
+  /** v1.2 (optional): flashcard recognition per translation direction */
+  dirs?: Partial<Record<Direction, DirStat>>;
 };
 
 export type QuizRecord = { best: number; total: number; plays: number };
@@ -22,12 +29,20 @@ export type Progress = {
   lastCategory?: string;
   /** ids of words practised per day (YYYY-MM-DD) – added in v1.1, optional */
   daily?: Record<string, number[]>;
+  /** v1.2 (optional): selected level on the dashboard */
+  level?: 1 | 2;
+  /** v1.2 (optional): Wobble's Level 2 intro was shown */
+  seenLevel2Intro?: boolean;
+  /** v1.2 (optional): Wobble's Daily 5 – persisted per day */
+  dailyPick?: { date: string; ids: number[] };
 };
 
 /** Words to practise per day for the daily goal ring */
 export const DAILY_GOAL = 5;
 
 const KEY = "wordly-kids-progress-v1";
+/** one-time safety copy of the progress as it was before the Level 2 update */
+export const BACKUP_KEY = "wordly-kids-progress-v1-backup-before-level2";
 const EMPTY: Progress = { version: 1, words: {}, stars: 0, quizzes: {}, days: [] };
 
 let cache: Progress | null = null;
@@ -37,6 +52,10 @@ function read(): Progress {
   if (cache) return cache;
   try {
     const raw = window.localStorage.getItem(KEY);
+    if (raw && window.localStorage.getItem(BACKUP_KEY) === null) {
+      // non-destructive: keep an untouched copy before any v1.2 field is written
+      window.localStorage.setItem(BACKUP_KEY, raw);
+    }
     cache = raw ? { ...EMPTY, ...(JSON.parse(raw) as Progress) } : EMPTY;
   } catch {
     cache = EMPTY;
@@ -54,7 +73,7 @@ function write(next: Progress) {
   listeners.forEach((l) => l());
 }
 
-function today() {
+export function today() {
   const d = new Date();
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
@@ -124,7 +143,7 @@ export const progressActions = {
       return {
         ...p,
         stars: p.stars + (gainedStar ? 1 : 0),
-        words: { ...p.words, [id]: { ...w, correct, wrong: w.wrong + (ok ? 0 : 1), status } },
+        words: { ...p.words, [id]: { ...w, correct, wrong: w.wrong + (ok ? 0 : 1), status, review: !ok } },
       };
     }, id);
   },
@@ -138,6 +157,40 @@ export const progressActions = {
         quizzes: { ...p.quizzes, [key]: { best: Math.max(prev.best, score), total, plays: prev.plays + 1 } },
       };
     });
+  },
+  /** Flashcard result for one translation direction (additive, keeps existing logic). */
+  flashcard(id: number, dir: Direction, ok: boolean) {
+    update((p) => {
+      const w = wp(p, id);
+      const d = w.dirs?.[dir] ?? { known: 0, again: 0 };
+      return {
+        ...p,
+        words: {
+          ...p.words,
+          [id]: { ...w, review: !ok, dirs: { ...(w.dirs ?? {}), [dir]: { known: d.known + (ok ? 1 : 0), again: d.again + (ok ? 0 : 1) } } },
+        },
+      };
+    }, id);
+  },
+  setLevel(level: 1 | 2) {
+    const cur = read();
+    if (cur.level !== level) write({ ...cur, level });
+  },
+  dismissLevel2Intro(goToLevel2: boolean) {
+    const cur = read();
+    write({ ...cur, seenLevel2Intro: true, level: goToLevel2 ? 2 : (cur.level ?? 1) });
+  },
+  setDailyPick(ids: number[]) {
+    const cur = read();
+    write({ ...cur, dailyPick: { date: today(), ids } });
+  },
+  /** Replace all progress with an imported backup (current data is saved first). */
+  restore(data: Progress) {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) window.localStorage.setItem(`${KEY}-backup-before-restore`, raw);
+    } catch {}
+    write({ ...EMPTY, ...data, version: 1 });
   },
   reset() {
     write({ ...EMPTY, days: [] });
@@ -213,4 +266,29 @@ export function lastDays(p: Progress, n = 7): { key: string; date: Date; count: 
     d.setDate(d.getDate() + 1);
   }
   return out;
+}
+
+
+/** A word needs review when it was marked "გასამეორებელია"/answered wrong, or is seen but not learned yet. */
+export function needsReview(p: Progress, id: number): boolean {
+  const w = p.words[id];
+  if (!w) return false;
+  return w.review === true || w.status === "learning";
+}
+
+/** Validates an imported backup file. Returns the progress or an error message. */
+export function parseBackup(text: string): Progress | string {
+  try {
+    const d = JSON.parse(text);
+    const data = d && d.app === "wordly-kids" ? d.progress : d;
+    if (!data || data.version !== 1 || typeof data.words !== "object" || typeof data.stars !== "number" || !Array.isArray(data.days))
+      return "ფაილი არ არის Wordly Kids-ის სარეზერვო ასლი";
+    return data as Progress;
+  } catch {
+    return "ფაილის წაკითხვა ვერ მოხერხდა";
+  }
+}
+
+export function backupJSON(p: Progress): string {
+  return JSON.stringify({ app: "wordly-kids", exportedAt: new Date().toISOString(), progress: p }, null, 2);
 }

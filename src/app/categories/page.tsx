@@ -1,15 +1,25 @@
 import CategoryGrid from "@/components/CategoryGrid";
 import { TopBar } from "@/components/ui";
+import { LEVELS } from "@/data/categories";
 
 export const metadata = { title: "თემები · Wordly Kids" };
 
 export default function CategoriesPage() {
   return (
     <main>
-      <TopBar back="/" title="სასწავლო სამყაროები" />
-      <div className="px-4">
-        <p className="font-ka mb-4 text-sm text-ink-soft">აირჩიე თემა და დაიწყე სწავლა. თითოეულში 10 სიტყვაა.</p>
-        <CategoryGrid />
+      <TopBar back="/" title="სასწავლო სამყაროები" sub="24 თემა · 240 სიტყვა" />
+      <div className="space-y-8 px-4">
+        {LEVELS.map(({ level, ka, sub }) => (
+          <section key={level} aria-labelledby={`level-${level}`}>
+            <div className="mb-3 flex items-baseline justify-between">
+              <h2 id={`level-${level}`} className="font-ka text-lg font-extrabold">
+                {ka}
+              </h2>
+              <span className="font-ka text-xs font-bold text-ink-soft">{sub} · 12 თემა</span>
+            </div>
+            <CategoryGrid level={level} />
+          </section>
+        ))}
       </div>
     </main>
   );
