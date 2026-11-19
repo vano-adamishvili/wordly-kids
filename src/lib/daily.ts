@@ -8,7 +8,7 @@ import { WORDS, type Word } from "./words";
 export const DAILY_SIZE = 5;
 
 /**
- * Wobble's Daily 5 – deterministic choice from the stored learning state:
+ * Wivi's Daily 5 – deterministic choice from the stored learning state:
  *   1. words that need review (marked "გასამეორებელია" / answered wrong first)
  *   2. new words – current level first, the category the child is working on first
  *   3. if everything is learned: the least-practised learned words

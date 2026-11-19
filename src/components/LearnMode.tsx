@@ -8,7 +8,7 @@ import { progressActions, statusOf, useProgress } from "@/lib/progress";
 import { playEnglish } from "@/lib/audio";
 import { categoryOf, type Word } from "@/lib/words";
 import VocabCard from "./VocabCard";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import { Bubble, Confetti, ProgressBar, TopBar } from "./ui";
 
 type Props = {
@@ -73,7 +73,7 @@ export default function LearnMode({ words, title, back, slug, flashcardsHref, qu
         <Confetti />
         <TopBar back={back} title={title} sub={slug ? "სწავლა" : `სწავლა · ${cat.ka}`} />
         <div className="animate-pop card mx-4 mt-4 flex flex-col items-center p-6 text-center">
-          <Wobble mood="excited" size={150} />
+          <Wivi mood="excited" size={150} />
           <p className="font-ka mt-2 text-2xl font-extrabold">ყოჩაღ! ყველა სიტყვა ნახე!</p>
           <p className="font-ka mt-1 text-ink-soft">
             ნასწავლი: <b className="text-ink">{learnedCount}/{words.length}</b>. ახლა ბარათებით ან ქვიზით შეამოწმე თავი.
@@ -140,7 +140,7 @@ export default function LearnMode({ words, title, back, slug, flashcardsHref, qu
         </div>
 
         <div className="mt-5 flex items-center gap-2">
-          <Wobble mood="encouraging" size={64} className="shrink-0" />
+          <Wivi mood="encouraging" size={64} className="shrink-0" />
           <Bubble className="flex-1 !py-2.5">
             <p className="font-ka text-sm font-semibold text-ink-soft">მოუსმინე, ხმამაღლა გაიმეორე და დააჭირე „ვისწავლე“.</p>
           </Bubble>

@@ -7,8 +7,9 @@ import { DAILY_GOAL, streak, todayCount, useProgress, statusOf } from "@/lib/pro
 import { WORDS, wordsForCategory } from "@/lib/words";
 import CategoryGrid, { CategoryArt } from "./CategoryGrid";
 import LevelSwitcher from "./LevelSwitcher";
-import { DailyFiveCard, Level2Intro, PracticeTools } from "./HomeExtras";
-import Wobble from "./Wobble";
+import { DailyFiveCard, ImportHint, Level2Intro, PracticeTools } from "./HomeExtras";
+import Wivi from "./Wivi";
+import WiviloLogo from "./brand/WiviloLogo";
 import WordArt from "./WordArt";
 import { Bubble, ProgressBar, Ring } from "./ui";
 
@@ -34,7 +35,7 @@ export default function HomeDashboard() {
   const nextIndex = Math.max(0, nextWords.indexOf(nextWord));
 
   const message = !hydrated || (learned === 0 && today === 0)
-    ? "გამარჯობა! მე ვობლი ვარ. ერთად ვისწავლოთ ინგლისური!"
+    ? "გამარჯობა! მე ვივი ვარ. ერთად ვისწავლოთ ინგლისური!"
     : goalDone
       ? "დღის მიზანი შესრულდა! შენ ნამდვილი ვარსკვლავი ხარ!"
       : today > 0
@@ -45,9 +46,9 @@ export default function HomeDashboard() {
     <main className="px-4 pt-[max(env(safe-area-inset-top),1rem)]">
       {/* Top bar: brand + compact stats */}
       <div className="flex items-center justify-between gap-2">
-        <p className="font-display text-2xl font-semibold tracking-tight text-ink">
-          Wordly<span className="text-lavender"> Kids</span>
-        </p>
+        <h1 className="m-0">
+          <WiviloLogo height={30} />
+        </h1>
         <div className="flex items-center gap-2" suppressHydrationWarning>
           <Chip icon={<Star size={18} className="fill-sun text-[#E5B400]" />} value={hydrated ? p.stars : 0} label="ვარსკვლავი" />
           <Chip icon={<Flame size={18} className="fill-coral text-coral-deep" />} value={hydrated ? days : 0} label="დღე ზედიზედ" />
@@ -64,7 +65,7 @@ export default function HomeDashboard() {
         </svg>
 
         <div className="relative flex items-end gap-2">
-          <Wobble mood={goalDone ? "excited" : "happy"} size={118} className="-mb-1 shrink-0" />
+          <Wivi mood={goalDone ? "excited" : "happy"} size={118} className="-mb-1 shrink-0" />
           <Bubble className="mb-8 flex-1">
             <p className="font-ka text-[0.95rem] font-bold leading-snug text-ink" suppressHydrationWarning>
               {message}
@@ -111,6 +112,8 @@ export default function HomeDashboard() {
           </div>
         </div>
       </section>
+
+      {hydrated && Object.keys(p.words).length === 0 && p.stars === 0 ? <ImportHint /> : null}
 
       {hydrated && !p.seenLevel2Intro ? <Level2Intro /> : null}
 
@@ -161,6 +164,12 @@ export default function HomeDashboard() {
         </div>
         <CategoryGrid level={level} />
       </section>
+
+      <footer className="mt-10 flex flex-col items-center gap-1 pb-4 text-center">
+        <WiviloLogo height={22} />
+        <p className="font-ka text-xs font-bold text-ink-soft">ისწავლე. ითამაშე. განვითარდი.</p>
+        <p className="font-display text-xs text-ink-soft">Learn. Play. Grow.</p>
+      </footer>
     </main>
   );
 }

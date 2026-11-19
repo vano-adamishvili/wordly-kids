@@ -2,7 +2,7 @@ import CategoryGrid from "@/components/CategoryGrid";
 import { TopBar } from "@/components/ui";
 import { LEVELS } from "@/data/categories";
 
-export const metadata = { title: "თემები · Wordly Kids" };
+export const metadata = { title: "თემები · Wivilo" };
 
 export default function CategoriesPage() {
   return (

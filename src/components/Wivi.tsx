@@ -1,35 +1,36 @@
 /**
- * Wobble — the Wordly Kids mascot.
- * An original, soft, jelly-like creature with a mint leaf sprout.
+ * Wivi — the Wivilo mascot.
+ * An original, soft, jelly-like lavender creature with a yellow leaf tuft.
+ * Moods: happy, excited, thinking, cheering, encouraging, sleepy, surprised.
  * Pure SVG (no gradients/ids) so many instances can live on one page.
  */
-export type WobbleMood = "happy" | "excited" | "thinking" | "encouraging";
+export type WiviMood = "happy" | "excited" | "thinking" | "cheering" | "encouraging" | "sleepy" | "surprised";
 
 const C = {
   body: "#8B6CE8",
   bodyDark: "#7556D6",
   belly: "#B7A3F6",
   ink: "#252442",
-  leaf: "#72D9B3",
-  leafDark: "#4FBF95",
+  leaf: "#FFD85A",
+  leafDark: "#E5B400",
   bud: "#FFD85A",
   cheek: "#FF8D85",
 };
 
-export default function Wobble({
+export default function Wivi({
   mood = "happy",
   size = 120,
   className = "",
   animate = true,
-  title = "Wobble",
+  title = "Wivi",
 }: {
-  mood?: WobbleMood;
+  mood?: WiviMood;
   size?: number;
   className?: string;
   animate?: boolean;
   title?: string;
 }) {
-  const anim = !animate ? "" : mood === "excited" ? "wobble-bounce" : "wobble-idle";
+  const anim = !animate ? "" : mood === "excited" || mood === "cheering" ? "wivi-bounce" : mood === "sleepy" ? "wivi-idle wivi-slow" : "wivi-idle";
   return (
     <svg
       viewBox="0 0 200 200"
@@ -83,6 +84,17 @@ export default function Wobble({
           <Spark x={164} y={18} s={0.6} />
         </g>
       ) : null}
+      {mood === "sleepy" ? (
+        <g fill="none" stroke={C.body} strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M150 50 h14 l-14 14 h14" />
+          <path d="M170 24 h10 l-10 10 h10" opacity="0.7" />
+        </g>
+      ) : null}
+      {mood === "cheering" ? (
+        <g fill={C.bud}>
+          <Spark x={176} y={40} s={0.7} />
+        </g>
+      ) : null}
       {mood === "thinking" ? (
         <g fill="#fff" stroke={C.body} strokeWidth="3">
           <circle cx="160" cy="58" r="5" />
@@ -112,7 +124,7 @@ function Eye({ cx, cy, look = [0, 2] }: { cx: number; cy: number; look?: [number
   );
 }
 
-function Face({ mood }: { mood: WobbleMood }) {
+function Face({ mood }: { mood: WiviMood }) {
   const ink = { stroke: C.ink, strokeWidth: 5, strokeLinecap: "round" as const, fill: "none" };
   switch (mood) {
     case "excited":
@@ -132,6 +144,37 @@ function Face({ mood }: { mood: WobbleMood }) {
           <Eye cx={80} cy={100} look={[4, -5]} />
           <Eye cx={120} cy={100} look={[4, -5]} />
           <ellipse cx="100" cy="130" rx="6" ry="7" fill={C.ink} />
+        </g>
+      );
+    case "cheering":
+      return (
+        <g>
+          <Eye cx={80} cy={100} />
+          <Eye cx={120} cy={100} />
+          <path d="M80 119 Q100 150 120 119Z" fill={C.ink} />
+          <path d="M89 133 Q100 143 111 133 Q100 128 89 133Z" fill={C.cheek} />
+        </g>
+      );
+    case "sleepy":
+      return (
+        <g>
+          <path d="M67 103 Q79 111 91 103" {...ink} />
+          <path d="M109 103 Q121 111 133 103" {...ink} />
+          <ellipse cx="100" cy="128" rx="5" ry="4" fill={C.ink} />
+        </g>
+      );
+    case "surprised":
+      return (
+        <g>
+          <path d="M66 78 Q78 70 90 76" {...ink} strokeWidth={4} />
+          <path d="M110 76 Q122 70 134 78" {...ink} strokeWidth={4} />
+          <ellipse cx="80" cy="101" rx="15" ry="18" fill="#fff" />
+          <ellipse cx="120" cy="101" rx="15" ry="18" fill="#fff" />
+          <circle cx="80" cy="102" r="7" fill={C.ink} />
+          <circle cx="120" cy="102" r="7" fill={C.ink} />
+          <circle cx="82" cy="99" r="2.4" fill="#fff" />
+          <circle cx="122" cy="99" r="2.4" fill="#fff" />
+          <ellipse cx="100" cy="133" rx="7" ry="9" fill={C.ink} />
         </g>
       );
     case "encouraging":
@@ -155,16 +198,24 @@ function Face({ mood }: { mood: WobbleMood }) {
   }
 }
 
-function Arms({ mood }: { mood: WobbleMood }) {
+function Arms({ mood }: { mood: WiviMood }) {
   const arm = (x: number, y: number, rot: number) => (
     <rect x={x - 9} y={y - 18} width="18" height="36" rx="9" fill={C.bodyDark} transform={`rotate(${rot} ${x} ${y})`} />
   );
   switch (mood) {
     case "excited":
+    case "cheering":
       return (
         <g>
           {arm(36, 78, -35)}
           {arm(164, 78, 35)}
+        </g>
+      );
+    case "surprised":
+      return (
+        <g>
+          {arm(28, 104, -70)}
+          {arm(172, 104, 70)}
         </g>
       );
     case "thinking":

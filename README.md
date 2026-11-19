@@ -1,4 +1,6 @@
-# Wordly Kids 🦉
+# Wivilo
+
+**ისწავლე. ითამაშე. განვითარდი. · Learn. Play. Grow.**
 
 ინტერაქტიული ინგლისური ლექსიკა 6–10 წლის ქართულენოვანი ბავშვებისთვის — **240 სიტყვა, 24 თემა, 2 დონე**.
 Mobile-first, app-like demo built with **Next.js 16 (App Router) · TypeScript · Tailwind CSS 4**.
@@ -24,7 +26,8 @@ npm run build && npm start
 
 ## ბრენდი და დიზაინ-სისტემა
 
-- **Wobble** — აპის მასკოტი (`src/components/Wobble.tsx`), ორიგინალური SVG პერსონაჟი 4 ემოციით: `happy`, `excited`, `thinking`, `encouraging`. ანიმაცია ითვალისწინებს `prefers-reduced-motion`-ს.
+- **Wivi** — აპის მასკოტი (`src/components/Wivi.tsx`), ორიგინალური SVG პერსონაჟი ყვითელი ფოთლის ბიბინით; ემოციები: `happy`, `excited`, `thinking`, `cheering`, `encouraging`, `sleepy`, `surprised`. ანიმაცია ითვალისწინებს `prefers-reduced-motion`-ს.
+- **ლოგო:** `public/brand/` (wivilo-logo.svg/png, wivilo-wordmark.svg, wivilo-mark.svg, wivilo-app-icon.svg, icon-192/512.png, wivilo-og.png); favicon/apple/OG — `src/app/`. React: `src/components/brand/WiviloLogo.tsx`. ხელახლა აწყობა: `bash scripts/brand/build.sh` (wordmark = Fredoka, OFL, ვექტორად).
 - **ფერები და შრიფტები:** `src/app/globals.css` (`@theme` ტოკენები: lavender, sun, mint, coral, sky, cream, ink). შრიფტები: Fredoka (ინგლისური სათაურები), Nunito, Noto Sans Georgian.
 - **თემების ფერები და ილუსტრაციები:** `src/data/categories.ts`.
 
@@ -64,3 +67,13 @@ src/components/                UI (VocabCard, FlashcardMode, QuizGame, …)
 src/lib/                       words, progress (LocalStorage store), audio
 src/data/                      categories, emoji fallbacks, generated JSON
 ```
+
+## დომენი: wivilo.ge (+ wivilo.app)
+
+1. Vercel → Project → **Settings → Domains** → დაამატე `wivilo.ge` (Production) და `www.wivilo.ge`.
+2. დაამატე `wivilo.app` და აირჩიე **Redirect to `wivilo.ge`** (308).
+3. დომენის რეგისტრატორთან ჩაწერე Vercel-ის მიერ ნაჩვენები DNS ჩანაწერები (`A` / `CNAME`). HTTPS Vercel-ში ავტომატურია.
+4. Settings → **Environment Variables**: `NEXT_PUBLIC_SITE_URL = https://wivilo.ge` (Production) → Redeploy. ამით canonical და სოციალური გაზიარების ბმულები wivilo.ge-ზე გადავა.
+5. **პროგრესის გადატანა:** LocalStorage მისამართზეა მიბმული. ძველ მისამართზე → პროგრესი → „პროგრესის ჩამოტვირთვა“; wivilo.ge-ზე → პროგრესი → „ფაილიდან აღდგენა“. ძველი `*.vercel.app` მისამართი ღია დატოვე, სანამ აღდგენა არ შემოწმდება.
+
+ტექნიკური იდენტიფიკატორები (LocalStorage-ის გასაღები `wordly-kids-progress-v1`, რეპოზიტორიის სახელი) განზრახ არ შეცვლილა, რომ პროგრესი არ დაიკარგოს.

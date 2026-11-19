@@ -6,7 +6,7 @@ import { RotateCcw, Star } from "lucide-react";
 import { playEnglish } from "@/lib/audio";
 import { progressActions } from "@/lib/progress";
 import { shuffle, WORDS, type Word } from "@/lib/words";
-import Wobble, { type WobbleMood } from "./Wobble";
+import Wivi, { type WiviMood } from "./Wivi";
 import WordArt from "./WordArt";
 import { Bubble, Confetti, ProgressBar, TopBar } from "./ui";
 
@@ -29,7 +29,7 @@ export default function OppositesGame() {
   const [matched, setMatched] = useState<number[]>([]); // left ids
   const [wrong, setWrong] = useState<number | null>(null); // right id flashing
   const [missed, setMissed] = useState<number[]>([]); // left ids with a mistake
-  const [mood, setMood] = useState<WobbleMood>("thinking");
+  const [mood, setMood] = useState<WiviMood>("thinking");
   const [msg, setMsg] = useState("შეეხე მარცხნივ სიტყვას, მერე — მის საპირისპიროს მარჯვნივ.");
   const [saved, setSaved] = useState(false);
 
@@ -102,7 +102,7 @@ export default function OppositesGame() {
         <Confetti />
         <TopBar back="/" title="საპირისპიროები" sub="შედეგი" />
         <div className="animate-pop card mx-4 mt-2 flex flex-col items-center p-6 text-center lg:mx-auto lg:max-w-xl">
-          <Wobble mood="excited" size={140} />
+          <Wivi mood="excited" size={140} />
           <p className="font-ka mt-1 text-2xl font-extrabold">ყველა წყვილი იპოვე!</p>
           <p className="font-ka mt-1 text-ink-soft">
             პირველივე ცდაზე: <b className="font-display text-lg text-ink">{firstTry}</b>/{PAIRS.length}
@@ -170,7 +170,7 @@ export default function OppositesGame() {
       <div className="px-4">
         <ProgressBar value={matched.length} max={PAIRS.length} color="var(--color-lavender)" className="mb-4" />
         <div className="flex items-center gap-2">
-          <Wobble mood={mood} size={64} className="shrink-0" />
+          <Wivi mood={mood} size={64} className="shrink-0" />
           <Bubble className="flex-1 !py-2.5">
             <p className="font-ka text-sm font-bold" aria-live="polite">
               {msg}

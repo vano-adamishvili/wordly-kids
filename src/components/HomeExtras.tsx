@@ -6,11 +6,11 @@ import { categoryVars } from "@/data/categories";
 import { useDailyFive } from "@/lib/daily";
 import { progressActions } from "@/lib/progress";
 import { categoryOf } from "@/lib/words";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import WordArt from "./WordArt";
 import { Art, Bubble } from "./ui";
 
-/** Wobble introduces Level 2 once. */
+/** Wivi introduces Level 2 once. */
 export function Level2Intro() {
   return (
     <section className="animate-rise relative mt-5 overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#FFF5D1] to-[#E2F7EF] p-5">
@@ -19,7 +19,7 @@ export function Level2Intro() {
         <Art name="sparkles" className="h-7 w-7" />
       </div>
       <div className="flex items-end gap-2">
-        <Wobble mood="excited" size={96} className="-mb-1 shrink-0" />
+        <Wivi mood="excited" size={96} className="-mb-1 shrink-0" />
         <Bubble className="mb-5 flex-1">
           <p className="font-ka text-[0.95rem] font-extrabold leading-snug">ახალი სამყაროები გაიხსნა!</p>
           <p className="font-ka mt-0.5 text-sm text-ink-soft">დონე 2: 120 ახალი სიტყვა, 12 ახალი თემა — ცხოველები, კოსმოსი, სპორტი და სხვა.</p>
@@ -43,7 +43,7 @@ export function Level2Intro() {
   );
 }
 
-/** Wobble's Daily 5 – today's five words. */
+/** Wivi's Daily 5 – today's five words. */
 export function DailyFiveCard() {
   const { words, doneIds, ready } = useDailyFive();
   const done = doneIds.length;
@@ -52,7 +52,7 @@ export function DailyFiveCard() {
     <section className="mt-5">
       <div className="card overflow-hidden">
         <div className="flex items-center gap-3 p-4 pb-3">
-          <Wobble mood={complete ? "excited" : "encouraging"} size={50} className="shrink-0" />
+          <Wivi mood={complete ? "excited" : "encouraging"} size={50} className="shrink-0" />
           <div className="min-w-0 flex-1">
             <p className="font-ka text-base font-extrabold leading-tight">დღის 5 სიტყვა</p>
             <p className="font-ka text-xs font-semibold text-ink-soft" suppressHydrationWarning>
@@ -130,6 +130,24 @@ export function PracticeTools() {
         <Shuffle size={20} strokeWidth={2.6} />
         <span className="font-ka text-sm font-extrabold">შერეული ქვიზი</span>
         <Sparkles size={16} />
+      </Link>
+    </section>
+  );
+}
+
+/** Shown only when this browser has no progress yet (e.g. after moving to wivilo.ge). */
+export function ImportHint() {
+  return (
+    <section className="mt-5 rounded-[1.5rem] border-2 border-dashed border-lavender/40 bg-white p-4">
+      <p className="font-ka text-sm font-extrabold">მშობლისთვის: პროგრესი სხვა მისამართზე გაქვს?</p>
+      <p className="font-ka mt-1 text-xs text-ink-soft">
+        თუ ბავშვი ადრე სხვა მისამართზე (მაგ. wordly-kids-indol.vercel.app) სწავლობდა, იქ ჩამოტვირთე პროგრესის ფაილი და აქ აღადგინე.
+      </p>
+      <Link
+        href="/progress#backup"
+        className="press focus-ring font-ka mt-3 inline-flex min-h-11 items-center gap-1 rounded-xl bg-lavender-soft px-4 text-sm font-extrabold text-lavender-deep [--edge:#d9cffa]"
+      >
+        პროგრესის აღდგენა <ChevronRight size={18} strokeWidth={3} />
       </Link>
     </section>
   );

@@ -22,7 +22,8 @@ export default function BackupPanel() {
   const [pending, setPending] = useState<Progress | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
 
-  const stamp = new Date().toISOString().slice(0, 10);
+  const now = new Date();
+  const stamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   const hasOld = (() => {
     try {
       return typeof window !== "undefined" && window.localStorage.getItem(BACKUP_KEY) !== null;
@@ -32,18 +33,18 @@ export default function BackupPanel() {
   })();
 
   return (
-    <section className="card p-5 lg:col-span-2">
+    <section id="backup" className="card scroll-mt-24 p-5 lg:col-span-2">
       <div className="flex items-center gap-2">
         <ShieldCheck size={22} className="text-mint-deep" />
         <p className="font-ka font-extrabold">სარეზერვო ასლი (მშობლისთვის)</p>
       </div>
       <p className="font-ka mt-1 text-xs text-ink-soft">
-        პროგრესი ამ ბრაუზერში ინახება. ჩამოტვირთე ფაილი, რომ შეგეძლოს აღდგენა ან სხვა მოწყობილობაზე გადატანა.
+        პროგრესი ინახება ამ ბრაუზერში და ამ მისამართზე. ახალ მისამართზე (მაგ. wivilo.ge) ან სხვა მოწყობილობაზე გადასატანად ჩამოტვირთე ფაილი აქ და იქ აღადგინე „ფაილიდან აღდგენით“.
       </p>
       <div className="mt-3 grid gap-2 sm:grid-cols-2">
         <button
           onClick={() => {
-            download(`wordly-kids-progress-${stamp}.json`, backupJSON(p));
+            download(`wivilo-progress-${stamp}.json`, backupJSON(p));
             setMsg("ფაილი ჩამოიტვირთა.");
           }}
           className="press focus-ring font-ka flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-lavender text-sm font-extrabold text-white [--edge:#6a4fd0]"
@@ -79,7 +80,7 @@ export default function BackupPanel() {
           onClick={() => {
             try {
               const raw = window.localStorage.getItem(BACKUP_KEY);
-              if (raw) download(`wordly-kids-progress-before-level2.json`, backupJSON(JSON.parse(raw)));
+              if (raw) download(`wivilo-progress-before-level2.json`, backupJSON(JSON.parse(raw)));
             } catch {}
           }}
           className="focus-ring font-ka mt-2 min-h-10 text-xs font-bold text-lavender-deep underline"
@@ -90,14 +91,15 @@ export default function BackupPanel() {
       {pending ? (
         <div className="mt-3 rounded-2xl bg-sun-soft p-3">
           <p className="font-ka text-sm font-bold">
-            აღვადგინოთ ფაილიდან? ({Object.keys(pending.words).length} სიტყვა, {pending.stars} ვარსკვლავი). ამჟამინდელი პროგრესიც შეინახება ასლად.
+            აღვადგინოთ ფაილიდან? ფაილში: {Object.values(pending.words).filter((w) => w.status === "learned").length} ნასწავლი სიტყვა, {pending.stars} ვარსკვლავი,{" "}
+            {Object.keys(pending.quizzes ?? {}).length} ქვიზის შედეგი. ამჟამინდელი პროგრესიც შეინახება ასლად.
           </p>
           <div className="mt-2 flex gap-2">
             <button
               onClick={() => {
                 progressActions.restore(pending);
                 setPending(null);
-                setMsg("პროგრესი აღდგა.");
+                setMsg("პროგრესი აღდგა და შენახულია ამ ბრაუზერში.");
               }}
               className="press focus-ring font-ka min-h-11 rounded-xl bg-lavender px-4 text-sm font-extrabold text-white [--edge:#6a4fd0]"
             >

@@ -8,7 +8,7 @@ import { playEnglish } from "@/lib/audio";
 import { progressActions } from "@/lib/progress";
 import { categoryOf, shuffle, type Word } from "@/lib/words";
 import WordArt from "./WordArt";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import { Confetti, ProgressBar, SpeakButton, TopBar } from "./ui";
 
 type Direction = "en-ka" | "ka-en";
@@ -102,7 +102,7 @@ export default function FlashcardMode({ words: all, title, sub = "ბარა�
       <main>
         <TopBar back={back} title={title} sub={sub} />
         <div className="card mx-4 mt-4 flex flex-col items-center p-6 text-center">
-          <Wobble mood="thinking" size={110} />
+          <Wivi mood="thinking" size={110} />
           <p className="font-ka mt-2 font-bold text-ink-soft">აქ ჯერ სიტყვები არ არის.</p>
         </div>
       </main>
@@ -117,7 +117,7 @@ export default function FlashcardMode({ words: all, title, sub = "ბარა�
         {firstTry >= all.length * 0.6 ? <Confetti /> : null}
         <TopBar back={back} title={title} sub={sub} />
         <div className="animate-pop card mx-4 mt-4 flex flex-col items-center p-6 text-center">
-          <Wobble mood={perfect ? "excited" : "encouraging"} size={140} />
+          <Wivi mood={perfect ? "excited" : "encouraging"} size={140} />
           <p className="font-ka mt-2 text-2xl font-extrabold">{perfect ? "ყველა იცოდი!" : "ბარათები დასრულდა!"}</p>
           <p className="font-ka mt-1 text-ink-soft">
             პირველივე ცდაზე იცოდი: <b className="font-display text-lg text-ink">{firstTry}</b>/{all.length}

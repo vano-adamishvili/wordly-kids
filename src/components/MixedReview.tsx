@@ -6,7 +6,7 @@ import { ChevronRight, Layers } from "lucide-react";
 import { needsReview, useProgress, type Progress } from "@/lib/progress";
 import { WORDS, type Word } from "@/lib/words";
 import FlashcardMode from "./FlashcardMode";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import { Art, Bubble, TopBar } from "./ui";
 
 export type ReviewScope = "all" | "1" | "2";
@@ -38,7 +38,7 @@ export function ReviewSetup() {
       <TopBar back="/" title="შერეული გამეორება" sub="ჯერ გასამეორებელი სიტყვები" />
       <div className="px-4 lg:mx-auto lg:max-w-xl">
         <div className="flex items-end gap-2">
-          <Wobble mood="thinking" size={92} className="-mb-1 shrink-0" />
+          <Wivi mood="thinking" size={92} className="-mb-1 shrink-0" />
           <Bubble className="mb-5 flex-1">
             <p className="font-ka text-[0.95rem] font-bold leading-snug">საიდან გავიმეოროთ? ბარათებზე მიმართულებასაც აირჩევ: EN → ქა ან ქა → EN.</p>
           </Bubble>

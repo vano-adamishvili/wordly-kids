@@ -226,7 +226,7 @@ export function StatusDot({ status }: { status: "new" | "learning" | "learned" }
   );
 }
 
-/** Speech bubble used next to Wobble. */
+/** Speech bubble used next to Wivi. */
 export function Bubble({ children, className = "", tail = "left" }: { children: ReactNode; className?: string; tail?: "left" | "bottom" }) {
   return (
     <div className={`relative rounded-3xl bg-white px-4 py-3 shadow-[var(--shadow-soft)] ${className}`}>

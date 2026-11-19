@@ -31,9 +31,9 @@ export type Progress = {
   daily?: Record<string, number[]>;
   /** v1.2 (optional): selected level on the dashboard */
   level?: 1 | 2;
-  /** v1.2 (optional): Wobble's Level 2 intro was shown */
+  /** v1.2 (optional): Wivi's Level 2 intro was shown */
   seenLevel2Intro?: boolean;
-  /** v1.2 (optional): Wobble's Daily 5 – persisted per day */
+  /** v1.2 (optional): Wivi's Daily 5 – persisted per day */
   dailyPick?: { date: string; ids: number[] };
 };
 
@@ -276,19 +276,41 @@ export function needsReview(p: Progress, id: number): boolean {
   return w.review === true || w.status === "learning";
 }
 
-/** Validates an imported backup file. Returns the progress or an error message. */
+/** Backup files: written as "wivilo"; files from the old "wordly-kids" name are still accepted. */
+const BACKUP_APPS = ["wivilo", "wordly-kids"];
+export const BACKUP_FORMAT = 1;
+const STATUSES = ["new", "learning", "learned"];
+const isNum = (v: unknown) => typeof v === "number" && Number.isFinite(v) && v >= 0;
+
+/** Validates an imported backup file. Returns the progress or an error message (Georgian). */
 export function parseBackup(text: string): Progress | string {
+  let d: unknown;
   try {
-    const d = JSON.parse(text);
-    const data = d && d.app === "wordly-kids" ? d.progress : d;
-    if (!data || data.version !== 1 || typeof data.words !== "object" || typeof data.stars !== "number" || !Array.isArray(data.days))
-      return "ფაილი არ არის Wordly Kids-ის სარეზერვო ასლი";
-    return data as Progress;
+    d = JSON.parse(text);
   } catch {
-    return "ფაილის წაკითხვა ვერ მოხერხდა";
+    return "ფაილის წაკითხვა ვერ მოხერხდა (არასწორი JSON)";
   }
+  const wrap = d as { app?: string; format?: number; progress?: unknown };
+  if (wrap && typeof wrap === "object" && "app" in wrap) {
+    if (!BACKUP_APPS.includes(String(wrap.app))) return "ფაილი არ არის Wivilo-ს სარეზერვო ასლი";
+    if (wrap.format !== undefined && wrap.format > BACKUP_FORMAT) return "ეს ასლი უფრო ახალი ვერსიიდანაა — ჯერ საიტი განაახლე";
+  }
+  const data = (wrap && typeof wrap === "object" && "progress" in wrap ? wrap.progress : d) as Progress;
+  if (!data || typeof data !== "object") return "ფაილი არ არის Wivilo-ს სარეზერვო ასლი";
+  if (data.version !== 1) return "სარეზერვო ასლის ვერსია უცნობია";
+  if (!data.words || typeof data.words !== "object" || Array.isArray(data.words)) return "ფაილში სიტყვების პროგრესი არ არის";
+  for (const [id, w] of Object.entries(data.words)) {
+    const n = Number(id);
+    if (!Number.isInteger(n) || n < 1 || n > 10000) return `არასწორი სიტყვის ID: ${id}`;
+    if (!w || !STATUSES.includes(w.status) || !isNum(w.seen) || !isNum(w.correct) || !isNum(w.wrong)) return `სიტყვა ${id}: მონაცემები დაზიანებულია`;
+  }
+  if (!isNum(data.stars)) return "ვარსკვლავების რაოდენობა დაზიანებულია";
+  if (!Array.isArray(data.days) || data.days.some((x) => typeof x !== "string")) return "აქტიური დღეების სია დაზიანებულია";
+  if (data.quizzes && (typeof data.quizzes !== "object" || Object.values(data.quizzes).some((q) => !q || !isNum(q.best) || !isNum(q.total) || !isNum(q.plays))))
+    return "ქვიზების ისტორია დაზიანებულია";
+  return { ...data, quizzes: data.quizzes ?? {} };
 }
 
 export function backupJSON(p: Progress): string {
-  return JSON.stringify({ app: "wordly-kids", exportedAt: new Date().toISOString(), progress: p }, null, 2);
+  return JSON.stringify({ app: "wivilo", format: BACKUP_FORMAT, exportedAt: new Date().toISOString(), progress: p }, null, 2);
 }

@@ -9,7 +9,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/category/[slug]">) {
   const { slug } = await params;
   const c = categoryBySlug(slug);
-  return { title: c ? `${c.ka} · Wordly Kids` : "Wordly Kids" };
+  return { title: c ? `${c.ka} · Wivilo` : "Wivilo" };
 }
 
 export default async function CategoryPage({ params }: PageProps<"/category/[slug]">) {

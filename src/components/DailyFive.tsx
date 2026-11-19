@@ -8,7 +8,7 @@ import { needsReview, statusOf, useProgress } from "@/lib/progress";
 import { categoryOf } from "@/lib/words";
 import FlashcardMode from "./FlashcardMode";
 import LearnMode from "./LearnMode";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import WordArt from "./WordArt";
 import { Bubble, SpeakButton, TopBar } from "./ui";
 
@@ -18,10 +18,10 @@ export function DailyOverview() {
   const complete = ready && words.length > 0 && doneIds.length >= words.length;
   return (
     <main>
-      <TopBar back="/" title="ვობლის დღის 5 სიტყვა" sub="ყოველდღე ახალი ხუთეული" />
+      <TopBar back="/" title="ვივის დღის 5 სიტყვა" sub="ყოველდღე ახალი ხუთეული" />
       <div className="px-4 lg:mx-auto lg:max-w-xl">
         <div className="flex items-end gap-2">
-          <Wobble mood={complete ? "excited" : "happy"} size={96} className="-mb-1 shrink-0" />
+          <Wivi mood={complete ? "excited" : "happy"} size={96} className="-mb-1 shrink-0" />
           <Bubble className="mb-5 flex-1">
             <p className="font-ka text-[0.95rem] font-bold leading-snug">
               {complete

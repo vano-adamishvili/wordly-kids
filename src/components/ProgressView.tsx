@@ -8,7 +8,7 @@ import { DAILY_GOAL, lastDays, longestStreak, needsReview, progressActions, stat
 import BackupPanel from "./BackupPanel";
 import { WORDS, wordsForCategory, wordsForLevel } from "@/lib/words";
 import { CategoryArt } from "./CategoryGrid";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import WordArt from "./WordArt";
 import { Art, Bubble, ProgressBar, Ring, TopBar } from "./ui";
 
@@ -69,10 +69,10 @@ export default function ProgressView() {
     <main>
       <TopBar back="/" title="ჩემი პროგრესი" />
       <div className="space-y-5 px-4 lg:grid lg:grid-cols-2 lg:gap-5 lg:space-y-0">
-        {/* Wobble + message */}
+        {/* Wivi + message */}
         <section className="relative overflow-hidden rounded-[2rem] bg-lavender-soft p-5 lg:col-span-2">
           <div className="flex items-end gap-2">
-            <Wobble mood={counts.learned > 0 ? "excited" : "encouraging"} size={104} className="-mb-1 shrink-0" />
+            <Wivi mood={counts.learned > 0 ? "excited" : "encouraging"} size={104} className="-mb-1 shrink-0" />
             <Bubble className="mb-6 flex-1">
               <p className="font-ka text-[0.95rem] font-bold leading-snug">{message}</p>
             </Bubble>

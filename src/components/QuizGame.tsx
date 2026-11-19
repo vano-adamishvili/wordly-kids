@@ -8,7 +8,7 @@ import { artKey, shuffle, WORDS, wordsForCategory, type Word } from "@/lib/words
 import WordArt from "./WordArt";
 import { categoryBySlug, categoryVars } from "@/data/categories";
 import { ArrowRight, Check, RotateCcw, Star, Volume2, X } from "lucide-react";
-import Wobble from "./Wobble";
+import Wivi from "./Wivi";
 import { Bubble, Confetti, ProgressBar, SpeakButton, TopBar } from "./ui";
 
 type QType = "pic-en" | "en-ka" | "ka-en" | "listen-pic";
@@ -112,7 +112,7 @@ export default function QuizGame({
       <main style={vars}>
         <TopBar back={back} title={title} sub="ქვიზი" />
         <div className="mt-16 flex flex-col items-center gap-3">
-          <Wobble mood="thinking" size={110} />
+          <Wivi mood="thinking" size={110} />
           <p className="font-ka text-ink-soft">ვამზადებ კითხვებს…</p>
         </div>
       </main>
@@ -136,7 +136,7 @@ export default function QuizGame({
         {pct >= 0.7 ? <Confetti /> : null}
         <TopBar back={back} title={title} sub="შედეგი" />
         <div className="animate-pop card mx-4 mt-2 flex flex-col items-center p-6 text-center">
-          <Wobble mood={pct >= 0.7 ? "excited" : "encouraging"} size={140} />
+          <Wivi mood={pct >= 0.7 ? "excited" : "encouraging"} size={140} />
           <p className="font-ka mt-1 text-2xl font-extrabold">{headline}</p>
           <p className="font-display mt-1 text-5xl font-semibold text-[var(--deep)]">
             {score}
@@ -250,7 +250,7 @@ export default function QuizGame({
         <section key={qi} className="animate-rise card relative overflow-hidden px-5 pb-6 pt-4 text-center">
           <div className="absolute inset-x-0 top-0 h-2 bg-[var(--accent)]" aria-hidden />
           <div className="flex items-center gap-2 text-left">
-            <Wobble mood={!answered ? "thinking" : correct ? "excited" : "encouraging"} size={56} className="shrink-0" />
+            <Wivi mood={!answered ? "thinking" : correct ? "excited" : "encouraging"} size={56} className="shrink-0" />
             <p className="font-ka flex-1 text-[0.95rem] font-bold text-ink-soft">{PROMPTS[q!.type]}</p>
           </div>
           <div className="mt-3 flex min-h-40 flex-col items-center justify-center gap-3">

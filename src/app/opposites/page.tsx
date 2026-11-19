@@ -1,6 +1,6 @@
 import OppositesGame from "@/components/OppositesGame";
 
-export const metadata = { title: "საპირისპიროები · Wordly Kids" };
+export const metadata = { title: "საპირისპიროები · Wivilo" };
 
 export default function OppositesPage() {
   return <OppositesGame />;
