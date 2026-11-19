@@ -97,9 +97,11 @@ export default function QuizGame({
 
   const q = questions?.[qi];
 
-  // Auto-play the word for listening questions
+  // Auto-play the English word whenever it is part of the question
+  // (listening questions + "what does this English word mean?").
+  // Answer options are never read aloud, so the answer isn't given away.
   useEffect(() => {
-    if (q?.type === "listen-pic") {
+    if (q?.type === "listen-pic" || q?.type === "en-ka") {
       const t = setTimeout(() => playEnglish(q.word.audioEn, q.word.en), 350);
       return () => clearTimeout(t);
     }
@@ -192,11 +194,12 @@ export default function QuizGame({
     if (answered || !q) return;
     setPicked(w.id);
     const ok = w.id === q.word.id;
+    // after every answer, say the correct English word once more
+    playEnglish(q.word.audioEn, q.word.en);
     progressActions.answer(q.word.id, ok);
     if (ok) {
       setScore((s) => s + 1);
       setPraise(PRAISE[(qi * 3 + score) % PRAISE.length]);
-      if (q.type !== "listen-pic") playEnglish(q.word.audioEn, q.word.en);
     } else {
       setPraise(SUPPORT[qi % SUPPORT.length]);
       setMistakes((m) => (m.some((x) => x.id === q.word.id) ? m : [...m, q.word]));
