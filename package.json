@@ -6,9 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "data": "node scripts/csv-to-json.mjs",
+    "assets": "node scripts/asset-manifest.mjs",
+    "predev": "node scripts/asset-manifest.mjs",
+    "prebuild": "node scripts/asset-manifest.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/noto-sans-georgian": "^5.3.0",
+    "@fontsource-variable/nunito": "^5.3.0",
     "next": "16.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0"

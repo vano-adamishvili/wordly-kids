@@ -1,26 +1,92 @@
 @import "tailwindcss";
+@import "@fontsource-variable/nunito";
+@import "@fontsource-variable/noto-sans-georgian";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: "Nunito Variable", "Noto Sans Georgian Variable", ui-rounded, system-ui, sans-serif;
+  --font-ka: "Noto Sans Georgian Variable", "Nunito Variable", system-ui, sans-serif;
+  --color-ink: #1e1b4b;
+  --color-brand: #6d4aff;
+  --color-brand-dark: #5332e6;
+  --color-sun: #ffe066;
+  --color-sky-soft: #dff3fb;
+  --color-cream: #fffaf0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at 10% 0%, #efe9ff 0, transparent 40%),
+    radial-gradient(circle at 100% 30%, #fff3c9 0, transparent 35%), #fbf9ff;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* 3D flip card */
+.flip-scene { perspective: 1200px; }
+.flip-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
+}
+.flip-inner.is-flipped { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.animate-pop { animation: pop 0.45s ease-out both; }
+
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-5px); }
+  80% { transform: translateX(5px); }
+}
+.animate-wiggle { animation: wiggle 0.45s ease-in-out; }
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-floaty { animation: floaty 3s ease-in-out infinite; }
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-20vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0.8; }
+}
+.confetti-piece {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 14px;
+  border-radius: 3px;
+  animation: confetti-fall linear forwards;
+  pointer-events: none;
+  z-index: 60;
+}
+
+.btn-3d {
+  box-shadow: 0 5px 0 0 rgb(0 0 0 / 0.15);
+  transition: transform 0.08s, box-shadow 0.08s;
+}
+.btn-3d:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 0 rgb(0 0 0 / 0.15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; }
+  .animate-floaty, .animate-pop, .animate-wiggle { animation: none; }
 }

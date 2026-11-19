@@ -1,0 +1,121 @@
+﻿ID,Category,English,ქართული,English sentence,Sentence ქართული,English audio,Parent audio,Image file,Learning status
+1,Colors,Yellow,ყვითელი,I have a yellow bike.,მე ყვითელი ველოსიპედი მაქვს.,audio/en/001.mp3,audio/parents/001.mp3,images/001.webp,New
+2,Colors,Red,წითელი,My ball is red.,ჩემი ბურთი წითელია.,audio/en/002.mp3,audio/parents/002.mp3,images/002.webp,New
+3,Colors,Blue,ლურჯი,The sky is blue.,ცა ლურჯია.,audio/en/003.mp3,audio/parents/003.mp3,images/003.webp,New
+4,Colors,Green,მწვანე,The frog is green.,ბაყაყი მწვანეა.,audio/en/004.mp3,audio/parents/004.mp3,images/004.webp,New
+5,Colors,Pink,ვარდისფერი,I have a pink bag.,მე ვარდისფერი ჩანთა მაქვს.,audio/en/005.mp3,audio/parents/005.mp3,images/005.webp,New
+6,Colors,Orange,ნარინჯისფერი,My hat is orange.,ჩემი ქუდი ნარინჯისფერია.,audio/en/006.mp3,audio/parents/006.mp3,images/006.webp,New
+7,Colors,Purple,იისფერი,This flower is purple.,ეს ყვავილი იისფერია.,audio/en/007.mp3,audio/parents/007.mp3,images/007.webp,New
+8,Colors,Brown,ყავისფერი,The bear is brown.,დათვი ყავისფერია.,audio/en/008.mp3,audio/parents/008.mp3,images/008.webp,New
+9,Colors,Black,შავი,My shoes are black.,ჩემი ფეხსაცმელი შავია.,audio/en/009.mp3,audio/parents/009.mp3,images/009.webp,New
+10,Colors,White,თეთრი,The snow is white.,თოვლი თეთრია.,audio/en/010.mp3,audio/parents/010.mp3,images/010.webp,New
+11,Food & Drinks,Apple,ვაშლი,I eat an apple.,მე ვაშლს ვჭამ.,audio/en/011.mp3,audio/parents/011.mp3,images/011.webp,New
+12,Food & Drinks,Banana,ბანანი,This banana is yellow.,ეს ბანანი ყვითელია.,audio/en/012.mp3,audio/parents/012.mp3,images/012.webp,New
+13,Food & Drinks,Bread,პური,I like bread.,მე პური მიყვარს.,audio/en/013.mp3,audio/parents/013.mp3,images/013.webp,New
+14,Food & Drinks,Milk,რძე,I drink milk.,მე რძეს ვსვამ.,audio/en/014.mp3,audio/parents/014.mp3,images/014.webp,New
+15,Food & Drinks,Cheese,ყველი,I like cheese.,მე ყველი მიყვარს.,audio/en/015.mp3,audio/parents/015.mp3,images/015.webp,New
+16,Food & Drinks,Egg,კვერცხი,I eat an egg.,მე კვერცხს ვჭამ.,audio/en/016.mp3,audio/parents/016.mp3,images/016.webp,New
+17,Food & Drinks,Water,წყალი,I drink water.,მე წყალს ვსვამ.,audio/en/017.mp3,audio/parents/017.mp3,images/017.webp,New
+18,Food & Drinks,Carrot,სტაფილო,The rabbit eats a carrot.,კურდღელი სტაფილოს ჭამს.,audio/en/018.mp3,audio/parents/018.mp3,images/018.webp,New
+19,Food & Drinks,Rice,ბრინჯი,I eat rice for lunch.,მე სადილად ბრინჯს ვჭამ.,audio/en/019.mp3,audio/parents/019.mp3,images/019.webp,New
+20,Food & Drinks,Juice,წვენი,I like orange juice.,მე ფორთოხლის წვენი მიყვარს.,audio/en/020.mp3,audio/parents/020.mp3,images/020.webp,New
+21,Animals,Dog,ძაღლი,My dog can run.,ჩემს ძაღლს სირბილი შეუძლია.,audio/en/021.mp3,audio/parents/021.mp3,images/021.webp,New
+22,Animals,Cat,კატა,The cat is sleeping.,კატას სძინავს.,audio/en/022.mp3,audio/parents/022.mp3,images/022.webp,New
+23,Animals,Bird,ჩიტი,The bird can fly.,ჩიტს ფრენა შეუძლია.,audio/en/023.mp3,audio/parents/023.mp3,images/023.webp,New
+24,Animals,Fish,თევზი,The fish can swim.,თევზს ცურვა შეუძლია.,audio/en/024.mp3,audio/parents/024.mp3,images/024.webp,New
+25,Animals,Rabbit,კურდღელი,The rabbit can jump.,კურდღელს ხტომა შეუძლია.,audio/en/025.mp3,audio/parents/025.mp3,images/025.webp,New
+26,Animals,Horse,ცხენი,The horse is big.,ცხენი დიდია.,audio/en/026.mp3,audio/parents/026.mp3,images/026.webp,New
+27,Animals,Lion,ლომი,The lion is strong.,ლომი ძლიერია.,audio/en/027.mp3,audio/parents/027.mp3,images/027.webp,New
+28,Animals,Elephant,სპილო,The elephant has big ears.,სპილოს დიდი ყურები აქვს.,audio/en/028.mp3,audio/parents/028.mp3,images/028.webp,New
+29,Animals,Monkey,მაიმუნი,The monkey likes bananas.,მაიმუნს ბანანები უყვარს.,audio/en/029.mp3,audio/parents/029.mp3,images/029.webp,New
+30,Animals,Turtle,კუ,The turtle is slow.,კუ ნელია.,audio/en/030.mp3,audio/parents/030.mp3,images/030.webp,New
+31,School,Book,წიგნი,I read a book.,მე წიგნს ვკითხულობ.,audio/en/031.mp3,audio/parents/031.mp3,images/031.webp,New
+32,School,Pencil,ფანქარი,I have a pencil.,მე ფანქარი მაქვს.,audio/en/032.mp3,audio/parents/032.mp3,images/032.webp,New
+33,School,Pen,კალამი,My pen is blue.,ჩემი კალამი ლურჯია.,audio/en/033.mp3,audio/parents/033.mp3,images/033.webp,New
+34,School,Bag,ჩანთა,My bag is red.,ჩემი ჩანთა წითელია.,audio/en/034.mp3,audio/parents/034.mp3,images/034.webp,New
+35,School,Desk,მერხი,My book is on the desk.,ჩემი წიგნი მერხზე დევს.,audio/en/035.mp3,audio/parents/035.mp3,images/035.webp,New
+36,School,Chair,სკამი,I sit on a chair.,მე სკამზე ვზივარ.,audio/en/036.mp3,audio/parents/036.mp3,images/036.webp,New
+37,School,Ruler,სახაზავი,I have a long ruler.,მე გრძელი სახაზავი მაქვს.,audio/en/037.mp3,audio/parents/037.mp3,images/037.webp,New
+38,School,Eraser,საშლელი,This is my eraser.,ეს ჩემი საშლელია.,audio/en/038.mp3,audio/parents/038.mp3,images/038.webp,New
+39,School,Teacher,მასწავლებელი,My teacher is kind.,ჩემი მასწავლებელი კეთილია.,audio/en/039.mp3,audio/parents/039.mp3,images/039.webp,New
+40,School,Classroom,საკლასო ოთახი,Our classroom is big.,ჩვენი საკლასო ოთახი დიდია.,audio/en/040.mp3,audio/parents/040.mp3,images/040.webp,New
+41,Family,Mother,დედა,My mother is kind.,დედაჩემი კეთილია.,audio/en/041.mp3,audio/parents/041.mp3,images/041.webp,New
+42,Family,Father,მამა,My father can cook.,მამაჩემს საჭმლის მომზადება შეუძლია.,audio/en/042.mp3,audio/parents/042.mp3,images/042.webp,New
+43,Family,Sister,და,My sister likes cats.,ჩემს დას კატები უყვარს.,audio/en/043.mp3,audio/parents/043.mp3,images/043.webp,New
+44,Family,Brother,ძმა,My brother can swim.,ჩემს ძმას ცურვა შეუძლია.,audio/en/044.mp3,audio/parents/044.mp3,images/044.webp,New
+45,Family,Grandmother,ბებია,My grandmother likes flowers.,ბებიაჩემს ყვავილები უყვარს.,audio/en/045.mp3,audio/parents/045.mp3,images/045.webp,New
+46,Family,Grandfather,ბაბუა,My grandfather has a dog.,ბაბუაჩემს ძაღლი ჰყავს.,audio/en/046.mp3,audio/parents/046.mp3,images/046.webp,New
+47,Family,Baby,ჩვილი,The baby is sleeping.,ჩვილს სძინავს.,audio/en/047.mp3,audio/parents/047.mp3,images/047.webp,New
+48,Family,Family,ოჯახი,I love my family.,მე ჩემი ოჯახი მიყვარს.,audio/en/048.mp3,audio/parents/048.mp3,images/048.webp,New
+49,Family,Friend,მეგობარი,My friend is funny.,ჩემი მეგობარი მხიარულია.,audio/en/049.mp3,audio/parents/049.mp3,images/049.webp,New
+50,Family,Cousin,ბიძაშვილი / დეიდაშვილი / მამიდაშვილი,My cousin has a bike.,ჩემს ბიძაშვილს ველოსიპედი აქვს.,audio/en/050.mp3,audio/parents/050.mp3,images/050.webp,New
+51,Body,Head,თავი,I have a hat on my head.,მე თავზე ქუდი მახურავს.,audio/en/051.mp3,audio/parents/051.mp3,images/051.webp,New
+52,Body,Hair,თმა,My hair is brown.,ჩემი თმა ყავისფერია.,audio/en/052.mp3,audio/parents/052.mp3,images/052.webp,New
+53,Body,Eye,თვალი,I have two eyes.,მე ორი თვალი მაქვს.,audio/en/053.mp3,audio/parents/053.mp3,images/053.webp,New
+54,Body,Ear,ყური,I have two ears.,მე ორი ყური მაქვს.,audio/en/054.mp3,audio/parents/054.mp3,images/054.webp,New
+55,Body,Nose,ცხვირი,My nose is small.,ჩემი ცხვირი პატარაა.,audio/en/055.mp3,audio/parents/055.mp3,images/055.webp,New
+56,Body,Mouth,პირი,Open your mouth.,გააღე პირი.,audio/en/056.mp3,audio/parents/056.mp3,images/056.webp,New
+57,Body,Hand,ხელი (მტევანი),Wash your hands.,დაიბანე ხელები.,audio/en/057.mp3,audio/parents/057.mp3,images/057.webp,New
+58,Body,Arm,მკლავი,Raise your arms.,ასწიე მკლავები.,audio/en/058.mp3,audio/parents/058.mp3,images/058.webp,New
+59,Body,Leg,ფეხი,My legs are strong.,ჩემი ფეხები ძლიერია.,audio/en/059.mp3,audio/parents/059.mp3,images/059.webp,New
+60,Body,Foot,ტერფი,My foot is small.,ჩემი ტერფი პატარაა.,audio/en/060.mp3,audio/parents/060.mp3,images/060.webp,New
+61,Clothes,Shirt,პერანგი,My shirt is blue.,ჩემი პერანგი ლურჯია.,audio/en/061.mp3,audio/parents/061.mp3,images/061.webp,New
+62,Clothes,T-shirt,მაისური,I have a yellow T-shirt.,მე ყვითელი მაისური მაქვს.,audio/en/062.mp3,audio/parents/062.mp3,images/062.webp,New
+63,Clothes,Dress,კაბა,This dress is pink.,ეს კაბა ვარდისფერია.,audio/en/063.mp3,audio/parents/063.mp3,images/063.webp,New
+64,Clothes,Skirt,ქვედაბოლო,My skirt is green.,ჩემი ქვედაბოლო მწვანეა.,audio/en/064.mp3,audio/parents/064.mp3,images/064.webp,New
+65,Clothes,Trousers,შარვალი,My trousers are black.,ჩემი შარვალი შავია.,audio/en/065.mp3,audio/parents/065.mp3,images/065.webp,New
+66,Clothes,Shoes,ფეხსაცმელი,My shoes are new.,ჩემი ფეხსაცმელი ახალია.,audio/en/066.mp3,audio/parents/066.mp3,images/066.webp,New
+67,Clothes,Socks,წინდები,My socks are white.,ჩემი წინდები თეთრია.,audio/en/067.mp3,audio/parents/067.mp3,images/067.webp,New
+68,Clothes,Hat,ქუდი,I wear a red hat.,მე წითელი ქუდი მახურავს.,audio/en/068.mp3,audio/parents/068.mp3,images/068.webp,New
+69,Clothes,Jacket,ქურთუკი,My jacket is warm.,ჩემი ქურთუკი თბილია.,audio/en/069.mp3,audio/parents/069.mp3,images/069.webp,New
+70,Clothes,Boots,ჩექმები,I wear boots in winter.,ზამთარში ჩექმებს ვიცვამ.,audio/en/070.mp3,audio/parents/070.mp3,images/070.webp,New
+71,Weather & Nature,Sun,მზე,The sun is bright.,მზე კაშკაშაა.,audio/en/071.mp3,audio/parents/071.mp3,images/071.webp,New
+72,Weather & Nature,Rain,წვიმა,I can see the rain.,მე წვიმას ვხედავ.,audio/en/072.mp3,audio/parents/072.mp3,images/072.webp,New
+73,Weather & Nature,Snow,თოვლი,I like snow.,მე თოვლი მიყვარს.,audio/en/073.mp3,audio/parents/073.mp3,images/073.webp,New
+74,Weather & Nature,Cloud,ღრუბელი,I see a white cloud.,მე თეთრ ღრუბელს ვხედავ.,audio/en/074.mp3,audio/parents/074.mp3,images/074.webp,New
+75,Weather & Nature,Wind,ქარი,The wind is strong.,ქარი ძლიერია.,audio/en/075.mp3,audio/parents/075.mp3,images/075.webp,New
+76,Weather & Nature,Tree,ხე,The tree is tall.,ხე მაღალია.,audio/en/076.mp3,audio/parents/076.mp3,images/076.webp,New
+77,Weather & Nature,Flower,ყვავილი,This flower is red.,ეს ყვავილი წითელია.,audio/en/077.mp3,audio/parents/077.mp3,images/077.webp,New
+78,Weather & Nature,Moon,მთვარე,I see the moon at night.,ღამით მთვარეს ვხედავ.,audio/en/078.mp3,audio/parents/078.mp3,images/078.webp,New
+79,Weather & Nature,Star,ვარსკვლავი,I can see a star.,მე ვარსკვლავს ვხედავ.,audio/en/079.mp3,audio/parents/079.mp3,images/079.webp,New
+80,Weather & Nature,Rainbow,ცისარტყელა,The rainbow has many colors.,ცისარტყელას ბევრი ფერი აქვს.,audio/en/080.mp3,audio/parents/080.mp3,images/080.webp,New
+81,Actions,Run,სირბილი,I can run fast.,მე სწრაფად სირბილი შემიძლია.,audio/en/081.mp3,audio/parents/081.mp3,images/081.webp,New
+82,Actions,Jump,ხტომა,I can jump high.,მე მაღლა ხტომა შემიძლია.,audio/en/082.mp3,audio/parents/082.mp3,images/082.webp,New
+83,Actions,Walk,სიარული,We walk to school.,ჩვენ სკოლაში ფეხით მივდივართ.,audio/en/083.mp3,audio/parents/083.mp3,images/083.webp,New
+84,Actions,Swim,ცურვა,I can swim.,მე ცურვა შემიძლია.,audio/en/084.mp3,audio/parents/084.mp3,images/084.webp,New
+85,Actions,Read,კითხვა,I read every day.,მე ყოველდღე ვკითხულობ.,audio/en/085.mp3,audio/parents/085.mp3,images/085.webp,New
+86,Actions,Write,წერა,I write my name.,მე ჩემს სახელს ვწერ.,audio/en/086.mp3,audio/parents/086.mp3,images/086.webp,New
+87,Actions,Draw,ხატვა,I draw a cat.,მე კატას ვხატავ.,audio/en/087.mp3,audio/parents/087.mp3,images/087.webp,New
+88,Actions,Sing,სიმღერა,I sing a song.,მე სიმღერას ვმღერი.,audio/en/088.mp3,audio/parents/088.mp3,images/088.webp,New
+89,Actions,Dance,ცეკვა,I dance with my friend.,მე ჩემს მეგობართან ერთად ვცეკვავ.,audio/en/089.mp3,audio/parents/089.mp3,images/089.webp,New
+90,Actions,Sleep,ძილი,I sleep at night.,მე ღამით მძინავს.,audio/en/090.mp3,audio/parents/090.mp3,images/090.webp,New
+91,Home,House,სახლი,This is my house.,ეს ჩემი სახლია.,audio/en/091.mp3,audio/parents/091.mp3,images/091.webp,New
+92,Home,Room,ოთახი,My room is small.,ჩემი ოთახი პატარაა.,audio/en/092.mp3,audio/parents/092.mp3,images/092.webp,New
+93,Home,Kitchen,სამზარეულო,My mother is in the kitchen.,დედაჩემი სამზარეულოშია.,audio/en/093.mp3,audio/parents/093.mp3,images/093.webp,New
+94,Home,Bedroom,საძინებელი,My bed is in the bedroom.,ჩემი საწოლი საძინებელშია.,audio/en/094.mp3,audio/parents/094.mp3,images/094.webp,New
+95,Home,Bathroom,სააბაზანო,The bathroom is clean.,სააბაზანო სუფთაა.,audio/en/095.mp3,audio/parents/095.mp3,images/095.webp,New
+96,Home,Door,კარი,Open the door.,გააღე კარი.,audio/en/096.mp3,audio/parents/096.mp3,images/096.webp,New
+97,Home,Window,ფანჯარა,Close the window.,დახურე ფანჯარა.,audio/en/097.mp3,audio/parents/097.mp3,images/097.webp,New
+98,Home,Bed,საწოლი,My bed is soft.,ჩემი საწოლი რბილია.,audio/en/098.mp3,audio/parents/098.mp3,images/098.webp,New
+99,Home,Table,მაგიდა,The cup is on the table.,ჭიქა მაგიდაზე დგას.,audio/en/099.mp3,audio/parents/099.mp3,images/099.webp,New
+100,Home,Sofa,დივანი,The cat is on the sofa.,კატა დივანზეა.,audio/en/100.mp3,audio/parents/100.mp3,images/100.webp,New
+101,Feelings,Happy,ბედნიერი,I am happy today.,დღეს ბედნიერი ვარ.,audio/en/101.mp3,audio/parents/101.mp3,images/101.webp,New
+102,Feelings,Sad,მოწყენილი,The boy is sad.,ბიჭი მოწყენილია.,audio/en/102.mp3,audio/parents/102.mp3,images/102.webp,New
+103,Feelings,Angry,გაბრაზებული,The girl is angry.,გოგო გაბრაზებულია.,audio/en/103.mp3,audio/parents/103.mp3,images/103.webp,New
+104,Feelings,Tired,დაღლილი,I am tired.,მე დაღლილი ვარ.,audio/en/104.mp3,audio/parents/104.mp3,images/104.webp,New
+105,Feelings,Hungry,მშიერი,I am hungry.,მე მშია.,audio/en/105.mp3,audio/parents/105.mp3,images/105.webp,New
+106,Feelings,Thirsty,მწყურვალი,I am thirsty.,მე მწყურია.,audio/en/106.mp3,audio/parents/106.mp3,images/106.webp,New
+107,Feelings,Scared,შეშინებული,I am scared of the dark.,მე სიბნელის მეშინია.,audio/en/107.mp3,audio/parents/107.mp3,images/107.webp,New
+108,Feelings,Excited,აღელვებული / გახარებული,I am excited about my birthday.,ჩემი დაბადების დღე ძალიან მიხარია.,audio/en/108.mp3,audio/parents/108.mp3,images/108.webp,New
+109,Feelings,Sleepy,ძილიანი,I am sleepy.,მე მეძინება.,audio/en/109.mp3,audio/parents/109.mp3,images/109.webp,New
+110,Feelings,Surprised,გაკვირვებული,I am surprised.,მე გაკვირვებული ვარ.,audio/en/110.mp3,audio/parents/110.mp3,images/110.webp,New
+111,Toys & Transport,Ball,ბურთი,I play with a ball.,მე ბურთით ვთამაშობ.,audio/en/111.mp3,audio/parents/111.mp3,images/111.webp,New
+112,Toys & Transport,Doll,თოჯინა,My doll has a red dress.,ჩემს თოჯინას წითელი კაბა აცვია.,audio/en/112.mp3,audio/parents/112.mp3,images/112.webp,New
+113,Toys & Transport,Teddy bear,პლუშის დათუნია,I hug my teddy bear.,მე ჩემს დათუნიას ვეხუტები.,audio/en/113.mp3,audio/parents/113.mp3,images/113.webp,New
+114,Toys & Transport,Kite,ფრანი,My kite is yellow.,ჩემი ფრანი ყვითელია.,audio/en/114.mp3,audio/parents/114.mp3,images/114.webp,New
+115,Toys & Transport,Bike,ველოსიპედი,I ride my bike.,მე ველოსიპედით დავდივარ.,audio/en/115.mp3,audio/parents/115.mp3,images/115.webp,New
+116,Toys & Transport,Car,მანქანა,The car is blue.,მანქანა ლურჯია.,audio/en/116.mp3,audio/parents/116.mp3,images/116.webp,New
+117,Toys & Transport,Bus,ავტობუსი,I go to school by bus.,მე სკოლაში ავტობუსით დავდივარ.,audio/en/117.mp3,audio/parents/117.mp3,images/117.webp,New
+118,Toys & Transport,Train,მატარებელი,The train is long.,მატარებელი გრძელია.,audio/en/118.mp3,audio/parents/118.mp3,images/118.webp,New
+119,Toys & Transport,Plane,თვითმფრინავი,The plane can fly.,თვითმფრინავს ფრენა შეუძლია.,audio/en/119.mp3,audio/parents/119.mp3,images/119.webp,New
+120,Toys & Transport,Boat,ნავი,The boat is on the water.,ნავი წყალზეა.,audio/en/120.mp3,audio/parents/120.mp3,images/120.webp,New
