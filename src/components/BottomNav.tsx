@@ -13,6 +13,7 @@ const ITEMS = [
 
 export default function BottomNav() {
   const path = usePathname();
+  if (path.startsWith("/adults")) return null; // adults have their own navigation
   // Hide during focused activities (learn / flashcards / category quiz)
   if (/^\/(category\/[^/]+\/(learn|flashcards|quiz)|daily\/(learn|cards)|review\/[^/]+|opposites)$/.test(path)) return null;
   return (

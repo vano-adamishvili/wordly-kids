@@ -77,3 +77,11 @@ src/data/                      categories, emoji fallbacks, generated JSON
 5. **პროგრესის გადატანა:** LocalStorage მისამართზეა მიბმული. ძველ მისამართზე → პროგრესი → „პროგრესის ჩამოტვირთვა“; wivilo.ge-ზე → პროგრესი → „ფაილიდან აღდგენა“. ძველი `*.vercel.app` მისამართი ღია დატოვე, სანამ აღდგენა არ შემოწმდება.
 
 ტექნიკური იდენტიფიკატორები (LocalStorage-ის გასაღები `wordly-kids-progress-v1`, რეპოზიტორიის სახელი) განზრახ არ შეცვლილა, რომ პროგრესი არ დაიკარგოს.
+
+## მოზრდილები: Malta Travel English (B1–B2)
+
+- მარშრუტები: `/adults` (დაფა), `/adults/categories`, `/adults/set/[set]`, `/adults/learn|cards|quiz|listen/[set]`, `/adults/talk`, `/adults/progress`.
+  `set` = `essentials` (Start here, 30) · `all` · `b1` · `b2` · `review` · კატეგორიის slug. ფილტრი `?lvl=B1|B2`.
+- მონაცემები: `data/malta_travel_150_B1_B2.csv` → `npm run data:malta` → `src/data/adult/malta.json` (ამოწმებს სათაურებს, 150 ჩანაწერს, 75/75, 15×10, ზუსტად 30 „Start here“-ს; ID-ებით ერთიანდება).
+- პროგრესი: ცალკე გასაღები `wivilo-adult-progress-v1` (ID-ები `MT-xxx`); ბავშვის `wordly-kids-progress-v1` არ იკითხება და არ იწერება.
+- გამოთქმა: ბრაუზერის TTS, ნორმალური (0.92) და ნელი (0.62) სიჩქარე. სასაუბრო პრაქტიკა გამოთქმას არ აფასებს — თვითშეფასებაა.

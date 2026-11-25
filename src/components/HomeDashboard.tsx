@@ -10,6 +10,7 @@ import LevelSwitcher from "./LevelSwitcher";
 import { DailyFiveCard, ImportHint, Level2Intro, PracticeTools } from "./HomeExtras";
 import Wivi from "./Wivi";
 import WiviloLogo from "./brand/WiviloLogo";
+import { SpaceSwitch } from "./adult/ui";
 import WordArt from "./WordArt";
 import { Bubble, ProgressBar, Ring } from "./ui";
 
@@ -55,8 +56,12 @@ export default function HomeDashboard() {
         </div>
       </div>
 
+      <div className="mt-3 flex justify-end">
+        <SpaceSwitch active="kids" />
+      </div>
+
       {/* Hero */}
-      <section className="relative mt-4 overflow-hidden rounded-[2rem] bg-lavender-soft p-5 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:p-8">
+      <section className="relative mt-3 overflow-hidden rounded-[2rem] bg-lavender-soft p-5 lg:grid lg:grid-cols-[1fr_auto] lg:items-center lg:gap-8 lg:p-8">
         <svg className="pointer-events-none absolute -right-10 -top-12 h-48 w-48 text-lavender/15" viewBox="0 0 100 100" aria-hidden>
           <circle cx="50" cy="50" r="50" fill="currentColor" />
         </svg>
